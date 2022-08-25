@@ -1,7 +1,9 @@
 package myAdapter;
 
+import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
+import java.util.Stack;
 
 /**
  * Class StackAdapter that adapts class {@link myAdapter.Vector}. It implements
@@ -75,28 +77,18 @@ public class StackAdapter extends Vector implements HCollection, HList {
 	 * item on the stack is considered to be at distance 1. The equals method is
 	 * used to compare o to the items in this stack.
 	 * 
-	 * @param
-	 * o        - the desired object.
-	 * @return
-	 *         the 1-based position from the top of the stack where the object is
+	 * @param o - the desired object.
+	 * @return the 1-based position from the top of the stack where the object is
 	 *         located; the return value -1 indicates that the object is not on the
 	 *         stack.
 	 */
 	public int search(Object o) {
-		StackAdapter temp = new StackAdapter();
-		int dist = 0;
-		while (!empty()) {
-			if (o.equals(this.peek()))
-				break;
-			dist++;
-			temp.push(this.pop());
+		int i = super.lastIndexOf(o);
+
+		if (i >= 0) {
+			return size() - i;
 		}
-		while (!temp.empty()) {
-			this.push(temp.pop());
-		}
-		if (dist == this.size())
-			return -1;
-		return dist;
+		return -1;
 	}
 
 	@Override
@@ -140,8 +132,11 @@ public class StackAdapter extends Vector implements HCollection, HList {
 
 	@Override
 	public boolean remove(Object obj) {
-		if (vector.indexOf(obj) >= from && vector.indexOf(obj) < to) {
-			vector.removeElementAt(vector.indexOf(obj));
+		ArrayList<String> s = new ArrayList<String>();
+
+		int index = vector.indexOf(obj);
+		if (index >= from && index < to) {
+			vector.removeElementAt(index);
 			to--;
 			boolean ePadre = isFather;
 			StackAdapter padre = father;
@@ -344,7 +339,13 @@ public class StackAdapter extends Vector implements HCollection, HList {
 		HIterator TH = this.iterator();
 		HIterator LI = LAobj.iterator();
 		while (LI.hasNext()) {
-			if (!TH.next().equals(LI.next()))
+			Object n1 = TH.next();
+			Object n2 = LI.next();
+			if (n1 != null && n2 != null) {
+				if (!n1.equals(n2))
+					return false;
+			}
+			if ((n1 == null && n2 != null) || (n1 != null && n2 == null))
 				return false;
 		}
 		return true;

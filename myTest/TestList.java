@@ -141,6 +141,7 @@ public class TestList {
 
 		l2 = l1.subList(0, argv.length / 2);
 		dsl0 = l2.size();
+		System.out.println(l2);
 
 		l2.add("pipperissimo");
 		dli = l1.size();

@@ -360,10 +360,12 @@ public class TestDiModifica {
         assertEquals("La lista 2 e la sottolista non sono uguali", l2, sub);
         int dim2 = l2.size();
         int dimsub = sub.size();
+        System.out.println(dim2 + " " + dimsub);
         sub.add("Pippo");
         assertEquals("La dimensione della sottolista non è cambiata correttamente", dimsub + 1, sub.size());
         assertEquals("La dimensione della lista 2 non è cambiata correttamente", dim2 + 1, l2.size());
         sub = l1.subList(2, 5);
+        // System.out.println(sub);
         assertTrue("La lista 1 non contiene tutti gli elementi della sottolista", l1.containsAll(sub));
         assertFalse("La sottolista contiene tutti gli elementi della lista 1", sub.containsAll(l1));
         assertEquals("L'elemento restituito non è quello aspettato", "Paperino", sub.get(0));
