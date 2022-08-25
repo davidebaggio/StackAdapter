@@ -1,0 +1,1 @@
+javadoc -d documentazione -sourcepath . -subpackages myAdapter:myTest -cp .;.\junit\junit-4.13.jar;.\matcher\hamcrest-core-1.3.jar
