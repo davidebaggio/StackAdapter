@@ -5,77 +5,78 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.*;
 
-//import java.util.NoSuchElementException;
-import java.util.NoSuchElementException;
-
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 
 /**
  * <strong>Class TestList</strong>
  * <p>
  * <br>
  * <br>
- * <strong>Summary</strong>: La classe TestList controlla con i suoi test il
- * funzionamento di
- * alcuni metodi della classe StackAdapter, in particolare alcuni aspetti delle
- * sottoliste e degli iteratori.
+ * <strong> Summary </strong>: the testlist class controls the
+ * operation of
+ * Some methods of the Stackadapter class, in particular some aspects of the
+ * sublists and iterators.
  * <br>
  * <br>
- * <strong>Test Suite Design</strong>: Questa classe contiene 5 test cases che
- * testano dei
- * metodi della classe StackAdapter(). In particolare il collegamento delle
- * sottoliste con le loro liste
- * 'padri' e alcuni metodi degli iteratori.
+ * <strong> Test Suite Design </strong>: this class contains 5 TEST CASES that
+ * Tespano dei
+ * Methods of the Stackadapter class (). In particular the connection of
+ * sublists with their lists
+ * 'Fathers' and some methods of the iterators.
  * <br>
  * <br>
- * <strong>Pre-Condition</strong>: Prima di ogni test deve essere inizializzata
- * almeno una lista.
+ * <strong> pre-condition </strong>: before each test it must be initialized
+ * At least one list.
  * <br>
  * <br>
- * <strong>Post-Condition</strong>: Dopo ogni test deve essere stato
- * inizializzato un iteratore
- * o creata una sottolista.
+ * <strong> post-condition </strong>: after each test it must have been
+ * Initialized an iterator
+ * Oned a subtivation.
  * <br>
  * <br>
- * <strong>Test Cases</strong>: I test cases di questa classe sono 5 e sono:
- * testBacking(),
- * testRecursiveSublist(), testIterator3(), testIterator2() e testIterator1().
- * Ciascuno di essi testa
- * almeno un aspetto degli iteratori o delle sottoliste.
+ * <strong> Test Cases </strong>: The tests of this class are 5 and are:
+ * testbacking (),
+ * testrecusivesublist (), TestIterator3 (), TestIterator2 () and TestIterator1
+ * ().
+ * Each of them heads
+ * At least one aspect of the iterators or sublists.
  * <br>
  * <br>
- * <strong>Execution Variables</strong>: Le variabili utilizzate sono due HList
- * l1 e l2, un
- * HListIterator li e un array di stringhe argv. In alcuni test sono poi
- * utilizzate altre variabili
- * quando necessarie.
+ * <strong>Test Suite Execution Records</strong>: Records are exaclty what this
+ * test suite provides as result of {@link myTest.TestRunner} class.
+ * <br>
+ * <br>
+ * <strong> Execution Variables </strong>: the variables used are two HLIST
+ * s1 and s2, a
+ * HListIterator LI E an array of ARGV strings. In some tests they are then
+ * Use other variables
+ * When necessary.
  */
 public class TestList {
-	HList l1 = null, l2 = null;
+	HList s1 = null, s2 = null;
 	HListIterator li = null;
 	static String[] argv = { "pippo", "qui", "pluto", "paperino", "qui", "ciccio" };
 
 	/**
-	 * Questo metodo viene eseguito una volta prima di ogni test della classe
-	 * <strong>TestList</strong>,
-	 * stampa una stringa e inizializza una lista vuota.
+	 * This method is performed once before each class test
+	 * <strong> testlist </strong>,
+	 * Print a string and initializes an empty list.
 	 */
 	@Before
 	public void setup() {
-		System.out.println("Instantiate an empty List");
-		l1 = new StackAdapter();
+		// System.out.println("Instantiate an empty List");
+		s1 = new StackAdapter();
 	}
 
 	/**
-	 * Questo metodo viene eseguito una volta dopo ogni test della classe
-	 * <strong>TestList</strong>,
-	 * stampa una stringa e rimuove tutti gli elementi dalla lista l1.
+	 * This method is performed once after each class test
+	 * <strong> testlist </strong>,
+	 * Print a string and remove all the elements from the s1 list.
 	 */
 	@After
 	public void cleanup() {
-		System.out.println("Purge all remaining elements");
-		l1.clear();
+		// System.out.println("Purge all remaining elements");
+		s1.clear();
 	}
 
 	/**
@@ -83,389 +84,394 @@ public class TestList {
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il corretto legame tra una lista
-	 * e una sua sottolista.
+	 * <strong>Summary</strong>: The test checks the correct link between a list
+	 * And one of his undergroundists.
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: In questo test vengono aggiunti e tolti
-	 * elementi da una lista e da una sua
-	 * sottolista, poi controllate le loro dimensioni e la corretta modifica della
-	 * lista principale quando
-	 * viene modificata la sua sottolista.
+	 * <strong> test case design </strong>: in this test they are added and removed
+	 * elements from a list and from one of his
+	 * Summary, then check their size and the correct modification of the
+	 * Main list when
+	 * His undergroundist is modified.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Attraverso il metodo add() vengono
-	 * aggiunti degli elementi alla lista l1
-	 * da cui viene poi creata una sottolista l2 con il metodo subList(). Vengono
-	 * controllate con delle
-	 * variabili le dimensioni delle due liste e la loro corretta modifica quando
-	 * vengono aggiunti e tolti
-	 * elementi dalla sottolista l2 con i metodi add(), remove() e clear(). Vengono
-	 * costruiti degli iteratori
-	 * e stampati gli elementi delle liste attraverso il metodo iterate(). Tutti i
-	 * controlli vengono effettuati
-	 * con il metodo assertEquals().
+	 * <strong> test description </strong>: through the Add () method they come
+	 * Added elements to the s1 list
+	 * from which an underlist () method is then created s2 with the sublist method.
+	 * They come
+	 * Check with some
+	 * variables the size of the two lists and their correct change when
+	 * are added and removed
+	 * Elements from the Unconist s2 with the Add (), Remove () and Clear ()
+	 * methods. They come
+	 * Building of the iterators
+	 * and printed the elements of the lists through the iterate method (). All the
+	 * controls are carried out
+	 * with the Assertequals method ().
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata una lista l1,
-	 * istanziato un iteratore li
-	 * e creato un array argv. I metodi add(), remove(), iterator(), iterate(),
-	 * sublist(), size() e clear()
-	 * devono funzionare correttamente.
+	 * <strong> pre-condition </strong>: an s1 list must have been initialized,
+	 * instantiate a iterator there
+	 * And a Array array created. The Add (), Remove (), iTerator (), iterate ()
+	 * methods
+	 * Sublist (), Size () and Clear ()
+	 * must work correctly.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve contenere alcuni elementi e
-	 * la sua sottolista l2 deve
-	 * essere vuota. Devono essere stati stampati gli elementi delle liste e alcune
-	 * stringhe.
+	 * <strong> post-condition </strong>: the s1 list must contain some elements e
+	 * His undergroundist s2 must
+	 * Be empty. The elements of the lists must have been printed and some
+	 * strings.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Il test viene superato se vengono stampati
-	 * solo i messaggi attesi e non
-	 * i messaggi di errori stampati quando non vengono superati gli assertEquals().
+	 * <strong> Expected Results </strong>: the test is passed if they are printed
+	 * Only expected and not messages
+	 * Messages of printed errors when assertionquals () are not exceeded.
 	 */
 	@Test
 	public void testBacking() {
-		System.out.println("TestBacking");
+		// System.out.println("TestBacking");
 		for (int i = 0; i < argv.length; i++) {
-			l1.add(argv[i]);
+			s1.add(argv[i]);
 		}
-		System.out.println("List.toString() ? " + l1);
+		System.out.println("List.toString() ? " + s1);
 
-		int dl0, dl1, dli, dsl0, dsl1, dsli;
+		int dl0, ds1, dli, dsl0, dss1, dsli;
 
-		iterate(l1.iterator());
-		System.out.println(l1 + " " + l1.size());
-		dl0 = l1.size();
+		iterate(s1.iterator());
+		System.out.println(s1 + " " + s1.size());
+		dl0 = s1.size();
 
-		l2 = l1.subList(0, argv.length / 2);
-		dsl0 = l2.size();
-		System.out.println(l2);
+		s2 = s1.subList(0, argv.length / 2);
+		dsl0 = s2.size();
+		System.out.println(s2);
 
-		l2.add("pipperissimo");
-		dli = l1.size();
-		dsli = l2.size();
+		s2.add("pipperissimo");
+		dli = s1.size();
+		dsli = s2.size();
 
 		assertEquals("\n*** sublist add is NOT backed correctly ***\n", dli, dl0 + 1);
 		assertEquals("\n*** sublist add is NOT backed correctly ***\n", dsli, dsl0 + 1);
 
-		l2.remove("pipperissimo");
-		assertEquals("\n*** list remove is NOT backed correctly ***\n", l1.size(), dl0);
-		assertEquals("\n*** list remove is NOT backed correctly ***\n", l2.size(), dsl0);
+		s2.remove("pipperissimo");
+		assertEquals("\n*** list remove is NOT backed correctly ***\n", s1.size(), dl0);
+		assertEquals("\n*** list remove is NOT backed correctly ***\n", s2.size(), dsl0);
 
-		iterate(l2.iterator());
-		System.out.println(l2 + " " + l2.size());
+		iterate(s2.iterator());
+		System.out.println(s2 + " " + s2.size());
 
-		l2.clear();
-		dl1 = l1.size();
-		dsl1 = l2.size();
-		System.out.println(l1 + " " + l1.size());
-		iterate(l1.iterator());
-		System.out.println(l2 + " " + l2.size());
-		iterate(l2.iterator());
+		s2.clear();
+		ds1 = s1.size();
+		dss1 = s2.size();
+		System.out.println(s1 + " " + s1.size());
+		iterate(s1.iterator());
+		System.out.println(s2 + " " + s2.size());
+		iterate(s2.iterator());
 
-		System.out.println(dl0 + " " + dl1 + " " + dsl0 + " " + dsl1);
+		System.out.println(dl0 + " " + ds1 + " " + dsl0 + " " + dss1);
 		assertEquals("\n*** sublist is NOT backed correctly ***\n", dsl0, (dl0 / 2));
-		assertEquals("\n*** sublist is NOT backed correctly ***\n", dsl1, 0);
-		assertEquals("\n*** sublist is NOT backed correctly ***\n", dl1, (dl0 - dsl0));
+		assertEquals("\n*** sublist is NOT backed correctly ***\n", dss1, 0);
+		assertEquals("\n*** sublist is NOT backed correctly ***\n", ds1, (dl0 - dsl0));
 
 	}
 
 	/**
-	 * <strong>Test delle sottoliste ricorsive</strong>
+	 * <strong>Test of recursive sublists</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Questo test controlla il funzionamento delle
-	 * sottoliste, in particolare delle
-	 * sottoliste delle sottoliste.
+	 * <strong> Summary </strong>: this test controls the functioning of
+	 * sublists, in particular of the
+	 * sublists of the sublists.
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: In questo test vengono aggiunti degli
-	 * elementi alla lista iniziale la cui
-	 * lunghezza viene controllata dopo alcuni inserimenti. Vengono costruite
-	 * diverse sottoliste della lista
-	 * iniziale che la sostituiscono ad ogni iterazione per controllare il
-	 * funzionamento delle sottoliste
-	 * delle sottoliste.
+	 * <strong> test case design </strong>: in this test some
+	 * elements to the initial list whose
+	 * Length is checked after some insertions. They are built
+	 * Different sub -lines of the list
+	 * initial that replace it for each iteration to control the
+	 * Functioning of the sublists
+	 * of the sub -lists.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Il test utilizza i metodi add() e size()
-	 * per aggiungere elementi alla
-	 * lista l1 iniziale e controllare la corretta modifica della lunghezza della
-	 * lista attraverso degli
-	 * assertEquals() che ne confrontano la dimensione. Vengono stampati con il
-	 * metodo iterate() gli elementi
-	 * della lista con un iteratore creato con il metodo iterator(). La lista l1
-	 * viene sostituita poi da
-	 * una sua sottolista di dimensione inferiore, creata con subList(), finché l1
-	 * non ha dimensione
-	 * inferiore a 2, in modo da controllare il funzionamento ricorsivo delle liste.
-	 * ogni volta che la
-	 * lista l1 viene sostituita da una sua sottolista ne vengono stampati gli
-	 * elementi con il metodo iterate().
+	 * <strong> test description </strong>: the test uses Add () and size methods ()
+	 * To add elements to the
+	 * Initial s1 list and check the correct modification of the length of the
+	 * list through gods
+	 * Assertequals () who compare the size. Are printed with the
+	 * Method iterate () the elements
+	 * of the list with a iterator created with the iterator method (). s1 list
+	 * is then replaced by
+	 * a subsidiary of his lower size, created with Sublist (), until s1
+	 * has no size
+	 * less than 2, in order to control the recursive functioning of the lists.
+	 * every time the
+	 * s1 list is replaced by one of his unsatisfied ones are printed
+	 * Elements with the iterate method ().
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata una lista l1
-	 * vuota e creato un array argv
-	 * non vuoto. I metodi size(), add(), e subList() devono funzionare
-	 * correttamente.
+	 * <strong> pre-condition </strong>: an s1 list must have been initialized
+	 * empty and created an array array
+	 * not empty. The Size (), Add (), and Sublist () methods must work
+	 * correctly.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve avere un numero di elementi
-	 * minore di 2. Devono essere
-	 * stati stampati gli elementi della lista e alcune stringhe.
+	 * <strong> post-condition </strong>: the s1 list must have a number of elements
+	 * less than 2. must be
+	 * The elements of the list and some strings were printed.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Per il successo del test devono essere
-	 * stampati alcune stringhe e più volte
-	 * gli elementi della lista l1 iniziale e delle sottoliste successivamente
-	 * create ma nessuno dei messaggi
-	 * di errore degli assertEquals().
+	 * <strong> Expected Results </strong>: for the success of the test they must be
+	 * Printed some strings and several times
+	 * The elements of the initial s1 list and sub -senses later
+	 * Create but none of the messages
+	 * of error of assertionquals ().
 	 */
 	@Test
 	public void testRecursiveSublist() {
 		System.out.println("TestRecursive SubListing");
-		System.out.println(l1.size());
+		System.out.println(s1.size());
 
-		assertEquals("List Starts not empty", l1.size(), 0);
-		int prev = l1.size();
+		assertEquals("List Starts not empty", s1.size(), 0);
+		int prev = s1.size();
 		for (int i = 0; i < argv.length; i++) {
-			l1.add(argv[i]);
+			s1.add(argv[i]);
 		}
-		assertEquals("List add not working correctly", l1.size(), (prev + argv.length));
-		System.out.println(l1.size());
-		prev = l1.size();
+		assertEquals("List add not working correctly", s1.size(), (prev + argv.length));
+		System.out.println(s1.size());
+		prev = s1.size();
 		for (int i = 0; i < argv.length; i++) {
-			l1.add(argv[i]);
+			s1.add(argv[i]);
 		}
-		assertEquals("List add not working correctly", l1.size(), (prev + argv.length));
-		System.out.println(l1.size());
-		prev = l1.size();
+		assertEquals("List add not working correctly", s1.size(), (prev + argv.length));
+		System.out.println(s1.size());
+		prev = s1.size();
 		for (int i = 0; i < argv.length; i++) {
-			l1.add(argv[i]);
+			s1.add(argv[i]);
 		}
-		assertEquals("List add not working correctly", l1.size(), (prev + argv.length));
-		System.out.println(l1.size());
-		iterate(l1.iterator());
+		assertEquals("List add not working correctly", s1.size(), (prev + argv.length));
+		System.out.println(s1.size());
+		iterate(s1.iterator());
 
 		int after = 0;
 		int count = 0;
-		while (l1.size() >= 2) {
+		while (s1.size() >= 2) {
 			count++;
-			prev = l1.size();
-			l1 = l1.subList(1, prev - 1);
-			after = l1.size();
+			prev = s1.size();
+			s1 = s1.subList(1, prev - 1);
+			after = s1.size();
 			System.out.println(after);
 			assertEquals("Iterative Sublisting not working at " + count + " iteration", after, (prev - 2));
-			iterate(l1.iterator());
+			iterate(s1.iterator());
 		}
 	}
 
 	/**
-	 * <strong>Test numero 3 sull'iteratore</strong>
+	 * <strong> Test 3 on the Iterator </strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento di alcuni metodi
-	 * dell'iteratore
+	 * <strong> Summary </strong>: the test controls the functioning of some methods
+	 * of the heterentor
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Vengono aggiunti alla lista degli oggetti
-	 * e viene poi percorsa la lista.
-	 * Vengono rimossi uno a uno tutti gli elementi della lista, che vengono
-	 * stampati più volte durante il
-	 * test.
+	 * <strong> test case design </strong>: they are added to the list of objects
+	 * And the list is then traveled.
+	 * All the elements of the list are removed one by one, which come
+	 * printed several times during the
+	 * Test.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Vengono aggiunti alla lista l1 tutti gli
-	 * elementi dell'array argv con il
-	 * metodo add(). Vengono stampati tutti gli elementi della lista con il metodo
-	 * iterate() su un iteratore
-	 * creato con il metodo iterator(). Viene inizializzato l'iteratore li con un
-	 * iteratore creato sulla lista
-	 * l1 con il metodo listIterate(). Con l'iteratore li si percorre con i metodi
-	 * hasNext() e next() tutta la
-	 * lista l1 che poi si ripercorre al contrario con hasPrevious() e previous()
-	 * eliminando l'ultimo elemento
-	 * uno alla volta con il metodo remove(), stampando con iterate() la lista
-	 * rimanente prima di ogni
-	 * rimozione. Vengono controllate con degli int e degli assertEquals() le
-	 * dimensioni della lista dopo
-	 * tutte le addizioni e le rimozioni della lista.
+	 * <strong> test description </strong>: all s1 list are added
+	 * Elements of arv ARRAY with the
+	 * Add () method. All elements of the list with the method are printed
+	 * iterate () on a iterator
+	 * Created with the iterator method (). The iterator is initialized with a
+	 * Intrar created on the list
+	 * s1 with the Listyterate method (). With the iterator we travel with the
+	 * methods
+	 * Hasnext () and Next () the whole
+	 * s1 list which then retraces itself with Hasprevious () and Previous ()
+	 * eliminating the last element
+	 * one at a time with the Remove () method, printing the list with iterate ()
+	 * remaining before each
+	 * Removal. They are controlled with the int and assertquals () le
+	 * size of the list after
+	 * All the additions and removals of the list.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata una lista l1,
-	 * istanziato un iteratore li e
-	 * creato un array argv non vuoto. I metodi add(), size(), iterate(),
-	 * iterator(), listIterator(), hasNext(),
-	 * next(), hasPrevious(), previous() e remove() devono essere correttamente
-	 * funzionanti.
+	 * <strong> pre-condition </strong>: an s1 list must have been initialized,
+	 * instantiate an iterator li e
+	 * Created a non -empty array. The Add (), size (), iterate () methods,
+	 * iTerator (), Listyterator (), Hasnext (),
+	 * Next (), Hasprevious (), Previous () and Remove () must be correctly
+	 * functioning.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista 1 deve essere vuota e l'iteratore
-	 * deve essere stato inizializzato.
-	 * Devono essere stati stampati gli elementi della lista e alcune stringhe.
+	 * <strong> post-condition </strong>: list 1 must be empty and the iterator
+	 * must have been initialized.
+	 * The elements of the list and some strings must have been printed.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato vengono stampati
-	 * varie volte gli elementi della
-	 * lista l1 ma non viene stampato alcun messaggio di errore dai metodi
-	 * assertEquals().
+	 * <strong> Expected results </strong>: if the test is passed they are printed
+	 * several times the elements of the
+	 * s1 list but no error message is printed from the methods
+	 * Assertequals ().
 	 */
 	@Test
 	public void testIterator3() {
 		System.out.println("TestListIterator #3");
-		int dl0, dl1, dl2;
+		int dl0, ds1, ds2;
 
-		dl0 = l1.size();
+		dl0 = s1.size();
 		for (int i = 0; i < argv.length; i++) {
-			l1.add(argv[i]);
+			s1.add(argv[i]);
 		}
-		dl1 = l1.size();
-		iterate(l1.iterator());
-		li = l1.listIterator();
+		ds1 = s1.size();
+		iterate(s1.iterator());
+		li = s1.listIterator();
 		while (li.hasNext())
 			li.next();
 		while (li.hasPrevious()) {
 			System.out.print(li.previous() + " ");
-			iterate(l1.iterator());
+			iterate(s1.iterator());
 			li.remove();
 		}
-		dl2 = l1.size();
-		iterate(l1.iterator());
+		ds2 = s1.size();
+		iterate(s1.iterator());
 
-		assertEquals("\n*** insertion and forward to end and backward removal not working ***\n", dl1,
+		assertEquals("\n*** insertion and forward to end and backward removal not working ***\n", ds1,
 				(dl0 + argv.length));
-		assertEquals("\n*** insertion and forward to end and backward removal not working ***\n", dl2, 0);
+		assertEquals("\n*** insertion and forward to end and backward removal not working ***\n", ds2, 0);
 	}
 
 	/**
-	 * <strong>Test numero 2 sull'iteratore</strong>
+	 * <strong> Test number 2 on the iterator </strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento di alcuni metodi
-	 * dell'iteratore.
+	 * <strong> Summary </strong>: the test controls the functioning of some methods
+	 * of the heterner.
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Vengono aggiunti alla lista degli oggetti
-	 * che vengono tolti uno alla
-	 * volta percorrendo la lista con un iteratore.
+	 * <strong> test case design </strong>: they are added to the list of objects
+	 * that are removed to the
+	 * Time along the list with an iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Vengono aggiunti alla lista l1 gli oggetti
-	 * dell'array argv attraverso
-	 * l'utilizzo del metodo add(). L'iteratore li viene inizializzato con un
-	 * iteratore creato sulla lista l1
-	 * con il metodo listIterator(). Viene percorsa tutta la lista l1 con i metodi
-	 * hasNext() e next(), e
-	 * vengono rimossi tutti gli elementi della lista in ordine con il metodo
-	 * remove(). Vengono stampati
-	 * gli elementi della lista l1 con il metodo iterate() dopo aver aggiunto tutti
-	 * gli elementi dell'array,
-	 * prima di ogni rimozione e dopo tutte le rimozioni. Vengono controllate le
-	 * corrette modifiche alla lista
-	 * e alla sua dimensione con degli int e con i metodi size() e assertEquals().
+	 * <strong> test description </strong>: objects are added to the s1 list
+	 * of ARRV ARRAY through
+	 * the use of the Add () method. The iterator is initialized with a
+	 * Intrar created on the s1 list
+	 * with the Listyterator method (). The whole s1 list is traveled with the
+	 * methods
+	 * Hasnext () and Next (), e
+	 * All the elements of the list are removed in order with the method
+	 * Remove (). They are printed
+	 * the elements of the s1 list with the iterate method () after adding everyone
+	 * the elements of array,
+	 * before each removal and after all the removals. The
+	 * correct changes to the list
+	 * and its size with int and with the size () and assertion () methods.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata una lista l1,
-	 * istanziato e posto uguale a null
-	 * un iteratore li e creato un array argv. Devono funzionare correttamente i
-	 * metodi size(), add(), iterate(),
-	 * iterator(), listIterator(), hasNext(), next() e remove().
+	 * <strong> pre-condition </strong>: an s1 list must have been initialized,
+	 * instantiated and the same place for Null
+	 * An iterator and a Argu array created them. They must work correctly i
+	 * Methods Size (), Add (), iterate (),
+	 * Iterator (), Listyterator (), Hasnext (), Next () and Remove ().
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve essere vuota e l'iteratore
-	 * li deve essere stato inizializzato.
-	 * Devono essere stati stampati gli elementi della lista e alcune stringhe.
+	 * <strong> post-condition </strong>: the s1 list must be empty and the iterator
+	 * It must have been initialized.
+	 * The elements of the list and some strings must have been printed.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato devono essere
-	 * stati stampati una stringa e più
-	 * volte gli elementi della lista l1 ma nessun messaggio di errore degli
-	 * assertEquals().
+	 * <strong> Expected results </strong>: if the test is passed they must be
+	 * a string has been printed and more
+	 * times the elements of the s1 list but no error message of the
+	 * Assertequals ().
 	 */
 	@Test
 	public void testIterator2() {
 		System.out.println("TestListIterator #2");
-		int dl0, dl1, dl2;
-		dl0 = l1.size();
+		int dl0, ds1, ds2;
+		dl0 = s1.size();
 		for (int i = 0; i < argv.length; i++) {
-			l1.add(argv[i]);
+			s1.add(argv[i]);
 		}
-		dl1 = l1.size();
-		iterate(l1.iterator());
-		li = l1.listIterator();
+		ds1 = s1.size();
+		iterate(s1.iterator());
+		li = s1.listIterator();
 		while (li.hasNext()) {
 			System.out.print(li.next() + " ");
-			iterate(l1.iterator());
+			iterate(s1.iterator());
 			li.remove();
 		}
-		dl2 = l1.size();
-		iterate(l1.iterator());
+		ds2 = s1.size();
+		iterate(s1.iterator());
 
-		assertEquals("\n*** insertion and forward removal not working ***\n", dl1, (dl0 + argv.length));
-		assertEquals("\n*** insertion and forward removal not working ***\n", dl2, 0);
+		assertEquals("\n*** insertion and forward removal not working ***\n", ds1, (dl0 + argv.length));
+		assertEquals("\n*** insertion and forward removal not working ***\n", ds2, 0);
 	}
 
 	/**
-	 * <strong>Test numero 1 sull'iteratore</strong>
+	 * <strong>test 1 On The iterator </strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento di alcuni metodi
-	 * dell'iteratore.
+	 * <strong> Summary </strong>: the test controls the functioning of some methods
+	 * of the heterner.
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene creato un iteratore alla fine della
-	 * lista che viene percorsa al
-	 * contrario rimuovendo un elemento alla volta.
+	 * <strong> test case design </strong>: a iterator is created at the end of the
+	 * list that is traveled to
+	 * contrary by removing one element at a time.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Viene inizializzato l'iteratore li con un
-	 * iteratore creato alla fine della
-	 * lista l1 con il metodo listIterator(int index). La lista viene percorsa al
-	 * contrario con i metodi
-	 * hasPrevious() e previous(), e viene rimosso l'ultimo elemento della lista con
-	 * il metodo remove() ad ogni
-	 * passo indietro dell'iteratore. Vengono stampati più volte gli elementi della
-	 * lista l1 con il metodo
-	 * iterate() con un iteratore creato con il metodo iterator(). Viene controllata
-	 * la dimensione della
-	 * lista l1 alla fine del test con il metodo assertEquals() e size().
+	 * <strong> test description </strong>: the iterator is initialized with a
+	 * Intrar created at the end of the
+	 * s1 List with the Listyterator method (Int Index). The list is traveled to
+	 * against with the methods
+	 * HASPRIVOUS () and Previous (), and the last element of the list with
+	 * the remote method () to each
+	 * step back of the heterner. The elements of the
+	 * s1 list with the method
+	 * iterate () with a iterator created with the iterator method (). Is controlled
+	 * the size of the
+	 * list s1 at the end of the test with the Assertequals () and Size () method.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata una lista l1
-	 * e deve essere stato istanziato e
-	 * posto uguale a null un iteratore li. I metodi iterate(), iterator(),
-	 * listIterator(int index),
-	 * hasPrevious(), previous(), size() e remove() devono funzionare correttamente.
+	 * <strong> pre-condition </strong>: an s1 list must have been initialized
+	 * and must have been instantiated and
+	 * place equal to null a iterator there. The iterated methods (), iterator (),
+	 * LISTERATOR (INTDEX),
+	 * HASPRIVOUS (), Previous (), Size () and Remove () must work correctly.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve essere vuota e l'iteratore
-	 * li deve essere stato inizializzato.
-	 * Devono essere stati stampati gli elementi della lista e alcune stringhe.
+	 * <strong> post-condition </strong>: the s1 list must be empty and the iterator
+	 * It must have been initialized.
+	 * The elements of the list and some strings must have been printed.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Il test viene superato se viene stampata
-	 * una stringa iniziale e vengono
-	 * stampati più volte gli elementi della lista l1, ma nessun messaggio di errore
-	 * degli assertEquals().
+	 * <strong> Expected Results </strong>: the test is passed if it is printed
+	 * An initial string and come
+	 * printed several times the elements of the s1 list, but no error message
+	 * of assertionquals ().
 	 */
 	@Test
 	public void testIterator1() {
 		System.out.println("TestListIterator #1");
-		iterate(l1.iterator());
-		li = l1.listIterator(l1.size());
+		iterate(s1.iterator());
+		li = s1.listIterator(s1.size());
 		while (li.hasPrevious()) {
 			System.out.print(li.previous() + " ");
-			iterate(l1.iterator());
+			iterate(s1.iterator());
 			li.remove();
 		}
-		iterate(l1.iterator());
+		iterate(s1.iterator());
 
-		assertEquals("\n*** listiterator from end not working ***\n", l1.size(), 0);
+		assertEquals("\n*** listiterator from end not working ***\n", s1.size(), 0);
 	}
 
 	public static void iterate(HIterator iter) {

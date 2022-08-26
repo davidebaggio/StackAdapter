@@ -28,12 +28,25 @@ public class TestRunner {
 	 */
 	public static void main(String[] args) {
 		Result res;
-
 		System.out.println("**Test in execution..**\n");
 
-		System.out.println("\nTest of StackAdapter..");
-		res = JUnitCore.runClasses(TestList.class, TestAddPush.class, TestRemove.class, TestDiControllo.class,
-				TestDiModifica.class, TestIteratori.class);
+		// uncomment this to test backtarcked sublists.
+		/*
+		 * System.out.println("\nTest of TestList..");
+		 * res = JUnitCore.runClasses(TestList.class);
+		 * esitoTest(res);
+		 */
+		System.out.println("\nTest of AddPush..");
+		res = JUnitCore.runClasses(TestAddPush.class);
+		esitoTest(res);
+		System.out.println("\nTest of ControlsModify..");
+		res = JUnitCore.runClasses(TestControlsModify.class);
+		esitoTest(res);
+		System.out.println("\nTest of RemovePop..");
+		res = JUnitCore.runClasses(TestRemovePop.class);
+		esitoTest(res);
+		System.out.println("\nTest of Iterator..");
+		res = JUnitCore.runClasses(TestIterator.class);
 		esitoTest(res);
 
 		System.out.println("\n*** All the " + totalTests + " tests have been completed ***");
