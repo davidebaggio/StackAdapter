@@ -31,7 +31,7 @@ public class TestRunner {
 
 		System.out.println("**Test in execution..**\n");
 
-		System.out.println("\nTest of ListAdapter..");
+		System.out.println("\nTest of StackAdapter..");
 		res = JUnitCore.runClasses(TestList.class, TestAddPush.class, TestRemove.class, TestDiControllo.class,
 				TestDiModifica.class, TestIteratori.class);
 		esitoTest(res);

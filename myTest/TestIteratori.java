@@ -56,28 +56,6 @@ public class TestIteratori {
     Object[] arr = new Object[] { "Pippo", "Pluto", "Paperino", "Topolino", "Pippo", null };
 
     /**
-     * Questo metodo viene eseguito una sola volta prima di iniziare a eseguire i
-     * test della classe
-     * <strong>TestIteratori</strong> e stampa una stringa che segnala l'inizio dei
-     * test di questa classe.
-     */
-    @BeforeClass
-    public static void beforeTestIteratoriClass() {
-        System.out.println("Inizio test della classe TestIteratori");
-    }
-
-    /**
-     * Questo metodo viene eseguito una sola volta dopo che sono stati eseguiti
-     * tutti i test della classe
-     * <strong>TestIteratori</strong> e stampa una stringa che segnala la fine dei
-     * test di questa classe.
-     */
-    @AfterClass
-    public static void afterTestIteratoriClass() {
-        System.out.println("Fine test della classe TestIteratori");
-    }
-
-    /**
      * Questo metodo viene eseguito una volta prima di ogni test della classe
      * <strong>TestIteratori</strong>,
      * stampa una stringa e inizializza e aggiunge elementi in una lista.

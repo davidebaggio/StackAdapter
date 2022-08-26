@@ -9,42 +9,42 @@ import static org.junit.Assert.*;
  * <p>
  * <br>
  * <br>
- * <strong>Summary</strong>: La classe TestDiModifica controlla con i suoi test
- * il funzionamento dei
- * metodi che modificano la lista o la copiano per intero o in parte.
+ * <strong> Summary </strong>: the testdimodifica class controls with its tests
+ * the functioning of
+ * Methods that modify the list or copy it in full or in part.
  * <br>
  * <br>
- * <strong>Test Suite Design</strong>: Questa classe contiene 4 test cases che
- * testano 4 differenti
- * metodi della classe StackAdapter(), ciascuno dei quali modifica
- * la lista o la copia per intero o in parte.
+ * <strong> Test Suite Design </strong>: this class contains 4 TEST CASES that
+ * Tesse 4 different
+ * Methods of the Stackadapter class (), each of which changes
+ * The list or copy in full or in part.
  * <br>
  * <br>
- * <strong>Pre-Condition</strong>: Prima di ogni test deve essere inizializzata
- * almeno una lista e
- * in questa devono essere sempre presenti degli elementi.
+ * <strong> pre-control </strong>: before each test it must be initialized
+ * at least one list e
+ * In this elements must always be present.
  * <br>
  * <br>
- * <strong>Post-Condition</strong>: Dopo ogni test deve essere stata fatta
- * almeno una modifica o
- * una copia di almeno una lista.
+ * <strong> post-condition </strong>: after each test it must have been done
+ * at least a change or
+ * A copy of at least one list.
  * <br>
  * <br>
- * <strong>Test Cases</strong>: I test cases di questa classe sono 4 e sono:
- * testSet(),
- * testToArray(), testToArrayInArray() e testSubList(). Ciascuno di essi serve a
- * testare un
- * metodo diverso della classe StackAdapter.
+ * <strong> Test Cases </strong>: The tests of this class are 4 and are:
+ * testset (),
+ * Testtoarray (), Testtoarrayinarray () and testsublist (). Each of them serves
+ * test a
+ * different method of the Stackadapter class.
  * <br>
  * <br>
- * <strong>Execution Variables</strong>: Le variabili utilizzate sono due
- * StackAdapter l1 e l2, la
- * prima utilizzata in tutti i test e la seconda solo dove necessario, e un
- * array di Object arr utilizzato
- * per inserire elementi nelle liste. In alcuni test sono poi utilizzate altre
- * variabili quando necessarie.
+ * <strong> Execution Variables </strong>: the variables used are two
+ * Stackadapter L1 and L2, the
+ * first used in all tests and the second only where necessary, and a
+ * Object Array Arrival used
+ * To insert elements on the lists. In some tests others are then used
+ * variables when necessary.
  * 
- * @author Marco Zennaro
+ * @author Davide Baggio
  */
 public class TestDiModifica {
 
@@ -52,31 +52,9 @@ public class TestDiModifica {
     Object[] arr = new Object[] { "Pippo", "Pluto", "Paperino", "Topolino", "Pippo", null };
 
     /**
-     * Questo metodo viene eseguito una sola volta prima di iniziare a eseguire i
-     * test della classe
-     * <strong>TestDiModifica</strong> e stampa una stringa che segnala l'inizio dei
-     * test di questa classe.
-     */
-    @BeforeClass
-    public static void beforeTestDiModificaClass() {
-        System.out.println("Inizio test della classe TestDiModifica");
-    }
-
-    /**
-     * Questo metodo viene eseguito una sola volta dopo che sono stati eseguiti
-     * tutti i test della classe
-     * <strong>TestDiModifica</strong> e stampa una stringa che segnala la fine dei
-     * test di questa classe.
-     */
-    @AfterClass
-    public static void afterTestDiModificaClass() {
-        System.out.println("Fine test della classe TestDiModifica");
-    }
-
-    /**
-     * Questo metodo viene eseguito una volta prima di ogni test della classe
-     * <strong>TestDiModifica</strong>,
-     * stampa una stringa e inizializza e aggiunge elementi in una lista.
+     * This method is performed once before each class test
+     * <strong> testdimodifica </strong>,
+     * Print a string and initializes and adds elements to a list.
      */
     @Before
     public void setup() {
@@ -89,10 +67,11 @@ public class TestDiModifica {
     }
 
     /**
-     * Questo metodo viene eseguito una volta dopo ogni test della classe
-     * <strong>TestDiModifica</strong>,
-     * stampa una stringa, rimuove tutti gli elementi dalla lista l1 e pone uguale a
-     * null la lista l2.
+     * This method is performed once after each class test
+     * <strong> testdimodifica </strong>,
+     * Print a string, removes all the elements from the L1 list and places the same
+     * as
+     * null the L2 list.
      */
     @After
     public void cleanup() {
@@ -102,49 +81,51 @@ public class TestDiModifica {
     }
 
     /**
-     * <strong>Test di
+     * <strong>Test of
      * {@link myAdapter.StackAdapter#set(int index, Object element)}</strong>
      * <p>
      * <br>
      * <br>
-     * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-     * set(int index, Object element)
+     * <strong> Summary </strong>: the test controls the functioning of the method
+     * set (int index, object element)
      * <br>
      * <br>
-     * <strong>Test Case Design</strong>: Viene usato il metodo su una lista piu'
-     * volte passando
-     * diversi parametri validi e non validi.
+     * <strong> test case design </strong>: the method on a more list is used
+     * times passing
+     * Different parameters valid and not valid.
      * <br>
      * <br>
-     * <strong>Test Description</strong>: Viene usato il metodo set(int index,
-     * Object element) piu'
-     * volte sulla lista l1 con diversi parametri per modificarne gli elementi.
-     * Vengono catturate le
-     * eccezioni lanciate dal metodo quando viene passato come parametro un indice
-     * di posizione non valido
-     * perche' minore di 0 o maggiore o uguale al numero di elementi della lista e
-     * vengono stampate delle
-     * stringhe di avviso di cattura dell'eccezione. Con il metodo assertEquals() e
-     * l'ausilio dei metodi
-     * size() e get() si controlla che la dimensione della lista non cambi e che sia
-     * inserito l'elemento
-     * corretto nella posizione corretta.
+     * <strong> test description </strong>: the set method is used (int index,
+     * Object Element) More
+     * times on the L1 list with different parameters to change the elements.
+     * The
+     * exceptions launched by the method when passing an index as a parameter
+     * of non -valid position
+     * Because less than 0 or greater or equal to the number of elements of the list
+     * e
+     * are printed some
+     * Notice strings to catch the exception. With the Assertequals () e method
+     * the help of methods
+     * size () and Get () is checking that the size of the list does not change and
+     * that it is
+     * inserted the element
+     * correct in the correct position.
      * <br>
      * <br>
-     * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-     * una lista l1.
+     * <strong> pre-control </strong>: it must have been initialized and filled
+     * An L1 list.
      * <br>
      * <br>
-     * <strong>Post-Condition</strong>: La dimensione della lista l1 deve restare
-     * immutata ma
-     * alcuni elementi devono essere stati sostituiti da altri.
+     * <strong> post-condition </strong>: the size of the L1 list must remain
+     * unchanged but
+     * Some elements must have been replaced by others.
      * <br>
      * <br>
-     * <strong>Expected results</strong>: Se il test viene superato vengono stampate
-     * solo le
-     * stringhe che segnalano la cattura delle eccezioni ma nessuna di quelle legate
-     * agli errori del metodo
-     * assertEquals().
+     * <strong> Expected results </strong>: if the test is passed they are printed
+     * only the
+     * strings that signal the capture of exceptions but none of those related
+     * To the errors of the method
+     * Assertequals ().
      */
     @Test
     public void testSet() {
@@ -171,45 +152,45 @@ public class TestDiModifica {
     }
 
     /**
-     * <strong>Test di {@link myAdapter.StackAdapter#toArray()}</strong>
+     * <strong>Test of {@link myAdapter.StackAdapter#toArray()}</strong>
      * <p>
      * <br>
      * <br>
-     * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-     * toArray()
+     * <strong> Summary </strong>: the test controls the functioning of the method
+     * Toarray ()
      * <br>
      * <br>
-     * <strong>Test Case Design</strong>: Viene usato il metodo su due liste
-     * differenti per
-     * controllarne il funzionamento.
+     * <strong> test case design </strong>: the method on two lists is used
+     * different for
+     * check its operation.
      * <br>
      * <br>
-     * <strong>Test Description</strong>: Viene inizializzata una lista l2 vuota e
-     * si usa il metodo
-     * toArray() su questa per vederne il comportamento su una lista vuota. Viene
-     * poi usato il metodo
-     * sulla lista l1 che possiede degli elementi e si controlla con l'ausilio del
-     * metodo size() che gli
-     * array creati siano della stessa dimensione della lista su cui è stato usato
-     * il metodo e con
-     * l'ausilio del metodo get() che contengano gli stessi elementi.
+     * <strong> test description </strong>: an empty L2 list is initialized and
+     * The method is used
+     * Toarray () On this to see its behavior on an empty list. He comes
+     * Then used the method
+     * On the L1 list that has elements and controls with the help of the
+     * Size method () that the
+     * Array created are of the same size as the list on which it was used
+     * the method and with
+     * the help of the GET () method that contain the same elements.
      * <br>
      * <br>
-     * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-     * una lista l1 e
-     * istanziata una lista l2.
+     * <strong> pre-control </strong>: it must have been initialized and filled
+     * A L1 list e
+     * instantiated an L2 list.
      * <br>
      * <br>
-     * <strong>Post-Condition</strong>: La lista l1 deve essere rimasta immutata e
-     * la lista l2
-     * deve essere stata inizializzata. Deve essere stato creato un array che ha gli
-     * stessi elementi della
-     * lista l1.
+     * <strong> post-condition </strong>: the L1 list must have remained unchanged e
+     * The L2 list
+     * must have been initialized. An array that has the
+     * same elements of the
+     * L1 list.
      * <br>
      * <br>
-     * <strong>Expected results</strong>: Se il test viene superato non deve essere
-     * stata stampata
-     * nessuna stringa perche' tutte legate agli errori dei metodi assertEquals().
+     * <strong> Expected results </strong>: if the test is passed it must not be
+     * was printed
+     * No string because all linked to the errors of assertive methods ().
      */
     @Test
     public void testToArray() {
@@ -224,51 +205,52 @@ public class TestDiModifica {
     }
 
     /**
-     * <strong>Test di
+     * <strong>Test of
      * {@link myAdapter.StackAdapter#toArray(Object[] arrayTarget)}</strong>
      * <p>
      * <br>
      * <br>
-     * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-     * toarray(Object[] arrayTarget)
+     * <strong> Summary </strong>: the test controls the functioning of the method
+     * Toarray (Object [] Arraytarget)
      * <br>
      * <br>
-     * <strong>Test Case Design</strong>: Viene usato il metodo su liste diverse
-     * passando come
-     * parametri array diverse per testarne il comportamento nei vari casi.
+     * <strong> test case design </strong>: the method on different lists is used
+     * passing like
+     * different array parameters to test their behavior in the various cases.
      * <br>
      * <br>
-     * <strong>Test Description</strong>: Vengono creati due array di diverse
-     * dimensioni. Viene
-     * creato poi un terzo array inizializzato con il metodo toArray(Object[]
-     * arrayTarget) al quale viene
-     * passato come parametro uno dei primi due array creati. Vengono inseriti degli
-     * elementi negli array
-     * e si controlla che vengano sovrascritti quando tali array vengono passati
-     * come parametri al metodo
-     * toArray(Object[] arrayTarget) usato su una delle liste. Si controlla con
-     * degli assertEquals() che la
-     * dimensione degli array creati con il metodo toArray(Object[] arrayTarget) sia
-     * corretta e con i metodi
-     * assertEquals() e assertNull() che gli elementi dell'array creato
-     * corrispondano a quelli della lista
-     * o siano uguali a null quando devono.
+     * <strong> test description </strong>: two array of different are created
+     * dimensions. He comes
+     * Created a third initialized array with the Toarray method (Object []
+     * arrays) to which it comes
+     * passed as a parameter one of the first two arrays created. Are inserted
+     * Elements in Array
+     * and check that they are overwritten when these arrays are passed
+     * as parameters to the method
+     * TOARRAY (OBJECT [] Arrayarget) used on one of the lists. It is controlled
+     * with
+     * of the assertquals () that the
+     * Axor size created with the Toarray method (Object [] Arraytarget) and
+     * correct and with methods
+     * Assertequals () and assertnull () that the elements of array created
+     * correspond to those of the list
+     * or are the same as Null when they have to.
      * <br>
      * <br>
-     * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-     * una lista l1 e
-     * deve essere stata istanziata una lista l2.
+     * <strong> pre-control </strong>: it must have been initialized and filled
+     * A L1 list e
+     * An L2 list must have been instantiated.
      * <br>
      * <br>
-     * <strong>Post-Condition</strong>: Deve essere stata inizializzata la lista l2,
-     * la lista l1
-     * deve essere rimasta immutata e devono essere stati creati tre array.
+     * <strong> post-condition </strong>: the L2 list must have been initialized,
+     * The L1 list
+     * It must have remained unchanged and three array must have been created.
      * <br>
      * <br>
-     * <strong>Expected results</strong>: Se il test viene superato non viene
-     * stampata alcuna
-     * stringa perche' tutte legate agli errori dei metodi assertEquals() e
-     * assertNull().
+     * <strong> Expected results </strong>: if the test is passed it does not come
+     * any printed
+     * string because all linked to the errors of assertive methods () e
+     * assertnull ().
      */
     @Test
     public void testToArrayInArray() {
@@ -301,51 +283,53 @@ public class TestDiModifica {
     }
 
     /**
-     * <strong>Test di
+     * <strong>Test of
      * {@link myAdapter.StackAdapter#subList(int fromIndex, int toIndex)}</strong>
      * <p>
      * <br>
      * <br>
-     * <strong>Summary</strong>: Il test controlla il funzinamento del metodo
-     * subList(int fromIndex, int toIndex)
+     * <strong> Summary </strong>: the test controls the function of the method
+     * Sublist (Int Fromindex, Int Tindex)
      * <br>
      * <br>
-     * <strong>Test Case Design</strong>: Viene creata una sottolista e vengono
-     * provati diversi
-     * metodi per testare la corretta creazione della sottolista e il funzionamento
-     * dei metodi sulla sottolista.
+     * <strong> test case design </strong>: a undergroundist is created and come
+     * Test several
+     * methods for testing the correct creation of the undergroundist and operation
+     * of the methods on the undergroundist.
      * <br>
      * <br>
-     * <strong>Test Description</strong>: Viene inizializzata una lista l2 vuota e
-     * si prova su questa
-     * il metodo sublist() con indici non validi per verificare che lanci
-     * correttamente l'eccezione.
-     * L'eccezione viene catturata e viene stampata una stringa di avviso di
-     * cattura. Viene poi creata una
-     * sottolista vuota della lista l2 sostituita poi da una lista non vuota della
-     * lista l1. Vengono usati
-     * vari metodi sulla sottolista per testare che sia stata creata e funzioni
-     * correttamente. Il corretto
-     * funzionamento dei metodi sulla sottolista e' controllato con i metodi
-     * assertTrue(), assertFalse(),
-     * assertEquals() e assertNotEquals().
+     * <strong> test description </strong>: an empty L2 list is initialized and
+     * You feel on this
+     * the sublist () method with unrealized indices to verify that launch
+     * correctly the exception.
+     * The exception is captured and a notice string is printed
+     * capture. One is then created
+     * Empty Summary of the L2 list then replaced by a non -empty list of the
+     * L1 list. Are used
+     * Various methods about the subtivation to test that it has been created and
+     * functions
+     * correctly. The correct
+     * functioning of the methods on the undergroundist is controlled with the
+     * methods
+     * ASSERTRUE (), ASSERTFALSE (),
+     * Assertequals () and assertnotequals ().
      * <br>
      * <br>
-     * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-     * una lista l1 e
-     * istanziata una lista l2.
+     * <strong> pre-control </strong>: it must have been initialized and filled
+     * A L1 list e
+     * instantiated an L2 list.
      * <br>
      * <br>
-     * <strong>Post-Condition</strong>: Devono esserci una lista l1 e una lista l2
-     * non vuote e una
-     * sottolista sub non vuota e una sottolista sub2 vuota.
+     * <strong> post-condition </strong>: there must be an L1 list and an L2 list
+     * not empty and one
+     * Sub -non -empty subtate and an empty sub2 Sub2.
      * <br>
      * <br>
-     * <strong>Expected results</strong>: Per il superamento del test devono essere
-     * stampate solo
-     * le stringhe di cattura delle eccezioni ma non le stringhe legate agli errori
-     * dei metodi assertTrue(),
-     * assertFalse(), assertEquals() e assertNotEquals().
+     * <strong> Expected Results </strong>: for passing the test they must be
+     * Printed only
+     * the strings of capture of exceptions but not the strings related to errors
+     * of the assertive methods (),
+     * Assertfalse (), Assertequals () and assertnotequals ().
      */
     @Test
     public void testSubList() {

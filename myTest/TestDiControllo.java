@@ -9,44 +9,46 @@ import static org.junit.Assert.*;
  * <p>
  * <br>
  * <br>
- * <strong>Summary</strong>: La classe TestDiControllo controlla con i suoi test
- * il funzionamento
- * dei metodi che ispezionano gli oggetti di una lista senza modificarla.
+ * <strong>Summary</strong>: The Testicontrollo class controls with its tests
+ * The operation
+ * Of the methods that inspect the objects of a list without changing it.
  * <br>
  * <br>
- * <strong>Test Suite Design</strong>: Questa classe contiene 9 test cases che
- * testano 9 differenti
- * metodi della classe StackAdapter(), ciascuno dei quali ispeziona uno o più
- * elementi o una caratteristica
- * della lista.
+ * <strong> Test Suite Design </strong>: this class contains 9 Test Cases who
+ * Tesse 9 different
+ * Methods of the Stackadapter class (), each of which inspect one or more
+ * elements or a feature
+ * of the list.
  * <br>
  * <br>
- * <strong>Pre-Condition</strong>: Prima di ogni test deve essere inizializzata
- * almeno una lista e
- * in questa devono essere sempre presenti degli elementi.
+ * <strong> pre-control </strong>: before each test it must be initialized
+ * at least one list e
+ * In this elements must always be present.
  * <br>
  * <br>
- * <strong>Post-Condition</strong>: Dopo ogni test deve essere stato ispezionato
- * almeno un elemento
- * o una caratteristica della lista.
+ * <strong> post-condition </strong>: after each test it must have been
+ * inspected
+ * at least one element
+ * or a feature of the list.
  * <br>
  * <br>
- * <strong>Test Cases</strong>: I test cases di questa classe sono 9 e sono:
- * testSize(),
- * testIsEmpty(), testGet(), testIndexOf(), testLastIndexOf(), testContains(),
- * testContainsAll(),
- * testEquals() e testHashCode(). Ciascuno di essi serve a testare un metodo
- * diverso della classe StackAdapter.
+ * <strong> Test Cases </strong>: the tests of this class are 9 and are:
+ * testsize (),
+ * Testisempty (), Testget (), Testindexof (), Testlastindexof (), Testcontains
+ * (),
+ * testcontinsall (),
+ * Testequals () and Testhashcode (). Each of them serves to test a method
+ * Different of the Stackadapter class.
  * <br>
  * <br>
- * <strong>Execution Variables</strong>: Le variabili utilizzate sono due
- * StackAdapter l1 e l2, la
- * prima utilizzata in tutti i test e la seconda solo dove necessario, e un
- * array di Object arr utilizzato
- * per inserire elementi nelle liste. In alcuni test sono poi utilizzate altre
- * variabili quando necessarie.
+ * <strong> Execution Variables </strong>: the variables used are two
+ * Stackadapter L1 and L2, the
+ * first used in all tests and the second only where necessary, and a
+ * Object Array Arrival used
+ * To insert elements on the lists. In some tests others are then used
+ * variables when necessary.
  * 
- * @author Marco Zennaro
+ * @author Davide Baggio
  */
 public class TestDiControllo {
 
@@ -54,35 +56,12 @@ public class TestDiControllo {
 	Object[] arr = new Object[] { "Pippo", "Pluto", "Paperino", "Topolino", "Pippo", null };
 
 	/**
-	 * Questo metodo viene eseguito una sola volta prima di iniziare a eseguire i
-	 * test della classe
-	 * <strong>TestDiControllo</strong> e stampa una stringa che segnala l'inizio
-	 * dei test di questa classe.
-	 */
-	@BeforeClass
-	public static void beforeTestDiControlloClass() {
-		System.out.println("Inizio test della classe TestDiControllo");
-	}
-
-	/**
-	 * Questo metodo viene eseguito una sola volta dopo che sono stati eseguiti
-	 * tutti i test della classe
-	 * <strong>TestDiControllo</strong> e stampa una stringa che segnala la fine dei
-	 * test di questa classe.
-	 */
-	@AfterClass
-	public static void afterTestDiControlloClass() {
-		System.out.println("Fine test della classe TestDiControllo");
-	}
-
-	/**
-	 * Questo metodo viene eseguito una volta prima di ogni test della classe
-	 * <strong>TestDiControllo</strong>,
-	 * stampa una stringa e inizializza e aggiunge elementi in una lista.
+	 * This method is performed once before each class test
+	 * <strong> TestDiControllo </strong>,
+	 * Print a string and initializes and adds elements to a list.
 	 */
 	@Before
 	public void setup() {
-		System.out.println("Inizializza e aggiunge elementi alla lista l1");
 		l1 = new StackAdapter();
 		for (int i = 0; i < 6; i++) {
 			l1.add(arr[i]);
@@ -91,367 +70,378 @@ public class TestDiControllo {
 	}
 
 	/**
-	 * Questo metodo viene eseguito una volta dopo ogni test della classe
-	 * <strong>TestDiControllo</strong>,
-	 * stampa una stringa, rimuove tutti gli elementi dalla lista l1 e pone uguale a
-	 * null la lista l2.
+	 * This method is performed once after each class test
+	 * <strong> TestDiControllo </strong>,
+	 * Print a string, removes all the elements from the L1 list and places the same
+	 * as
+	 * null the L2 list.
 	 */
 	@After
 	public void cleanup() {
-		System.out.println("Rimuove tutti gli elementi dalla lista l1 e pone uguale a null la lista l2");
 		l1.clear();
 		l2 = null;
 	}
 
 	/**
-	 * <strong>Test di {@link myAdapter.StackAdapter#size()}</strong>
+	 * <strong>Test of {@link myAdapter.StackAdapter#size()}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-	 * size()
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * size ()
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene testato il metodo applicandolo su
-	 * liste diverse
+	 * <strong> test case design </strong>: the method is tested by applying it on
+	 * different lists
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Viene usato il metodo size() prima sulla
-	 * lista l1 che
-	 * contiene più elementi, poi sulla lista l2 inizialmente vuota e poi con un
-	 * elemento inserito con
-	 * il metodo add(). Si controlla che gli int restituiti siano quelli che ci si
-	 * aspetta con il metodo
-	 * assertEquals().
+	 * <strong> test description </strong>: the Size () method is used first on
+	 * list l1 that
+	 * contains multiple elements, then on the L2 list initially empty and then with
+	 * a
+	 * element inserted with
+	 * the Add () method. It is checked that the returns are those that are
+	 * Wait with the method
+	 * Assertequals ().
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-	 * una lista l1
-	 * e deve essere stata istanziata una lista l2.
+	 * <strong> pre-control </strong>: it must have been initialized and filled
+	 * An L1 list
+	 * And an L2 list must have been instantiated.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve restare invariata e la
-	 * lista l2 deve
-	 * contenere un solo elemento.
+	 * <strong> post-condition </strong>: the L1 list must remain unchanged and the
+	 * L2 list must
+	 * contain only one element.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Il test viene superato se non viene
-	 * stampata alcuna
-	 * stringa perche' tutte legate agli errori del metodo assertEquals().
+	 * <strong> Expected results </strong>: the test is passed if it does not come
+	 * any printed
+	 * string because all linked to the errors of the Assertequals method ().
 	 */
 	@Test
 	public void testSize() {
-		assertEquals("La dimensione della lista 1 non è 6", 6, l1.size());
+		assertEquals("The size of list 1 is not 6", 6, l1.size());
 		l2 = new StackAdapter();
-		assertEquals("La lista 2 non è vuota", 0, l2.size());
+		assertEquals("List 2 is not empty", 0, l2.size());
 		l2.add(null);
-		assertEquals("La lista 2 non contiene un elemento", 1, l2.size());
+		assertEquals("List 2 does not contain an element", 1, l2.size());
 	}
 
 	/**
-	 * <strong>Test di {@link myAdapter.StackAdapter#isEmpty()}</strong>
+	 * <strong>Test of {@link myAdapter.StackAdapter#isEmpty()}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-	 * isEmpty().
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * ISEMPTY ().
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene usato il metodo su due liste
-	 * differenti per
-	 * verificare che funzioni correttamente.
+	 * <strong> test case design </strong>: the method on two lists is used
+	 * different for
+	 * Check that it works correctly.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Il metodo isEmpty() viene usato prima
-	 * sulla lista l1 che
-	 * contiene degli elementi e poi su una lista l2 inizializzata con il metodo
-	 * StackAdapter() ma vuota e
-	 * poi che contiene un solo elemento null inserito con il metodo add(). Si
-	 * verifica che il boolean
-	 * restituito dal metodo isEmpty() sia corretto attraverso l'utilizzo dei metodi
-	 * assertTrue() e
-	 * assertFalse().
+	 * <strong> test description </strong>: the ISEMPTY () method is used before
+	 * On the L1 list that
+	 * contains elements and then on an initialized L2 list with the method
+	 * Stackadapter () but empty e
+	 * Then it contains a single Null element inserted with the Add () method. Yup
+	 * Check that the Boolean
+	 * returned by the ISEMPTY () method is correct through the use of methods
+	 * ASSERTRUE () E
+	 * assertfalse ().
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-	 * una lista l1 e
-	 * istanziata una lista l2.
+	 * <strong> pre-control </strong>: it must have been initialized and filled
+	 * A L1 list e
+	 * instantiated an L2 list.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve restare immutata mentre la
-	 * lista l2 deve
-	 * contenere un solo elemento uguale a null.
+	 * <strong> post-condition </strong>: the L1 list must remain unchanged while
+	 * the
+	 * L2 list must
+	 * contain only one element equal to Null.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Il test viene superato se non viene
-	 * stampata alcuna
-	 * stringa perche' tutte legate agli errori degli assertTrue() e assertFalse().
+	 * <strong> Expected results </strong>: the test is passed if it does not come
+	 * any printed
+	 * string because all linked to the errors of the assertTrue () and assertfalse
+	 * ().
 	 */
 	@Test
 	public void testIsEmpty() {
-		assertFalse("La lista 1 è vuota", l1.isEmpty());
+		assertFalse("List 1 is empty", l1.isEmpty());
 		l2 = new StackAdapter();
-		assertTrue("La lista 2 non è vuota", l2.isEmpty());
+		assertTrue("List 2 is not empty", l2.isEmpty());
 		l2.add(null);
-		assertFalse("La lista 2 è vuota", l2.isEmpty());
+		assertFalse("List 2 is empty", l2.isEmpty());
 	}
 
 	/**
-	 * <strong>Test di {@link myAdapter.StackAdapter#get(int index)}</strong>
+	 * <strong>Test of {@link myAdapter.StackAdapter#get(int index)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-	 * get(int index)
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * Get (int index)
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene controllato il funzionamento del
-	 * metodo applicandolo
-	 * alla lista l1 passando indici validi e non validi.
+	 * <strong> test case design </strong>: the functioning of the
+	 * method by applying it
+	 * to the L1 list by passing valid and not valid indices.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Viene controllato il funzionamento del
-	 * metodo get()
-	 * usandolo sulla lista l1 e passandogli come parametri un indice minore di 0,
-	 * uno maggiore dell'indice
-	 * della posizione dell'ultimo elemento della lista e un indice valido. Vengono
-	 * catturate le eccezioni
-	 * lanciate dal metodo e stampate delle stringhe di avviso di cattura, poi
-	 * controllato l'elemento
-	 * restituito dal get() con un assertEquals().
+	 * <strong> test description </strong>: the functioning of the
+	 * GET Method ()
+	 * Using it on the L1 list and passing an index of 0 as parameters,
+	 * a greater one of the index
+	 * of the position of the last element of the list and a valid index. They come
+	 * captured the exceptions
+	 * launched by the method and printed of the warning strings, then
+	 * controlled the element
+	 * Returned by Get () with a Assertequals ().
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-	 * con meno di
-	 * 7 elementi una lista l1.
+	 * <strong> pre-control </strong>: it must have been initialized and filled
+	 * with less than
+	 * 7 Elements an L1 list.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve rimanere immutata.
+	 * <strong> post-condition </strong>: the L1 list must remain unchanged.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato vengono stampate
-	 * due stringhe
-	 * di avviso di cattura delle eccezioni ma non la stringa legata all'errore del
-	 * metodo assertEquals().
+	 * <strong> Expected results </strong>: if the test is passed they are printed
+	 * Two strings
+	 * of the notice of capture of the exceptions but not the string linked to the
+	 * error of the
+	 * Assertequals method ().
 	 */
 	@Test
 	public void testGet() {
 		try {
 			l1.get(-1);
-		} catch (IndexOutOfBoundsException ioobe) {
-			System.out.println("Non è possibile restituire un elemento in una posizione di indice minore di 0");
+			throw new Exception();
+		} catch (Exception e) {
+			assertEquals(IndexOutOfBoundsException.class, e.getClass());
 		}
 		try {
 			l1.get(7);
-		} catch (IndexOutOfBoundsException ioobe) {
-			System.out.println(
-					"Non è possibile restituire un elemento in una posizione di indice maggiore della dimensione della lista");
+			throw new Exception();
+		} catch (Exception e) {
+			assertEquals(IndexOutOfBoundsException.class, e.getClass());
 		}
 		Object obj = l1.get(3);
-		assertEquals("L'elemento ispezionato non è Topolino", "Topolino", obj);
+		assertEquals("The inspected element is not Topolino", "Topolino", obj);
 	}
 
 	/**
-	 * <strong>Test di {@link myAdapter.StackAdapter#indexOf(Object obj)}</strong>
+	 * <strong>Test of {@link myAdapter.StackAdapter#indexOf(Object obj)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-	 * indexOf(Object obj)
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * Indexof (Object Obj)
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene testato il metodo usandolo su una
-	 * lista piu' volte
-	 * con diversi parametri.
+	 * <strong> test case design </strong>: the method is tested using it on one
+	 * List several times
+	 * with different parameters.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Viene usato il metodo indexOf() sulla
-	 * lista l1 piu' volte
-	 * passando come parametri prima due oggetti presenti nella lista, poi uno non
-	 * presente e infine un
-	 * elemento null presente nella lista. Si controlla con degli assertEquals() e
-	 * con l'ausilio di
-	 * una variabile int che l'indice restituito dal metodo sia quello aspettato.
+	 * <strong> test description </strong>: the Indexof () method is used on
+	 * list l1 several times
+	 * passing as parameters first two objects on the list, then one not
+	 * present and finally a
+	 * Null element on the list. It is controlled with assertionquals () e
+	 * with the help of
+	 * A variable int which the index returned by the method is the one waited.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-	 * una lista l1.
+	 * <strong> pre-control </strong>: it must have been initialized and filled
+	 * An L1 list.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve essere rimasta immutata.
+	 * <strong> post-condition </strong>: the L1 list must have remained unchanged.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato non viene
-	 * stampata alcuna
-	 * stringa perche' legate tutte agli errori del metodo assertEquals().
+	 * <strong> Expected results </strong>: if the test is passed it does not come
+	 * any printed
+	 * string because all related to the errors of the Assertequals method ().
 	 */
 	@Test
 	public void testIndexOf() {
 		int index = l1.indexOf("Paperino");
-		assertEquals("L'indice dell'oggetto \"Paperino\" non è 2", 2, index);
+		assertEquals("The Index of the object \"Paperino\" is not 2", 2, index);
 		index = l1.indexOf("Pippo");
-		assertEquals("L'indice dell'oggetto \"Pippo\" non è 0", 0, index);
-		index = l1.indexOf("Toretto");
-		assertEquals("L'elemento \"Toretto\" è presente nella lista", -1, index);
+		assertEquals("The Index of the object \"Pippo\" is not 0", 0, index);
+		index = l1.indexOf("Davide");
+		assertEquals("The element \"Davide\" It is present in the list", -1, index);
 		index = l1.indexOf(null);
-		assertEquals("L'elemento null non è presente", 5, index);
+		assertEquals("The Null element is not present", 5, index);
 	}
 
 	/**
-	 * <strong>Test di
+	 * <strong>Test of
 	 * {@link myAdapter.StackAdapter#lastIndexOf(Object obj)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-	 * lastIndexOf(Object obj)
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * Lastindexof (Object Obj)
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene testato il metodo usandolo su una
-	 * lista piu' volte
-	 * con diversi parametri.
+	 * <strong> test case design </strong>: the method is tested using it on one
+	 * List several times
+	 * with different parameters.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Viene usato il metodo lastIndexOf() sulla
-	 * lista l1 piu'
-	 * volte passando come parametri prima due oggetti presenti nella lista, poi uno
-	 * non presente e infine
-	 * un elemento null presente nella lista. Si controlla con degli assertEquals()
-	 * e con l'ausilio di
-	 * una variabile int che l'indice restituito dal metodo sia quello aspettato.
+	 * <strong> test description </strong>: the Lastindexof method () is used on
+	 * L1 list plus
+	 * times passing as parameters first two objects on the list, then one
+	 * not present and finally
+	 * a null element on the list. It is controlled with assertionquals ()
+	 * and with the help of
+	 * A variable int which the index returned by the method is the one waited.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-	 * una lista l1.
+	 * <strong> pre-control </strong>: it must have been initialized and filled
+	 * An L1 list.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve essere rimasta immutata.
+	 * <strong> post-condition </strong>: the L1 list must have remained unchanged.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato non viene
-	 * stampata alcuna
-	 * stringa perche' tutte legate agli errori del metodo assertEquals().
+	 * <strong> Expected results </strong>: if the test is passed it does not come
+	 * any printed
+	 * string because all linked to the errors of the Assertequals method ().
 	 */
 	@Test
 	public void testLastIndexOf() {
 		int index = l1.lastIndexOf("Paperino");
-		assertEquals("L'indice dell'oggetto \"Paperino\" non è 2", 2, index);
+		assertEquals("The Index of the object \"Paperino\" is not 2", 2, index);
 		index = l1.lastIndexOf("Pippo");
-		assertEquals("L'indice dell'oggetto \"Pippo\" non è 0", 4, index);
-		index = l1.lastIndexOf("Toretto");
-		assertEquals("L'elemento \"Toretto\" è presente nella lista", -1, index);
+		assertEquals("The Index of the object \"Pippo\" is not 0", 4, index);
+		index = l1.lastIndexOf("Davide");
+		assertEquals("The element \"Davide\" It is present in the list", -1, index);
 		index = l1.lastIndexOf(null);
-		assertEquals("L'elemento null non è presente", 5, index);
+		assertEquals("The Null element is not present", 5, index);
 	}
 
 	/**
-	 * <strong>Test di {@link myAdapter.StackAdapter#contains(Object obj)}</strong>
+	 * <strong>Test of {@link myAdapter.StackAdapter#contains(Object obj)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-	 * contains(Object obj)
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * Contains (Object Obj)
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene usato il metodo su una lista più
-	 * volte passando
-	 * diversi parametri.
+	 * <strong> test case design </strong>: the method on a more list is used
+	 * times passing
+	 * different parameters.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Si usa il metodo contains() sulla lista l1
-	 * passando come
-	 * parametri diversi oggetti contenuti e non contenuti. Si inizializza una lista
-	 * l2 con il metodo
-	 * StackAdapter(), si aggiungono degli elementi con il metodo add() e si
-	 * aggiunge la lista l2 alla
-	 * lista l1. Si controlla con contains se la lista l2 è contenuta nella lista
-	 * l1. Attraverso l'utilizzo
-	 * dei metodi assertTrue() e assertFalse(), con l'ausilio di una variabile
-	 * boolean, si controlla che
-	 * gli elementi passati come parametri siano o meno contenuti nella lista l1.
+	 * <strong> test description </strong>: the Contains method () on the L1 list is
+	 * used
+	 * passing like
+	 * Parameters different objects contained and not contained. A list is
+	 * initialized
+	 * L2 with the method
+	 * Stackadapter (), elements are added with the Add () method and yes
+	 * adds the L2 list to
+	 * L1 list. It is controlled with Contains if the L2 list is contained in the
+	 * list
+	 * L1. Through the use of
+	 * of the assertTrue methods () and assertfalse (), with the help of a variable
+	 * Boolean, check that
+	 * the elements passed as parameters are contained in the L1 list or not.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-	 * una lista l1 e
-	 * istanziata una lista l2.
+	 * <strong> pre-control </strong>: it must have been initialized and filled
+	 * A L1 list e
+	 * instantiated an L2 list.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l2 deve contenere 2 elementi e la
-	 * lista l1 deve
-	 * contenere tutti gli elementi iniziali a cui si aggiunge la lista l2.
+	 * <strong> post-condition </strong>: the L2 list must contain 2 elements and
+	 * the
+	 * L1 list must
+	 * contain all the initial elements to which the L2 list is added.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato non deve essere
-	 * stampata alcuna
-	 * stringa perche' tutte legate agli errori dei metodi assertTrue() e
-	 * assertFalse().
+	 * <strong> Expected results </strong>: if the test is passed it must not be
+	 * any printed
+	 * string because all linked to the errors of the assertTrue methods () e
+	 * assertfalse ().
 	 */
 	@Test
 	public void testContains() {
 		boolean contenuto = l1.contains("Peppino");
-		assertFalse("L'elemento \"Peppino\" è contenuto nella lista", contenuto);
+		assertFalse(contenuto);
 		contenuto = l1.contains(null);
-		assertTrue("L'elemento null non è contenuto nella lista", contenuto);
+		assertTrue(contenuto);
 		contenuto = l1.contains("Paperino");
-		assertTrue("L'elemento \"Paperino\" non è contenuto nella lista", contenuto);
+		assertTrue(contenuto);
 		l2 = new StackAdapter();
-		l2.add("Goku");
-		l2.add("Vegeta");
+		l2.add("Davide");
+		l2.add("Baggio");
 		l1.add(l2);
 		contenuto = l1.contains(l2);
-		assertTrue("La lista 2 non è contenuta nella lista 1", contenuto);
+		assertTrue(contenuto);
 	}
 
 	/**
-	 * <strong>Test di
+	 * <strong>Test of
 	 * {@link myAdapter.StackAdapter#containsAll(HCollection coll)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-	 * containsAll(HCollection coll)
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * Containinsall (Hcollection Coll)
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene usato il metodo più volte su una
-	 * lista passando
-	 * come parametro un'altra lista che viene modificata tra le varie invocazioni
-	 * del metodo.
+	 * <strong> test case design </strong>: the method is used several times on one
+	 * list passing
+	 * as a parameter another list that is modified between the various invocations
+	 * of the method.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Il metodo viene usato piu' volte sulla
-	 * lista l1 passando
-	 * come parametro una lista l2 inizialmente uguale a null, poi inizializzata con
-	 * il metodo StackAdapter()
-	 * ma vuota, con soli oggetti appartenenti alla lista l1 inseriti nella lista l2
-	 * con il metodo add()
-	 * e infine anche con oggetti non appartenenti alla lista l1. Viene catturata
-	 * un'eccezione lanciata dal
-	 * metodo containsAll() a cui si passa come parametro la lista l2 uguale a null
-	 * e viene stampata una
-	 * stringa di avviso di cattura dell'eccezione. Attraverso l'utilizzo dei metodi
-	 * assertTrue() e
-	 * assertFalse() e l'ausilio di una variabile boolean si controlla che il
-	 * boolean restituito dal metodo
-	 * containsAll() sia corretto nei vari utilizzi.
+	 * <strong> test description </strong>: the method is used several times on
+	 * L1 list passing
+	 * as a parameter an L2 list initially the same as Null, then initialized with
+	 * The Stackadapter method ()
+	 * But empty, with only objects belonging to the L1 list inserted on the L2 list
+	 * with the Add () method
+	 * And finally also with objects not belonging to the L1 list. Is captured
+	 * An exception launched by
+	 * Containinsall Method () to which the L2 list is passed as a parameter equal
+	 * to Null
+	 * And one is printed
+	 * Notice string of the capture of the exception. Through the use of methods
+	 * ASSERTRUE () E
+	 * assertfalse () and the aid of a Boolean variable is controlled that the
+	 * Boolean returned from the method
+	 * Containsall () is correct in the various uses.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata e riempita
-	 * una lista l1 e
-	 * deve essere stata istanziata e posta uguale a null una lista l2.
+	 * <strong> pre-control </strong>: it must have been initialized and filled
+	 * A L1 list e
+	 * An L2 list must have been instantiated and placed equal to Null.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve essere rimasta immutata e
-	 * la lista l2 deve
-	 * essere stata inizializzata e contenere elementi presenti nella lista l1 e un
-	 * elemento non presente
-	 * nella lista l1.
+	 * <strong> post-condition </strong>: the L1 list must have remained unchanged e
+	 * The L2 list must
+	 * have been initialized and contain elements on the L1 and a
+	 * element not present
+	 * In the L1 list.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato viene stampata
-	 * solo una stringa
-	 * alla cattura dell'eccezione lanciata dal metodo containsAll() e nessuna delle
-	 * stringhe legate agli
-	 * errori dei metodi assertTrue() e assertFalse().
+	 * <strong> Expected results </strong>: if the test is passed it is printed
+	 * Just a string
+	 * to the capture of the exception launched by the Containinsall () method and
+	 * none of the
+	 * strings related to
+	 * errors of the assertTrue methods () and assertfalse ().
 	 */
 	@Test
 	public void testContainsAll() {
@@ -478,49 +468,50 @@ public class TestDiControllo {
 	}
 
 	/**
-	 * <strong>Test di {@link myAdapter.StackAdapter#equals(Object obj)}</strong>
+	 * <strong>Test of {@link myAdapter.StackAdapter#equals(Object obj)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-	 * equals(Object obj)
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * Equals (Object Obj)
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Il metodo viene usato su una lista e gli
-	 * viene passato
-	 * come parametro un'altra lista che viene modificata nel test tra le varie
-	 * invocazioni del metodo.
+	 * <strong> test case design </strong>: the method is used on a list and the
+	 * is passed
+	 * as a parameter another list that is modified in the test between the various
+	 * Invocations of the method.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Viene usato sulla lista l1 il metodo
-	 * equals() con la lista
-	 * l2 passata come parametro. Il confronto con questo metodo viene fatto con la
-	 * lista l2 inizialmente
-	 * uguale a null, poi inizializzata con il metodo StackAdapter() ma vuota, con
-	 * degli elementi e infine
-	 * con tutti gli elementi uguali alla lista l1. Vengono cancellate entrambe le
-	 * liste con il metodo
-	 * clear() e vengono confrontate nuovamente con il metodo equals(). Il corretto
-	 * funzionamento del metodo
-	 * viene controllato attraverso l'utilizzo dei metodi assertFalse() e
-	 * assertTrue() e una variabile
-	 * boolean.
+	 * <strong> test description </strong>: the method is used on the L1 list
+	 * Equals () with the list
+	 * L2 passed as a parameter. The comparison with this method is made with the
+	 * L2 list initially
+	 * equal to Null, then initialized with the Stackadapter () but empty, with
+	 * of the elements and finally
+	 * with all the elements equal to the L1 list. Both are canceled
+	 * lists with the method
+	 * Clear () and are compared again with the Equals () method. The correct
+	 * operation of the method
+	 * It is controlled through the use of assertTrue methods () e
+	 * ASSERTRUE () and a variable
+	 * Boolean.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: La lista l1 deve essere stata inizializzata e
-	 * riempita e la
-	 * lista l2 deve essere stata istanziata.
+	 * <strong> pre-control </strong>: the L1 list must have been initialized e
+	 * filled and the
+	 * L2 list must have been instantiated.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l2 deve essere stata inizializzata
-	 * e sia la
-	 * lista l1 che la lista l2 devono essere vuote.
+	 * <strong> post-condition </strong>: the L2 list must have been initialized
+	 * and both the
+	 * L1 list that the L2 list must be empty.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Il test viene superato se non viene
-	 * stampata alcuna
-	 * stringa perche' tutte legate ai messaggi di errore dei metodi assertTrue() e
-	 * assertFalse().
+	 * <strong> Expected results </strong>: the test is passed if it does not come
+	 * any printed
+	 * string because all linked to the error messages of the assertTrue methods ()
+	 * e
+	 * assertfalse ().
 	 */
 	@Test
 	public void testEquals() {
@@ -543,44 +534,45 @@ public class TestDiControllo {
 	}
 
 	/**
-	 * <strong>Test di {@link myAdapter.StackAdapter#hashCode()}</strong>
+	 * <strong>Test of {@link myAdapter.StackAdapter#hashCode()}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionamento del metodo
-	 * hashCode()
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * hashcode ()
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene utilizzato il metodo su due liste e
-	 * vengono
-	 * confrontati gli int restituiti.
+	 * <strong> test case design </strong>: the method on two lists is used and
+	 * they come
+	 * Compare the returned INS.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Viene inizializzata una lista l2 e vengono
-	 * inizializzate
-	 * due variabili di tipo int uguali agli int restituiti dal metodo hashCode()
-	 * usato sulle due liste.
-	 * Le due liste vengono modificate nel test, vengono aggiornate le variabili int
-	 * con i nuovi hashCode()
-	 * e si controlla con i metodi assertEquals() e assertNotEquals() che i due
-	 * hashCode siano uguali solo
-	 * quando le due liste sono uguali.
+	 * <strong> test description </strong>: an L2 list is initialized and come
+	 * Initialized
+	 * Two INT -type variables equal to the IND returned by the hashcode method ()
+	 * used on the two lists.
+	 * The two lists are modified in the test, the Int variables are updated
+	 * with the new hashcode ()
+	 * and controls with the Assertequals () and assertnotequals () methods that the
+	 * two
+	 * hashcode are the same only
+	 * When the two lists are the same.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: La lista l1 deve essere stata inizializzata e
-	 * riempita e la
-	 * lista l2 deve essere stata istanziata.
+	 * <strong> pre-control </strong>: the L1 list must have been initialized e
+	 * filled and the
+	 * L2 list must have been instantiated.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista l1 deve essere rimasta immutata e
-	 * la lista l2 deve
-	 * essere stata inizializzata e contenere degli elementi diversi dalla lista l1.
+	 * <strong> post-condition </strong>: the L1 list must have remained unchanged e
+	 * The L2 list must
+	 * having been initialized and contain elements other than the L1 list.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato non deve essere
-	 * stata stampata
-	 * alcuna stringa perche' tutte legate agli errori dei metodi assertEquals() e
-	 * assertNotEquals().
+	 * <strong> Expected results </strong>: if the test is passed it must not be
+	 * was printed
+	 * no string because all linked to the errors of assertTrue methods () e
+	 * assertnotequals ().
 	 */
 	@Test
 	public void testHashCode() {

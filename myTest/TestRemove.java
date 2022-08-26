@@ -52,28 +52,6 @@ public class TestRemove {
     Object[] arr = new Object[] { "Pippo", "Pluto", "Paperino", "Topolino", "Pippo" };
 
     /**
-     * Questo metodo viene eseguito una sola volta prima di iniziare a eseguire i
-     * test della classe
-     * <strong>TestRemove</strong> e stampa una stringa che segnala l'inizio dei
-     * test di questa classe.
-     */
-    @BeforeClass
-    public static void beforeTestRemoveClass() {
-        System.out.println("Inizio test della classe TestRemove");
-    }
-
-    /**
-     * Questo metodo viene eseguito una sola volta dopo che sono stati eseguiti
-     * tutti i test della classe
-     * <strong>TestRemove</strong> e stampa una stringa che segnala la fine dei test
-     * di questa classe.
-     */
-    @AfterClass
-    public static void afterTestRemoveClass() {
-        System.out.println("Fine test della classe TestRemove");
-    }
-
-    /**
      * Questo metodo viene eseguito una volta prima di ogni test della classe
      * <strong>TestRemove</strong>,
      * stampa una stringa e inizializza e aggiunge elementi in una lista.

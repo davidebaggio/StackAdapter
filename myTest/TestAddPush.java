@@ -9,346 +9,326 @@ import static org.junit.Assert.*;
  * <p>
  * <br>
  * <br>
- * <strong>Summary</strong>: La classe TestAdd controlla con i suoi test il
- * funzionamento dei
- * metodi che inseriscono oggetti in una lista.
+ * <strong>Summary</strong>: The Testadd class checks with its tests the
+ * operation of
+ * Methods that insert objects on a list.
  * <br>
  * <br>
- * <strong>Test Suite Design</strong>: Questa classe contiene 4 test cases che
- * testano 4 differenti
- * metodi della classe StackAdapter(), ciascuno dei quali inserisce uno o più
- * elementi in diverse posizioni.
+ * <strong>Test Suite Design</strong>: This class contains 4 tests cases who
+ * tests 4 different
+ * Methods of the Stackadapter class (), each of which inserts one or more
+ * Elements in different positions.
  * <br>
  * <br>
- * <strong>Pre-Condition</strong>: Prima di ogni test deve essere inizializzata
- * almeno una lista,
- * anche se vuota.
+ * <strong>Pre-Condition</strong>: Before each test it must be initialized
+ * at least one list,
+ * even if empty.
  * <br>
  * <br>
- * <strong>Post-Condition</strong>: Dopo ogni test deve essere stato fatto
- * almeno un inserimento
- * in almeno una lista.
+ * <strong>Post-Condition</strong>: After each test it must have been done
+ * At least an insertion
+ * In at least one list.
  * <br>
  * <br>
- * <strong>Test Cases</strong>: I test cases di questa classe sono 4 e sono:
- * testAdd(),
- * testAddAtIndex(), testAddAll(), testAddAllAtIndex(). Ciascuno di essi serve a
- * testare un
- * metodo diverso della classe StackAdapter.
+ * <strong>Test Cases</strong>: There are 4 tests of this class and are:
+ * testadd (),
+ * Testaddatindex (), Testadall (), Testadadallatindex ().Each of them serves
+ * test a
+ * different method of the Stackadapter class.
  * <br>
  * <br>
- * <strong>Execution Variables</strong>: Le variabili utilizzate sono due
- * StackAdapter l1 e l2, la
- * prima utilizzata in tutti i test e la seconda solo dove necessario. In alcuni
- * test sono poi utilizzate
- * altre variabili quando necessarie.
+ * <strong>Execution Variables</strong>: The variables used are two
+ * Stackadapter L1 and L2, the
+ * first used in all tests and the second only where necessary.In some
+ * tests are then used
+ * Other variables when necessary.
  * 
- * @author Marco Zennaro
+ * @author Davide Baggio
  */
 public class TestAddPush {
 
 	private StackAdapter l1 = null, l2 = null;
 
 	/**
-	 * Questo metodo viene eseguito una sola volta prima di iniziare a eseguire i
-	 * test della classe
-	 * <strong>TestAdd</strong> e stampa una stringa che segnala l'inizio dei test
-	 * di questa classe.
-	 */
-	@BeforeClass
-	public static void beforeTestAddClass() {
-		System.out.println("Inizio test della classe TestAdd");
-	}
-
-	/**
-	 * Questo metodo viene eseguito una sola volta dopo che sono stati eseguiti
-	 * tutti i test della classe
-	 * <strong>TestAdd</strong> e stampa una stringa che segnala la fine dei test di
-	 * questa classe.
-	 */
-	@AfterClass
-	public static void afterTestAddClass() {
-		System.out.println("Fine test della classe TestAdd");
-	}
-
-	/**
-	 * Questo metodo viene eseguito una volta prima di ogni test della classe
+	 * This method is performed once before each class test
 	 * <strong>TestAdd</strong>,
-	 * stampa una stringa e inizializza una lista vuota.
+	 * Print a string and initializes an empty list.
 	 */
 	@Before
 	public void setup() {
-		System.out.println("Inizializza una lista vuota");
 		l1 = new StackAdapter();
 	}
 
 	/**
-	 * Questo metodo viene eseguito una volta dopo ogni test della classe
+	 * This method is performed once after each class test
 	 * <strong>TestAdd</strong>,
-	 * stampa una stringa, rimuove tutti gli elementi dalla lista l1 e pone uguale a
-	 * null la lista l2.
+	 * Print a string, removes all the elements from the L1 list and places the same
+	 * as
+	 * null the L2 list.
 	 */
 	@After
 	public void cleanup() {
-		System.out.println("Rimuove tutti gli elementi dalla lista l1 e pone uguale a null la lista l2");
 		l1.clear();
 		l2 = null;
 	}
 
 	/**
-	 * <strong>Test di {@link myAdapter.StackAdapter#add(Object obj)}</strong>
+	 * <strong>Test of {@link myAdapter.StackAdapter#add(Object obj)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionmento del metodo
-	 * add(Object obj).
+	 * <strong>Summary</strong>: The test controls the functioning of the method
+	 * Add (Object Obj).
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Il test controlla il funzionamento del
-	 * metodo attraverso l'uso del
-	 * metodo con oggetti diversi.
+	 * <strong>Test Case Design</strong>: The test controls the functioning of the
+	 * method through the use of
+	 * method with different objects.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Vengono aggiunti un int e un elemento null
-	 * alla lista 1 e si controlla
-	 * con un assertEquals() e un assertNull() che gli elementi siano stati aggiunti
-	 * correttamente in coda alla lista.
-	 * Viene assegnata una nuova lista alla lista 2 e viene aggiunta una stringa a
-	 * quest'ultima, che
-	 * viene controllata con un assertEquals(). La lista 2 viene aggiunta in coda
-	 * alla lista 1 e
-	 * controllata con un assertEquals(). Viene controllata la dimensione della
-	 * lista 1 per vedere se
-	 * sono stati inseriti correttamente tutti gli oggetti.
+	 * <strong>Test Description</strong>:An int and a null element are added
+	 * to list 1 and control it
+	 * with an assertquals () and an assertnull () that the elements have been added
+	 * correctly in the queue of the list.
+	 * A new list is assigned to list 2 and a string is added to
+	 * the latter, who
+	 * It is controlled with a Assertequals ().List 2 is added in the queue
+	 * to list 1 e
+	 * controlled with a Assertequals ().The size of the
+	 * List 1 to see if
+	 * all objects have been correctly inserted.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata una lista 1 e
-	 * deve essere stata istanziata
-	 * una lista 2. Il metodo add(Object obj) e il metodo size() devono essere
-	 * funzionanti
-	 * per il superamento del test.
+	 * <strong>Pre-Condition</strong>: A list 1 and
+	 * must have been instantiated
+	 * a list 2. The Add (Object OBJ) method and the Size () method must be
+	 * working
+	 * to pass the test.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista 1 ha 3 elementi e l'ultimo di
-	 * questi è la lista 2 che contiene
-	 * un elemento null.
+	 * <strong>Post-Condition</strong>: List 1 has 3 elements and the last of
+	 * These are list 2 that contains
+	 * a null element.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato non viene
-	 * lanciata nessuna eccezione né
-	 * stampato alcun messaggio.
+	 * <strong>Expected results</strong>: If the test is passed it does not come
+	 * launched no exceptional neither
+	 * Printed no message.
 	 */
 	@Test
 	public void testAdd() {
 		l1.add(1);
-		assertEquals("L'elemento " + 1 + " non è stato aggiunto correttamente alla lista 1", 1, l1.get(0));
+		assertEquals("The element" + 1 + "has not been correctly added to list 1", 1, l1.get(0));
 		l1.add(null);
-		assertNull("L'elemento \" + null + \" non è stato aggiunto correttamente alla lista 1", l1.get(1));
+		assertNull("The element \" + null + \"has not been correctly added to list 1", l1.get(1));
 		l2 = new StackAdapter();
 		l2.add("Ciao");
-		assertEquals("L'elemento \"Ciao\" non è stato aggiunto correttamente alla lista 2", "Ciao", l2.get(0));
+		assertEquals("The \"Ciao\" element has not been correctly added to list 2", "Ciao", l2.get(0));
 		l1.add(l2);
-		assertEquals("L'elemento " + l2 + " non è stato aggiunto correttamente alla lista 1", l2, l1.get(2));
+		assertEquals("The" + l2 + "element has not been correctly added to list 1", l2, l1.get(2));
 		int lenght = l1.size();
-		assertEquals("Uno o più inserimenti non sono andati a buon fine", 3, lenght);
+		assertEquals("One or more insertions were not successful", 3, lenght);
 	}
 
 	/**
-	 * <strong>Test di
+	 * <strong>Test of
 	 * {@link myAdapter.StackAdapter#add(int Index, Object obj)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionmento del metodo
-	 * add(int index, Object obj).
+	 * <strong>Summary</strong>: The test controls the functioning of the method
+	 * Add (int index, Object OBJ).
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Il test viene effettuato aggiungendo
-	 * oggetti diversi in
-	 * posizioni diverse.
+	 * <strong>Test Case Design</strong>: The test is carried out adding
+	 * different objects in
+	 * different positions.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Vengono aggiunti degli int, una stringa e
-	 * un elemento null alla lista 1 e
-	 * si controlla con degli assertEquals() e un assertNull() che gli elementi
-	 * siano stati aggiunti
-	 * correttamente e alla posizione scelta. Viene provato l'inserimento di un int
-	 * in una posizione non
-	 * corretta per verificare che venga lanciata correttamente l'eccezione.
+	 * <strong>Test Description</strong>: Int are added, a string e
+	 * a null element to list 1 e
+	 * is controlled with assertionquals () and an assertnull () that the elements
+	 * have been added
+	 * correctly and the chosen position.The insertion of an int
+	 * In a position not
+	 * correct to verify that the exception is correctly launched.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata una lista 1 e
-	 * il metodo
-	 * add(int Index, Object obj) e il metodo size() devono essere funzionanti per
-	 * il superamento del test.
+	 * <strong>Pre-Condition</strong>: A list 1 e
+	 * the method
+	 * Add (int Index, Object OBJ) and the Size () method must be functional for
+	 * the passing of the test.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La lista 1 ha 5 elementi di cui 3 int, una
-	 * stringa e un null.
+	 * <strong>Post-Condition</strong>: List 1 has 5 elements, 3 of which int, one
+	 * string and a null.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato non viene
-	 * lanciata nessuna eccezione e viene
-	 * stampato un solo messaggio alla cattura dell'eccezione del metodo add(int
-	 * Index, Object obj)
-	 * quando chiamato con un indice non valido.
+	 * <strong>Expected results</strong>: If the test is passed it does not come
+	 * launched no exceptions and comes
+	 * only one message to the capture of the exception of the Add (int
+	 * Index, Object Obj)
+	 * When called with an invalid index.
 	 */
 	@Test
 	public void testAddAtIndex() {
 		l1.add(0, 3);
-		assertEquals("Il 1° elemento non è 3", 3, l1.get(0));
+		assertEquals("The 1st element is not 3", 3, l1.get(0));
 		l1.add(0, 2);
-		assertEquals("Il 1° elemento non è 2", 2, l1.get(0));
+		assertEquals("The 1st element is not 2", 2, l1.get(0));
 		l1.add(0, 1);
-		assertEquals("Il 1° elemento non è 1", 1, l1.get(0));
+		assertEquals("The 1st element is not 1", 1, l1.get(0));
 		l1.add(1, "ciao");
-		assertEquals("Il 2° elemento non è \"ciao\"", "ciao", l1.get(1));
+		assertEquals("The 2nd element is not \"ciao\"", "ciao", l1.get(1));
 		l1.add(3, null);
-		assertNull("Il 4° elemento non è " + null, l1.get(3));
+		assertNull("The 4th element is not" + null, l1.get(3));
 		try {
 			l1.add(7, 10);
 		} catch (IndexOutOfBoundsException ioobe) {
-			System.out.println("Non è possibile aggiungere elementi oltre alla dimensione della lista");
+			System.out.println("It is not possible to add elements in addition to the size of the list");
 			;
 		}
-		assertEquals("Uno o più inserimenti non sono andati a buon fine", 5, l1.size());
+		assertEquals("One or more insertions were not successful", 5, l1.size());
 	}
 
 	/**
-	 * <strong>Test di
+	 * <strong>Test of
 	 * {@link myAdapter.StackAdapter#addAll(HCollection coll)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionmento del metodo
+	 * <strong>Summary</strong>: The test controls the functioning of the method
 	 * addAll(HCollection coll).
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene controllato il funzionamento del
-	 * metodo nei casi base, limite e nel
-	 * lancio di eccezioni.
+	 * <strong>Test Case Design</strong>: The functioning of the
+	 * Method in basic cases, limit and in
+	 * launch of exceptions.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Viene controllato il funzionamento del
-	 * metodo addAll(HCollection coll)
-	 * provando ad usarlo su una l1 passando come parametro una l2 prima uguale a
-	 * null, poi
-	 * inizializzata con il metodo StackAdapter() ma vuota e infine con degli
-	 * elementi aggiunti con il metodo
-	 * add() in un ciclo for. Viene controllata la corretta modifica della l1 prima
-	 * con i metodi
-	 * assertTrue() e isEmpty() quando viene passata come parametro la l2 vuota, poi
-	 * con assertEquals()
-	 * e get() in un ciclo for per confrontare gli elementi inseriti nella l1 dalla
-	 * l2 con quelli che
-	 * avrebbero dovuto essere inseriti.
+	 * <strong> test description </strong>: the functioning of the
+	 * method addAll(HCollection coll)
+	 * trying to use it on a L1 passing as a parameter a L2 first equal to
+	 * Null, then
+	 * Initialized with the Stackadapter () but empty and finally with gods
+	 * Elements added with the method
+	 * Add () in a for cycle.The correct modification of the L1 before is controlled
+	 * with methods
+	 * ASSERTRUE () and ISEMPTY () When the empty L2 is passed as a parameter, then
+	 * With Assertequals ()
+	 * and Get () in a for cycle to compare the elements inserted in the L1 by
+	 * L2 with those who
+	 * should have been inserted.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata una l1 e deve
-	 * essere stata istanziata
-	 * e posta uguale a null una l2. I metodi add(), addAll(), isEmpty(), size(),
-	 * get() e
-	 * StackAdapter() devono funzionare correttamente.
+	 * <strong> pre-control </strong>: a L1 must have been initialized and must
+	 * having been instantiated
+	 * and placed equal to Null a L2.I Methods Add (), Addall (), ISEMPTY (), SIZE
+	 * (),
+	 * Get () e
+	 * Stackadapter () must work correctly.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La l2 deve essere stata inizializzata e
-	 * contenere degli elementi. La
-	 * l1 deve contenere tutti gli elementi della l2 più un altro elemento aggiunto
-	 * separatamente.
+	 * <strong> post-condition </strong>: L2 must have been initialized e
+	 * contain elements.There
+	 * L1 must contain all the elements of the L2 plus another added element
+	 * separately.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato viene stampata
-	 * una sola stringa alla cattura
-	 * dell'eccezione lanciata dal metodo addAll() a cui è stata passata come
-	 * parametro una collezione
-	 * uguale a null. Nessuna delle stringhe legate agli errori degli assertEquals()
-	 * deve essere stata stampata.
+	 * <strong> Expected results </strong>: if the test is passed it is printed
+	 * one string to capture
+	 * of the exception launched by the Addall () method to which it was passed as
+	 * parameter a collection
+	 * Equal to Null.None of the strings related to the errors of assertive ()
+	 * must have been printed.
 	 */
 	@Test
 	public void testAddAll() {
 		try {
 			l1.addAll(l2);
 		} catch (NullPointerException npe) {
-			System.out.println("Impossibile aggiungere gli elementi di una lista null");
+			System.out.println("Unable to add the elements of a Null list");
 		}
 		l2 = new StackAdapter();
 		l1.addAll(l2);
-		assertTrue("La Lista 1 non è vuota, errore nell'aggiungere la lista 2", l1.isEmpty());
+		assertTrue("List 1 is not empty, error in adding list 2", l1.isEmpty());
 		for (int i = 1; i < 4; i++) {
 			l2.add(i);
 		}
 		l1.add(0);
 		l1.addAll(l2);
 		for (int i = 0; i < l1.size(); i++) {
-			assertEquals("La lista 2 non è stata aggiunta correttamente alla lista 1", i, l1.get(i));
+			assertEquals("List 2 was not correctly added to list 1", i, l1.get(i));
 		}
 	}
 
 	/**
-	 * <strong>Test di
+	 * <strong>Test of
 	 * {@link myAdapter.StackAdapter#addAll(int index, HCollection coll)}</strong>
 	 * <p>
 	 * <br>
 	 * <br>
-	 * <strong>Summary</strong>: Il test controlla il funzionmento del metodo
-	 * addAll(int index, HCollection coll).
+	 * <strong> Summary </strong>: the test controls the functioning of the method
+	 * Addall (int Index, Hcollection Coll).
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: Viene controllato il funzionamento del
-	 * metodo nei casi base, limite e nel
-	 * lancio di eccezioni.
+	 * <strong> test case design </strong>: the functioning of the
+	 * Method in basic cases, limit and in
+	 * launch of exceptions.
 	 * <br>
 	 * <br>
-	 * <strong>Test Description</strong>: Viene controllato il funzionamento del
-	 * metodo addAll(int index, HCollection coll)
-	 * provando ad usarlo su una l1 passando come parametro una l2 prima uguale a
-	 * null, poi
-	 * inizializzata con il metodo StackAdapter() ma vuota e infine con degli
-	 * elementi aggiunti con il metodo
-	 * add() in un ciclo for. Viene provato il metodo anche passando come parametro
-	 * di indice prima una
-	 * posizione non valida prima perché inferiore a 0, poi una non valida perché
-	 * superiore alla dimensione
-	 * della lista e infine una valida. Viene controllata la corretta modifica della
-	 * l1 prima con i metodi
-	 * assertTrue() e isEmpty() quando viene passata come parametro la l2 vuota, poi
-	 * con assertEquals()
-	 * e get() in un ciclo for per confrontare gli elementi inseriti nella l1 dalla
-	 * l2 con quelli che
-	 * avrebbero dovuto essere inseriti.
+	 * <strong> test description </strong>: the functioning of the
+	 * Addall method (Int Index, Hcollection Coll)
+	 * trying to use it on a L1 passing as a parameter a L2 first equal to
+	 * Null, then
+	 * Initialized with the Stackadapter () but empty and finally with gods
+	 * Elements added with the method
+	 * Add () in a for cycle. The method is also tried by passing as a parameter
+	 * of index first one
+	 * not valid location because less than 0, then one not valid because
+	 * higher than size
+	 * of the list and finally a valid one. The correct modification of the
+	 * L1 first with the methods
+	 * ASSERTRUE () and ISEMPTY () When the empty L2 is passed as a parameter, then
+	 * With Assertequals ()
+	 * and Get () in a for cycle to compare the elements inserted in the L1 by
+	 * L2 with those who
+	 * should have been inserted.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: Deve essere stata inizializzata una l1 e deve
-	 * essere stata istanziata
-	 * e posta uguale a null una l2. I metodi add(), addAll(), isEmpty(), size(),
-	 * get() e
-	 * StackAdapter() devono funzionare correttamente.
+	 * <strong> pre-control </strong>: a L1 must have been initialized and must
+	 * having been instantiated
+	 * and placed equal to Null a L2. I Methods Add (), Addall (), ISEMPTY (), SIZE
+	 * (),
+	 * Get () e
+	 * Stackadapter () must work correctly.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: La l2 deve essere stata inizializzata e
-	 * contenere degli elementi. La
-	 * l1 deve contenere tutti gli elementi della l2 più due elementi aggiunti
-	 * separatamente.
+	 * <strong> post-condition </strong>: L2 must have been initialized e
+	 * contain elements. There
+	 * L1 must contain all the elements of the L2 plus two added elements
+	 * separately.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: Se il test viene superato vengono stampate
-	 * solo le stringhe alla cattura
-	 * delle eccezioni lanciate dal metodo addAll() a cui sono stati passati come
-	 * parametro una collezione
-	 * uguale a null o degli indici non validi. Nessuna delle stringhe legate agli
-	 * errori degli
-	 * assertEquals() deve essere stata stampata.
+	 * <strong> Expected results </strong>: if the test is passed they are printed
+	 * Only the strings to capture
+	 * of the exceptions launched by the Addall () method to which they were passed
+	 * as
+	 * parameter a collection
+	 * Equal to Null or non -valid indexes. None of the strings related to
+	 * errors of
+	 * Assertequals () must have been printed.
 	 */
 	@Test
 	public void testAddAllAtIndex() {
 		try {
 			l1.addAll(0, l2);
 		} catch (NullPointerException npe) {
-			System.out.println("Impossibile aggiungere alla lista 1 una lista null");
+			System.out.println("Impossible to add a Null list to list 1");
 		}
 		l2 = new StackAdapter();
 		l1.addAll(0, l2);
-		assertTrue("La Lista 1 non è vuota, errore nell'aggiungere la lista 2", l1.isEmpty());
+		assertTrue("List 1 is not empty, error in adding list 2", l1.isEmpty());
 		for (int i = 1; i < 4; i++) {
 			l2.add(i);
 		}
@@ -357,17 +337,17 @@ public class TestAddPush {
 		try {
 			l1.addAll(-1, l2);
 		} catch (IndexOutOfBoundsException ioobe) {
-			System.out.println("Impossibile aggiungere una lista in una posizione di indice minore di 0");
+			System.out.println("Impossible to add a list in an index position less than 0");
 		}
 		try {
 			l1.addAll(3, l2);
 		} catch (IndexOutOfBoundsException ioobe) {
 			System.out.println(
-					"Impossibile aggiungere una lista in una posizione di indice maggiore al numero di elementi");
+					"Unable to add a list in a higher index position to the number of elements");
 		}
 		l1.addAll(1, l2);
 		for (int i = 0; i < l1.size(); i++) {
-			assertEquals("La lista 2 non è stata aggiunta correttamente alla lista 1", i, l1.get(i));
+			assertEquals("List 2 was not correctly added to list 1", i, l1.get(i));
 		}
 	}
 
