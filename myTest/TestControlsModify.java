@@ -116,7 +116,7 @@ public class TestControlsModify {
 	 * <br>
 	 * <br>
 	 * <strong> pre-condition </strong>: it must have been initialized and filled
-	 * A s1 stack e
+	 * an s1 stack and
 	 * instantiated an s2 stack.
 	 * <br>
 	 * <br>
@@ -555,7 +555,7 @@ public class TestControlsModify {
 	 * <br>
 	 * <br>
 	 * <strong> Expected results </strong>: The item peeked are "Dog" and
-	 * "Davide".
+	 * "Davide". For the sublist, item "World" is peeked.
 	 */
 	@Test
 	public void testPeek() {
@@ -572,6 +572,9 @@ public class TestControlsModify {
 		s1.push("Davide");
 		assertEquals(6, s1.size());
 		assertEquals("Davide", s1.peek());
+
+		StackAdapter temp = (StackAdapter) s1.subList(1, 4);
+		assertEquals("World", temp.peek());
 	}
 
 	/**
@@ -724,9 +727,11 @@ public class TestControlsModify {
 	@Test
 	public void testSize() {
 		assertEquals(6, s1.size());
+
 		s2 = new StackAdapter();
 		assertEquals(0, s2.size());
-		s2.add(null);
+
+		s2.add("Game");
 		assertEquals(1, s2.size());
 	}
 
@@ -744,41 +749,39 @@ public class TestControlsModify {
 	 * check its operation.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: an empty s2 stack is initialized and
-	 * The method is used
-	 * Toarray () On this to see its behavior on an empty stack. He comes
-	 * Then used the method
-	 * On the s1 stack that has elements and controls with the help of the
-	 * Size method () that the
-	 * Array created are of the same size as the stack on which it was used
-	 * the method and with
-	 * the help of the GET () method that contain the same elements.
+	 * <strong> test description </strong>: an empty s2 stack is initialized and The
+	 * method is used Toarray () On this to see its behavior on an empty stack. He
+	 * comes Then used the method On the s1 stack that has elements and controls
+	 * with the help of the Size method () that the Array created are of the same
+	 * size as the stack on which it was used the method and with the help of the
+	 * GET () method that contain the same elements.
 	 * <br>
 	 * <br>
 	 * <strong> pre-condition </strong>: it must have been initialized and filled
-	 * A s1 stack e
-	 * instantiated an s2 stack.
+	 * an s1 stack and instantiated an s2 stack.
 	 * <br>
 	 * <br>
 	 * <strong> post-condition </strong>: the s1 stack must have remained unchanged
-	 * e
+	 * and
 	 * The s2 stack
 	 * must have been initialized. An array that has the
 	 * same elements of the
 	 * s1 stack.
 	 * <br>
 	 * <br>
-	 * <strong> Expected results </strong>: if the test is passed it must not be
-	 * was printed
-	 * No string because all linked to the errors of assertive methods ().
+	 * <strong> Expected results </strong>: if the test is passed no errors are
+	 * printed. Every element in the stack has to be equal to the element in the
+	 * array.
 	 */
 	@Test
 	public void testToArray() {
 		s2 = new StackAdapter();
 		Object[] array = s2.toArray();
 		assertEquals(s2.size(), array.length);
+
 		array = s1.toArray();
 		assertEquals(s1.size(), array.length);
+
 		for (int i = 0; i < s1.size(); i++) {
 			assertEquals(s1.get(i), array[i]);
 		}
@@ -791,34 +794,27 @@ public class TestControlsModify {
 	 * <br>
 	 * <br>
 	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * Toarray (Object [] Arraytarget)
+	 * Toarray ()
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method on different stacks is used
-	 * passing like
-	 * different array parameters to test their behavior in the various cases.
+	 * passing different array parameters to test their behavior in the various
+	 * cases.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: two array of different are created
-	 * dimensions. He comes
-	 * Created a third initialized array with the Toarray method (Object []
-	 * arrays) to which it comes
-	 * passed as a parameter one of the first two arrays created. Are inserted
-	 * Elements in Array
-	 * and check that they are overwritten when these arrays are passed
-	 * as parameters to the method
-	 * TOARRAY (OBJECT [] Arrayarget) used on one of the stacks. It is controlled
-	 * with
-	 * of the assertquals () that the
-	 * Axor size created with the Toarray method (Object [] Arraytarget) and
-	 * correct and with methods
-	 * Assertequals () and assertnull () that the elements of array created
-	 * correspond to those of the stack
-	 * or are the same as Null when they have to.
+	 * <strong> test description </strong>: two different array are created. third
+	 * initialized array with the Toarray method to which it
+	 * comes passed as a parameter one of the first two arrays created. Are inserted
+	 * Elements in Array and check that they are overwritten when these arrays are
+	 * passed as parameters to the method toArray () used on one
+	 * of the stacks. It is controlled with of the assertquals () that the size
+	 * created with the Toarray method and correct and with
+	 * methods Assertequals () and assertnull () that the elements of array created
+	 * correspond to those of the stack or are the same as Null when they have to.
 	 * <br>
 	 * <br>
 	 * <strong> pre-condition </strong>: it must have been initialized and filled
-	 * A s1 stack e
+	 * An s1 stack and
 	 * An s2 stack must have been instantiated.
 	 * <br>
 	 * <br>
@@ -827,10 +823,8 @@ public class TestControlsModify {
 	 * It must have remained unchanged and three array must have been created.
 	 * <br>
 	 * <br>
-	 * <strong> Expected results </strong>: if the test is passed it does not come
-	 * any printed
-	 * string because all linked to the errors of assertive methods () e
-	 * assertnull ().
+	 * <strong> Expected results </strong>: if the test is passed no errors are
+	 * printed.
 	 */
 	@Test
 	public void testToArrayInArray() {
@@ -842,16 +836,19 @@ public class TestControlsModify {
 			assertNull(arrayOfStack[i]);
 		}
 		assertEquals(3, arrayOfStack.length);
+
 		array1[0] = 0;
 		array1[1] = 1;
 		arrayOfStack = s1.toArray(array1);
 		assertEquals(s1.size(), arrayOfStack.length);
+
 		for (int i = 0; i < arrayOfStack.length; i++) {
 			assertEquals(s1.get(i), arrayOfStack[i]);
 		}
 		array2[7] = 7;
 		arrayOfStack = s1.toArray(array2);
 		assertEquals(array2.length, arrayOfStack.length);
+
 		for (int i = 0; i < arrayOfStack.length; i++) {
 			if (i < s1.size()) {
 				assertEquals(s1.get(i), arrayOfStack[i]);
@@ -871,106 +868,86 @@ public class TestControlsModify {
 	 * subList (Int Fromindex, Int Tindex)
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: a undergroundist is created and come
+	 * <strong> test case design </strong>: a sublist is created and come
 	 * Test several
-	 * methods for testing the correct creation of the undergroundist and operation
-	 * of the methods on the undergroundist.
+	 * methods for testing the correct creation of the sublist and operation
+	 * of the methods on the sublist.
 	 * <br>
 	 * <br>
 	 * <strong> test description </strong>: an empty s2 stack is initialized and
-	 * You feel on this
 	 * the subList () method with unrealized indices to verify that launch
 	 * correctly the exception.
-	 * The exception is captured and a notice string is printed
-	 * capture. One is then created
+	 * The exception is captured. One is then created
 	 * Empty Summary of the s2 stack then replaced by a non -empty stack of the
 	 * s1 stack. Are used
-	 * Various methods about the subtivation to test that it has been created and
+	 * Various methods about the sublist to test that it has been created and
 	 * functions
-	 * correctly. The correct
-	 * functioning of the methods on the undergroundist is controlled with the
-	 * methods
-	 * ASSERTRUE (), ASSERTFALSE (),
-	 * Assertequals () and assertnotequals ().
+	 * correctly.
 	 * <br>
 	 * <br>
 	 * <strong> pre-condition </strong>: it must have been initialized and filled
-	 * A s1 stack e
+	 * an s1 stack and
 	 * instantiated an s2 stack.
 	 * <br>
 	 * <br>
 	 * <strong> post-condition </strong>: there must be an s1 stack and an s2 stack
-	 * not empty and one
-	 * Sub -non -empty subtate and an empty sub2 Sub2.
+	 * not empty
 	 * <br>
 	 * <br>
-	 * <strong> Expected Results </strong>: for passing the test they must be
-	 * Printed only
-	 * the strings of capture of exceptions but not the strings related to errors
-	 * of the assertive methods (),
-	 * Assertfalse (), Assertequals () and assertnotequals ().
+	 * <strong> Expected Results </strong>: The test doesn't print any error.
 	 */
 	@Test
 	public void testsubList() {
 		s2 = new StackAdapter();
-		HList sub = null;
+		HList subStack = null;
 		try {
-			sub = s2.subList(1, 3);
+			subStack = s2.subList(1, 3);
 			throw new Exception();
 		} catch (Exception e) {
 			assertEquals(IndexOutOfBoundsException.class, e.getClass());
 		}
-		sub = s2.subList(0, 0);
-		assertEquals(s2, sub);
-		int dim2 = s2.size();
-		int dimsub = sub.size();
-		// System.out.println(dim2 + " " + dimsub);
-		sub.add("Dog");
-		assertEquals(dimsub + 1, sub.size());
-		assertEquals(dim2 + 1, s2.size());
-		sub = s1.subList(2, 5);
-		// System.out.println(sub);
-		assertTrue(s1.containsAll(sub));
-		assertFalse(sub.containsAll(s1));
-		assertEquals("Hello", sub.get(0));
+		subStack = s2.subList(0, 0);
+		assertEquals(s2, subStack);
+
+		int s2dim = s2.size();
+		int subStackdim = subStack.size();
+
+		subStack.add("Dog");
+		assertEquals(subStackdim + 1, subStack.size());
+		assertEquals(s2dim + 1, s2.size());
+
+		subStack = s1.subList(2, 5);
+
+		assertFalse(subStack.containsAll(s1));
+		assertEquals("Hello", subStack.get(0));
+
 		int dim = s1.size();
-		dimsub = sub.size();
-		assertFalse(sub.remove("Cat"));
-		assertEquals(dim, s1.size());
-		assertEquals(dimsub, sub.size());
+		subStackdim = subStack.size();
+		assertFalse(subStack.remove("Cat"));
+
 		try {
-			sub.remove(3);
+			subStack.remove(3);
 			throw new Exception();
 		} catch (Exception e) {
 			assertEquals(IndexOutOfBoundsException.class, e.getClass());
 		}
-		assertTrue(sub.contains("Hello"));
-		assertTrue(sub.remove("Hello"));
-		assertEquals(dim - 1, s1.size());
-		assertEquals(dimsub - 1, sub.size());
+
+		assertTrue(subStack.remove("Hello"));
 		assertFalse(s1.contains("Hello"));
-		sub.add(1, "Hello");
+
+		subStack.add(1, "Hello");
 		assertTrue(s1.contains("Hello"));
-		sub.set(0, "Cat");
-		assertFalse(s1.contains("World"));
-		assertNotEquals(s1, sub);
-		HListIterator iter = sub.listIterator();
-		assertFalse(iter.hasPrevious());
+		subStack.set(0, "Cat");
+		assertNotEquals(s1, subStack);
+
+		HListIterator iter = subStack.listIterator();
 		assertEquals("Cat", iter.next());
+
 		dim = s1.size();
-		dimsub = sub.size();
+		subStackdim = subStack.size();
 		iter.add("House");
 		assertEquals(dim + 1, s1.size());
-		assertEquals(dimsub + 1, sub.size());
-		HList sub2 = sub.subList(1, 3);
-		int dimsub2 = sub2.size();
-		dimsub = sub.size();
-		dim = s1.size();
-		sub2.clear();
-		assertTrue(sub2.isEmpty());
-		assertFalse(sub.isEmpty());
-		assertEquals(dimsub - dimsub2, sub.size());
-		assertEquals(dim - dimsub2, s1.size());
+		assertEquals(subStackdim + 1, subStack.size());
 	}
 
 }
