@@ -7,11 +7,7 @@ import static org.junit.Assert.*;
 import java.util.EmptyStackException;
 
 /**
- * <strong>Class TestControlsModify</strong>
- * <p>
- * <br>
- * <br>
- * <strong>Summary</strong>: The TestControlsModify class controls with its
+ * <strong>Summary: Class TestTweaks</strong> controls with its
  * tests
  * The operation
  * Of the methods that inspect the objects of a stack without changing it.
@@ -58,15 +54,13 @@ import java.util.EmptyStackException;
  * 
  * @author Davide Baggio
  */
-public class TestControlsModify {
+public class TestTweaks {
 
 	StackAdapter s1 = null, s2 = null;
 	Object[] arr = new Object[] { "Dog", "Cat", "Hello", "World", "Dog", null };
 
 	/**
-	 * This method is performed once before each test
-	 * <strong> TestControlsModify </strong>,
-	 * Initializes and adds elements to a stack.
+	 * setup before each test.
 	 */
 	@Before
 	public void setup() {
@@ -78,10 +72,7 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * This method is performed once after each test
-	 * <strong> TestControlsModify </strong>,
-	 * Removes all the elements from the s1 stack and places the
-	 * same as null the s2 stack.
+	 * cleanup after each test
 	 */
 	@After
 	public void cleanup() {
@@ -90,12 +81,8 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#contains(Object)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * Contains ()
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#contains(Object)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method on a more stack is used
@@ -148,13 +135,8 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of
-	 * {@link myAdapter.StackAdapter#containsAll(HCollection)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * ContainsAll ()
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#containsAll(HCollection)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method is used several times on one
@@ -220,12 +202,8 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#equals(Object)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * Equals ()
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#equals(Object)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method is used on a stack and the
@@ -258,35 +236,30 @@ public class TestControlsModify {
 	 */
 	@Test
 	public void testEquals() {
-		boolean uguali = s1.equals(s2);
-		assertFalse(uguali);
+		boolean same = s1.equals(s2);
+		assertFalse(same);
 
 		s2 = new StackAdapter();
-		uguali = s1.equals(s2);
-		assertFalse(uguali);
+		same = s1.equals(s2);
+		assertFalse(same);
 
 		s2.addAll(s1);
 		s2.remove(s1.size() - 1);
-		uguali = s1.equals(s2);
-		assertFalse(uguali);
+		same = s1.equals(s2);
+		assertFalse(same);
 
 		s2.add(s1.get(s1.size() - 1));
-		uguali = s1.equals(s2);
-		assertTrue(uguali);
+		same = s1.equals(s2);
+		assertTrue(same);
 
 		s1.clear();
 		s2.clear();
-		uguali = s1.equals(s2);
-		assertTrue(uguali);
+		same = s1.equals(s2);
+		assertTrue(same);
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#get(int)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * Get ()
+	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#get(int)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the functioning of the method by
@@ -332,12 +305,7 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#hashCode()}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * hashcode()
+	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#hashCode()}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method on two stacks is used and
@@ -388,12 +356,8 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#indexOf(Object)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * Indexof ()
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#indexOf(Object)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method is tested using it on one
@@ -435,12 +399,7 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#isEmpty()}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * isEmpty().
+	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#isEmpty()}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method on two stacks is used
@@ -479,13 +438,8 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of
-	 * {@link myAdapter.StackAdapter#lastIndexOf(Object)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * Lastindexof ()
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#lastIndexOf(Object)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method is tested using it on one
@@ -527,13 +481,7 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#peek()}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: this test conditions the functioning of the
-	 * method
-	 * peek ().
+	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#peek()}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the functioning of the
@@ -578,13 +526,8 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#search(Object)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: this test conditions the functioning of the
-	 * method
-	 * search ().
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#search(Object)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the functioning of the
@@ -625,13 +568,8 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of
-	 * {@link myAdapter.StackAdapter#set(int, Object)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * set()
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#set(int, Object)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method on a more stack is used
@@ -693,12 +631,7 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#size()}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * size ()
+	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#size()}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method is tested by applying it on
@@ -736,12 +669,7 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#toArray()}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * Toarray ()
+	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#toArray()}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method on two stacks is used
@@ -788,13 +716,8 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of
-	 * {@link myAdapter.StackAdapter#toArray(Object[] arrayTarget)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the functioning of the method
-	 * Toarray ()
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#toArray(Object[])}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the method on different stacks is used
@@ -859,13 +782,8 @@ public class TestControlsModify {
 	}
 
 	/**
-	 * <strong>Test of
-	 * {@link myAdapter.StackAdapter#subList(int fromIndex, int toIndex)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test controls the function of the method
-	 * subList (Int Fromindex, Int Tindex)
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#subList(int, int)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: a sublist is created and come

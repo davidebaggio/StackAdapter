@@ -20,6 +20,9 @@ public class StackAdapter extends Vector implements HList {
 	private StackAdapter father;
 	boolean isFather;
 
+	/**
+	 * Construct an empty stack.
+	 */
 	public StackAdapter() {
 		this.vector = new Vector();
 		from = 0;
@@ -161,11 +164,11 @@ public class StackAdapter extends Vector implements HList {
 		if (this.vector.indexOf(obj) >= from && this.vector.indexOf(obj) < to) {
 			this.vector.removeElementAt(this.vector.indexOf(obj));
 			to--;
-			boolean ePadre = isFather;
+			boolean isF = isFather;
 			StackAdapter padre = father;
-			while (!ePadre) {
+			while (!isF) {
 				padre.to--;
-				ePadre = padre.isFather;
+				isF = padre.isFather;
 				padre = padre.father;
 			}
 			return true;
@@ -270,11 +273,11 @@ public class StackAdapter extends Vector implements HList {
 		}
 		this.vector.insertElementAt(obj, index);
 		to++;
-		boolean ePadre = isFather;
+		boolean isF = isFather;
 		StackAdapter padre = father;
-		while (!ePadre) {
+		while (!isF) {
 			padre.to++;
-			ePadre = padre.isFather;
+			isF = padre.isFather;
 			padre = padre.father;
 		}
 	}
@@ -285,11 +288,11 @@ public class StackAdapter extends Vector implements HList {
 		index = from + index;
 		this.vector.removeElementAt(index);
 		to--;
-		boolean ePadre = isFather;
+		boolean isF = isFather;
 		StackAdapter padre = father;
-		while (!ePadre) {
+		while (!isF) {
 			padre.to--;
-			ePadre = padre.isFather;
+			isF = padre.isFather;
 			padre = padre.father;
 		}
 		return obj;
@@ -417,7 +420,7 @@ public class StackAdapter extends Vector implements HList {
 	 * @see myAdapter.HIterator
 	 * @see myAdapter.HListIterator
 	 */
-	private class StackIterator implements HListIterator {
+	public class StackIterator implements HListIterator {
 
 		private int prec, succ, NOP; // precedente, successivo, NextOrPrevious
 

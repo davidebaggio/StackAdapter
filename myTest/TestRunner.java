@@ -7,16 +7,13 @@ import java.util.*;
 
 /**
  * Main class to execute {@link myTest}
- * <p>
  *
- * Precondition: Object methods are considered in a working status when they are
- * used
- *
- * @version JUnit 4.13
+ * @version JUnit 4.13.2
  * @version Harmcrest: 1.3
  * @version JVM from JME CLDC 1.1
  *
  * @author Alessandro Marcassa
+ * @author Davide Baggio
  */
 public class TestRunner {
 	private static int totalTests = 0;
@@ -30,23 +27,20 @@ public class TestRunner {
 		Result res;
 		System.out.println("**Test in execution..**\n");
 
-		// uncomment this to test backtarcked sublists.
-		/*
-		 * System.out.println("\nTest of TestList..");
-		 * res = JUnitCore.runClasses(TestList.class);
-		 * esitoTest(res);
-		 */
-		System.out.println("\nTest of AddPush..");
-		res = JUnitCore.runClasses(TestAddPush.class);
+		System.out.println("\nTest of Vector..");
+		res = JUnitCore.runClasses(VectorTest.class);
 		esitoTest(res);
-		System.out.println("\nTest of ControlsModify..");
-		res = JUnitCore.runClasses(TestControlsModify.class);
+		System.out.println("\nTest of Insertion..");
+		res = JUnitCore.runClasses(TestInsertion.class);
 		esitoTest(res);
-		System.out.println("\nTest of RemovePop..");
-		res = JUnitCore.runClasses(TestRemovePop.class);
+		System.out.println("\nTest of Tweaks..");
+		res = JUnitCore.runClasses(TestTweaks.class);
+		esitoTest(res);
+		System.out.println("\nTest of Deletion..");
+		res = JUnitCore.runClasses(TestDeletion.class);
 		esitoTest(res);
 		System.out.println("\nTest of Iterator..");
-		res = JUnitCore.runClasses(TestIterator.class);
+		res = JUnitCore.runClasses(IteratorTest.class);
 		esitoTest(res);
 
 		System.out.println("\n*** All the " + totalTests + " tests have been completed ***");
@@ -54,7 +48,6 @@ public class TestRunner {
 
 	/**
 	 * Print the test result for every suite case
-	 * <p>
 	 *
 	 * For every suite is indicated how many test of the relative suite have been
 	 * executed and how many failed

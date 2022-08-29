@@ -7,36 +7,31 @@ import static org.junit.Assert.*;
 import java.util.EmptyStackException;
 
 /**
- * <strong> Class Testremove </strong>
- * <p>
- * <br>
- * <br>
- * <strong> Summary </strong>: the Testremove class checks the
+ * <strong> Summary: Class TestDeletion </strong> checks the
  * operation of
- * Methods that remove objects from a list.
+ * Methods that remove objects from a stack.
  * <br>
  * <br>
- * <strong> Test Suite Design </strong>: this class contains 5 TEST CASES that
- * Tesse 5 different
- * Methods of the Stackadapter class (), each of which removes one or more
+ * <strong> Test Suite Design </strong>: this class contains 6 test Cases that
+ * tests 6 different
+ * Methods of the {@link myAdapter.StackAdapter} class, each of which removes
+ * one or more
  * Elements according to different criteria.
  * <br>
  * <br>
  * <strong> pre-condition </strong>: before each test it must be initialized
- * at least one list e
+ * at least one stack e
  * In this elements must always be present.
  * <br>
  * <br>
  * <strong> post-condition </strong>: after each test it must have been done
  * At least a removal
- * from at least one list.
+ * from at least one stack.
  * <br>
  * <br>
- * <strong> Test Cases </strong>: The tests of this class are 5 and are:
- * Testremoveobj (),
- * TestremoveAmindex (), Testremoveall (), Testclear () and Tetreinall (). Each
- * of them serves to test a
- * different method of the Stackadapter class.
+ * <strong> Test Cases </strong>: {@link #testClear()}, {@link #testPop()},
+ * {@link #testRemoveAll()}, {@link #testRemoveAtIndex()},
+ * {@link #testRemoveObj()}, {@link #testRetainAll()}.
  * <br>
  * <br>
  * <strong>Test Suite Execution Records</strong>: Records are exaclty what this
@@ -46,21 +41,19 @@ import java.util.EmptyStackException;
  * <strong> Execution Variables </strong>: the variables used are two
  * Stackadapter s1 and s2, the
  * first used in all tests and the second only where necessary, and a
- * Object Array Arrival used
- * To insert elements on the lists. In some tests others are then used
- * variables when necessary.
+ * Object Array used
+ * To insert elements on the lists. In some tests other variables are then used
+ * when necessary.
  * 
  * @author Davide Baggio
  */
-public class TestRemovePop {
+public class TestDeletion {
 
     private StackAdapter s1 = null, s2 = null;
     Object[] arr = new Object[] { "Pippo", "Pluto", "Paperino", "Topolino", "Pippo" };
 
     /**
-     * This method is performed once before each class test
-     * <strong> Testremove </strong>,
-     * Print a string and initializes and adds elements to a list.
+     * setup before each test.
      */
     @Before
     public void setup() {
@@ -72,11 +65,7 @@ public class TestRemovePop {
     }
 
     /**
-     * This method is performed once after each class test
-     * <strong> Testremove </strong>,
-     * Print a string, removes all the elements from the s1 list and places the same
-     * as
-     * null the s2 list.
+     * cleanup after each test
      */
     @After
     public void cleanup() {
@@ -85,12 +74,58 @@ public class TestRemovePop {
     }
 
     /**
-     * <strong>Test of {@link myAdapter.StackAdapter#remove(Object obj)}</strong>
-     * <p>
+     * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#pop()}
      * <br>
      * <br>
-     * <strong> Summary </strong>: the test controls the functioning of the method
-     * Remove (Object OBJ).
+     * <strong> test case design </strong>: the functioning of the
+     * Method in basic cases, just popping items from the stack. And throwing
+     * exception when needed.
+     * <br>
+     * <br>
+     * <strong> test description </strong>: in this test some elements that are
+     * already
+     * into the stack are popped from it verifing that the size is correct. Pop() is
+     * checked also for sublists.
+     * <br>
+     * <br>
+     * <strong> pre-condition </strong>: a s1 must have been initialized and must
+     * having been instantiated with elements inside. s2 has no elements instead
+     * empty(), pop()
+     * Stackadapter () must work correctly.
+     * <br>
+     * <br>
+     * <strong> post-condition </strong>: s1 has to contain no elements, s2 is empty
+     * too.
+     * <br>
+     * <br>
+     * <strong> Expected results </strong>: Every item is popped from s1.
+     */
+    @Test
+    public void testPop() {
+        s2 = new StackAdapter();
+        try {
+            s2.pop();
+            throw new Exception();
+        } catch (Exception e) {
+            assertEquals(EmptyStackException.class, e.getClass());
+        }
+
+        assertEquals("Pippo", s1.pop());
+
+        StackAdapter temp = (StackAdapter) s1.subList(1, 3);
+        temp.pop();
+        temp.pop();
+        assertEquals(2, s1.size());
+
+        while (!s1.empty()) {
+            s1.pop();
+        }
+        assertTrue(s1.empty());
+    }
+
+    /**
+     * <strong>Summary</strong>: Test of
+     * {@link myAdapter.StackAdapter#remove(Object)}
      * <br>
      * <br>
      * <strong> test case design </strong>: different elements are removed from one
@@ -141,12 +176,8 @@ public class TestRemovePop {
     }
 
     /**
-     * <strong>Test of {@link myAdapter.StackAdapter#remove(int index)}</strong>
-     * <p>
-     * <br>
-     * <br>
-     * <strong> Summary </strong>: the test controls the functioning of the method
-     * Remove (int index).
+     * <strong> Summary </strong>: Test of
+     * {@link myAdapter.StackAdapter#remove(int)}
      * <br>
      * <br>
      * <strong> test case design </strong>: the removal of objects is tested
@@ -207,13 +238,8 @@ public class TestRemovePop {
     }
 
     /**
-     * <strong>Test of
-     * {@link myAdapter.StackAdapter#removeAll(HCollection coll)}</strong>
-     * <p>
-     * <br>
-     * <br>
-     * <strong> Summary </strong>: the test controls the functioning of the method
-     * Removeall (Hcollection).
+     * <strong> Summary </strong>:
+     * {@link myAdapter.StackAdapter#removeAll(HCollection)}
      * <br>
      * <br>
      * <strong> test case design </strong>: the method is tested by applying it on
@@ -275,12 +301,7 @@ public class TestRemovePop {
     }
 
     /**
-     * <strong>Test of {@link myAdapter.StackAdapter#clear()}</strong>
-     * <p>
-     * <br>
-     * <br>
-     * <strong> Summary </strong>: the test controls the functioning of the method
-     * Clear ().
+     * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#clear()}
      * <br>
      * <br>
      * <strong> test case design </strong>: the method is tested by applying it more
@@ -319,13 +340,8 @@ public class TestRemovePop {
     }
 
     /**
-     * <strong>Test of
-     * {@link myAdapter.StackAdapter#retainAll(HCollection coll)}</strong>
-     * <p>
-     * <br>
-     * <br>
-     * <strong> Summary </strong>: the test controls the functioning of the method
-     * Retainall (Hcollection Coll).
+     * <strong> Summary </strong>:
+     * {@link myAdapter.StackAdapter#retainAll(HCollection)}
      * <br>
      * <br>
      * <strong> test case design </strong>: an s2 list is changed several times
@@ -387,61 +403,5 @@ public class TestRemovePop {
         s2.clear();
         s1.retainAll(s2);
         assertTrue(s1.isEmpty());
-    }
-
-    /**
-     * <strong>Test of {@link myAdapter.StackAdapter#pop()}</strong>
-     * <p>
-     * <br>
-     * <br>
-     * <strong> Summary </strong>: this test conditions the functioning of the
-     * method
-     * push ().
-     * <br>
-     * <br>
-     * <strong> test case design </strong>: the functioning of the
-     * Method in basic cases, just popping items from the stack. And throwing
-     * exception when needed.
-     * <br>
-     * <br>
-     * <strong> test description </strong>: in this test some elements that are
-     * already
-     * into the stack are popped from it verifing that the size is correct. Pop() is
-     * checked also for sublists.
-     * <br>
-     * <br>
-     * <strong> pre-condition </strong>: a s1 must have been initialized and must
-     * having been instantiated with elements inside. s2 has no elements instead
-     * empty(), pop()
-     * Stackadapter () must work correctly.
-     * <br>
-     * <br>
-     * <strong> post-condition </strong>: s1 has to contain no elements, s2 is empty
-     * too.
-     * <br>
-     * <br>
-     * <strong> Expected results </strong>: Every item is popped from s1.
-     */
-    @Test
-    public void testPop() {
-        s2 = new StackAdapter();
-        try {
-            s2.pop();
-            throw new Exception();
-        } catch (Exception e) {
-            assertEquals(EmptyStackException.class, e.getClass());
-        }
-
-        assertEquals("Pippo", s1.pop());
-
-        StackAdapter temp = (StackAdapter) s1.subList(1, 3);
-        temp.pop();
-        temp.pop();
-        assertEquals(2, s1.size());
-
-        while (!s1.empty()) {
-            s1.pop();
-        }
-        assertTrue(s1.empty());
     }
 }

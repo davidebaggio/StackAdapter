@@ -53,7 +53,8 @@ public interface HListIterator extends HIterator {
      * previous will return the same element repeatedly.)
      *
      * @return the next element in the list.
-     * @exception NoSuchElementException if the iteration has no next element.
+     * @throws java.util.NoSuchElementException if the iteration has no next
+     *                                          element.
      */
     Object next();
 
@@ -75,7 +76,8 @@ public interface HListIterator extends HIterator {
      *
      * @return the previous element in the list.
      *
-     * @exception NoSuchElementException if the iteration has no previous element.
+     * @throws java.util.NoSuchElementException if the iteration has no previous
+     *                                          element.
      */
     Object previous();
 
@@ -108,12 +110,12 @@ public interface HListIterator extends HIterator {
      * ListIterator.add has not been called after the last call to
      * next or previous.
      *
-     * @exception IllegalStateException         neither next nor
-     *                                          previous have been called,
-     *                                          or remove or add
-     *                                          have been called after the last call
-     *                                          to * next or
-     *                                          previous.
+     * @throws IllegalStateException neither next nor
+     *                               previous have been called,
+     *                               or remove or add
+     *                               have been called after the last call
+     *                               to * next or
+     *                               previous.
      */
     void remove();
 
@@ -124,14 +126,14 @@ public interface HListIterator extends HIterator {
      * called after the last call to next or previous.
      *
      * @param obj the element with which to replace the last element returned by
-     *          next or previous.
+     *            next or previous.
      *
-     * @exception IllegalStateException         if neither next nor
-     *                                          previous have been called,
-     *                                          or remove or add
-     *                                          have been called after the last call
-     *                                          to next or
-     *                                          previous.
+     * @throws IllegalStateException if neither next nor
+     *                               previous have been called,
+     *                               or remove or add
+     *                               have been called after the last call
+     *                               to next or
+     *                               previous.
      */
     void set(Object obj);
 
@@ -150,10 +152,3 @@ public interface HListIterator extends HIterator {
      */
     void add(Object obj);
 }
-
-/*
- * *          Element(0)   Element(1) *  Element(2)   ... Element(n)
- *        ^            ^            ^             ^               ^
- * Index: 0            1   current= 2             3               n+1
- *
- */

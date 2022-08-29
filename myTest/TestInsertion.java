@@ -5,11 +5,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 /**
- * <strong>Class TestAddPush</strong>
- * <p>
- * <br>
- * <br>
- * <strong>Summary</strong>: The TestAddPush class checks with its tests the
+ * <strong>Summary: Class TestInsertion</strong> checks with its tests the
  * operation of
  * Methods that insert objects on a Stack.
  * <br>
@@ -49,14 +45,12 @@ import static org.junit.Assert.*;
  * @author Davide Baggio
  * @see myAdapter.StackAdapter
  */
-public class TestAddPush {
+public class TestInsertion {
 
 	private StackAdapter s1 = null, s2 = null;
 
 	/**
-	 * This method is performed once before each test
-	 * <strong>TestAdd</strong>,
-	 * Initializes an empty Stack.
+	 * setup before each test.
 	 */
 	@Before
 	public void setup() {
@@ -64,10 +58,7 @@ public class TestAddPush {
 	}
 
 	/**
-	 * This method is performed once after each test
-	 * <strong>TestAdd</strong>,
-	 * Removes all the elements from the s1 Stack and places the same
-	 * as null the s2 Stack.
+	 * cleanup after each test
 	 */
 	@After
 	public void cleanup() {
@@ -76,13 +67,8 @@ public class TestAddPush {
 	}
 
 	/**
-	 * <strong>Test of
-	 * {@link myAdapter.StackAdapter#push(Object)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test conditions the functioning of the method
-	 * push ().
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#push(Object)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the functioning of the
@@ -127,12 +113,7 @@ public class TestAddPush {
 	}
 
 	/**
-	 * <strong>Test of {@link myAdapter.StackAdapter#add(Object)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong>Summary</strong>: The test conditions the functioning of the method
-	 * add().
+	 * <strong>Summary</strong>: Test of {@link myAdapter.StackAdapter#add(Object)}
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: The test conditions the functioning of the
@@ -182,13 +163,8 @@ public class TestAddPush {
 	}
 
 	/**
-	 * <strong>Test of
-	 * {@link myAdapter.StackAdapter#addAll(HCollection)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong>Summary</strong>: The test conditions the functioning of the method
-	 * addAll().
+	 * <strong>Summary</strong>: Test of
+	 * {@link myAdapter.StackAdapter#addAll(HCollection)}
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: The functioning of the
@@ -254,13 +230,8 @@ public class TestAddPush {
 	}
 
 	/**
-	 * <strong>Test of
-	 * {@link myAdapter.StackAdapter#addAll(int, HCollection)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong> Summary </strong>: the test conditions the functioning of the method
-	 * Addall ().
+	 * <strong> Summary </strong>: Test of
+	 * {@link myAdapter.StackAdapter#addAll(int, HCollection)}
 	 * <br>
 	 * <br>
 	 * <strong> test case design </strong>: the functioning of the
@@ -350,13 +321,8 @@ public class TestAddPush {
 	}
 
 	/**
-	 * <strong>Test of
-	 * {@link myAdapter.StackAdapter#add(int, Object)}</strong>
-	 * <p>
-	 * <br>
-	 * <br>
-	 * <strong>Summary</strong>: The test conditions the functioning of the method
-	 * add ().
+	 * <strong>Summary</strong>: Test of
+	 * {@link myAdapter.StackAdapter#add(int, Object)}
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: The test is carried out adding

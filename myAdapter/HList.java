@@ -108,7 +108,8 @@ public interface HList extends HCollection {
 
     /**
      * Returns an array containing all of the elements in this list in proper
-     * sequence. Obeys the general contract of the Collection.toArray(Object[]) method.
+     * sequence. Obeys the general contract of the Collection.toArray(Object[])
+     * method.
      *
      * @param arrayTarget the array into which the elements of this list are to be
      *                    stored, if it is big enough; otherwise, a new array of the
@@ -123,7 +124,6 @@ public interface HList extends HCollection {
 
     /**
      * Appends the specified element to the end of this list (optional operation).
-     * <p>
      *
      *
      * @param obj element to be appended to this list.
@@ -169,7 +169,7 @@ public interface HList extends HCollection {
      * @param coll collection whose elements are to be added to this list.
      * @return true if this list changed as a result of the call.
      *
-     * @throws NullPointerException     if the specified collection is null.
+     * @throws NullPointerException if the specified collection is null.
      * @see #add(Object)
      */
     boolean addAll(HCollection coll);
@@ -186,13 +186,13 @@ public interface HList extends HCollection {
      *
      * @param index index at which to insert first element from the specified
      *              collection.
-     * @param coll     elements to be inserted into this list.
+     * @param coll  elements to be inserted into this list.
      * @return true if this list changed as a result of the call.
      *
-     * @throws NullPointerException          if
-     *                                       the specified collection is null.
-     * @throws IndexOutOfBoundsException     if the index is out of range (index
-     *                                       &lt; 0 || index &gt; size()).
+     * @throws NullPointerException      if
+     *                                   the specified collection is null.
+     * @throws IndexOutOfBoundsException if the index is out of range (index
+     *                                   &lt; 0 || index &gt; size()).
      */
     boolean addAll(int index, HCollection coll);
 
@@ -201,10 +201,10 @@ public interface HList extends HCollection {
      * collection (optional operation).
      *
      * @param coll collection that defines which elements will be removed from this
-     *          list.
+     *             list.
      * @return true if this list changed as a result of the call.
      *
-     * @throws NullPointerException          if the specified collection is null.
+     * @throws NullPointerException if the specified collection is null.
      * @see #remove(Object)
      * @see #contains(Object)
      */
@@ -219,7 +219,7 @@ public interface HList extends HCollection {
      *
      * @return true if this list changed as a result of the call.
      *
-     * @throws NullPointerException          if the specified collection is null.
+     * @throws NullPointerException if the specified collection is null.
      * @see #remove(Object)
      * @see #contains(Object)
      */
@@ -294,8 +294,8 @@ public interface HList extends HCollection {
      * @param element element to be stored at the specified position.
      * @return the element previously at the specified position.
      *
-     * @throws IndexOutOfBoundsException     if the index is out of range (index
-     *                                       &lt; 0 || index &gt;= size()).
+     * @throws IndexOutOfBoundsException if the index is out of range (index
+     *                                   &lt; 0 || index &gt;= size()).
      */
     Object set(int index, Object element);
 
@@ -307,8 +307,8 @@ public interface HList extends HCollection {
      * @param index   index at which the specified element is to be inserted.
      * @param element element to be inserted.
      *
-     * @throws IndexOutOfBoundsException     if the index is out of range (index
-     *                                       &lt; 0 || index &gt; size()).
+     * @throws IndexOutOfBoundsException if the index is out of range (index
+     *                                   &lt; 0 || index &gt; size()).
      */
     void add(int index, Object element);
 
@@ -320,8 +320,8 @@ public interface HList extends HCollection {
      * @param index the index of the element to removed.
      * @return the element previously at the specified position.
      *
-     * @throws IndexOutOfBoundsException     if the index is out of range (index
-     *                                       &lt; 0 || index &gt;= size()).
+     * @throws IndexOutOfBoundsException if the index is out of range (index
+     *                                   &lt; 0 || index &gt;= size()).
      */
     Object remove(int index);
 
