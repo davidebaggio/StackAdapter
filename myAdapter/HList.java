@@ -57,7 +57,6 @@ package myAdapter;
  * at the option of the implementation. Such exceptions are marked as "optional"
  * in the specification for this interface.
  *
- * @version 1.39
  * @see HCollection
  */
 

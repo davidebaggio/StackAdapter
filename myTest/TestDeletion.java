@@ -46,6 +46,7 @@ import java.util.EmptyStackException;
  * when necessary.
  * 
  * @author Davide Baggio
+ * @see myAdapter.StackAdapter
  */
 public class TestDeletion {
 

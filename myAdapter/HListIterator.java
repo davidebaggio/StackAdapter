@@ -27,7 +27,6 @@ package myAdapter;
  * <a href="{@docRoot}/../guide/collections/index.html"> Java Collections
  * Framework</a>.
  *
- * @version 1.21, 01/23/03
  * @see HCollection
  * @see HList
  * @see HIterator

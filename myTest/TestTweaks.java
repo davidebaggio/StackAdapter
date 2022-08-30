@@ -54,6 +54,7 @@ import java.util.EmptyStackException;
  * variables when necessary.
  * 
  * @author Davide Baggio
+ * @see myAdapter.StackAdapter
  */
 public class TestTweaks {
 

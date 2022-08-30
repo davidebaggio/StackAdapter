@@ -58,6 +58,7 @@ import java.util.NoSuchElementException;
  * @author Davide Baggio
  * @see myAdapter.HIterator
  * @see myAdapter.HListIterator
+ * @see myAdapter.StackAdapter.StackIterator
  */
 public class IteratorTest {
 
