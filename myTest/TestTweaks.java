@@ -20,12 +20,12 @@ import java.util.EmptyStackException;
  * of the stack.
  * <br>
  * <br>
- * <strong> pre-condition </strong>: before each test it must be initialized
+ * <strong> Pre-conditions </strong>: before each test it must be initialized
  * at least one stack e
  * In this elements must always be present.
  * <br>
  * <br>
- * <strong> post-condition </strong>: after each test it must have been
+ * <strong> Post-condition </strong>: after each test it must have been
  * inspected
  * at least one element
  * or a feature of the stack.
@@ -46,8 +46,9 @@ import java.util.EmptyStackException;
  * <br>
  * <br>
  * <strong> Execution Variables </strong>: the variables used are two
- * Stackadapter s1 and s2, the
- * first used in all tests and the second only where necessary, and a
+ * Stackadapter s1, s2 and sData, the
+ * first used in all tests and the second only where necessary. The third has
+ * data used as check stack. A
  * Object Array Arrival used
  * To insert elements on the stacks. In some tests others are then used
  * variables when necessary.
@@ -56,7 +57,7 @@ import java.util.EmptyStackException;
  */
 public class TestTweaks {
 
-	StackAdapter s1 = null, s2 = null;
+	StackAdapter s1 = null, s2 = null, sData = null;;
 	Object[] arr = new Object[] { "Dog", "Cat", "Hello", "World", "Dog", null };
 
 	/**
@@ -69,6 +70,9 @@ public class TestTweaks {
 			s1.add(arr[i]);
 		}
 
+		sData = new StackAdapter();
+		for (int i = 0; i < 5; i++)
+			sData.push(i + 1);
 	}
 
 	/**
@@ -78,127 +82,121 @@ public class TestTweaks {
 	public void cleanup() {
 		s1.clear();
 		s2 = null;
+		sData = null;
 	}
 
 	/**
-	 * <strong> Summary </strong>: Test of
-	 * {@link myAdapter.StackAdapter#contains(Object)}
+	 * <strong>Summary</strong>: Tests the
+	 * {@link myAdapter.StackAdapter#contains(Object)} method.
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method on a more stack is used
-	 * times passing different parameters.
+	 * <strong>Test Case Design</strong>: addition of two elements, verification of
+	 * the
+	 * existence of an
+	 * element present, verification of the existence of an element not present.
+	 * Check with different types belonging to Object
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the Contains method on the s1 stack
-	 * is used passing like Parameters different objects contained and not
-	 * contained. A stack is
-	 * initialized s2 with the method Stackadapter (), elements are added with the
-	 * Add () method and yes
-	 * adds the s2 stack to s1 stack. It is controlled with Contains if the s2 stack
-	 * is contained in the
-	 * stack s1. Through the use of of the assertTrue methods () and assertfalse (),
-	 * with the help of a variable
-	 * Boolean, check that the elements passed as parameters are contained in the s1
-	 * stack or not.
+	 * <strong>Test Description</strong>: after adding two elements, I verify that
+	 * the
+	 * method
+	 * returns true
+	 * using one of the two elements as a parameter, false using an element that
+	 * does not exist in the collection as a parameter
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
-	 * an s1 stack and
-	 * instantiated an s2 stack.
+	 * <strong>Pre-conditionss</strong>: HCollection has to be initialize as Empty
+	 * and HList
+	 * with
+	 * data has to have data stored inside.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s2 stack must contain 2 elements and
-	 * the s1 stack must contain all the initial elements to which the s2 stack is
-	 * added.
+	 * <strong>Post-conditions</strong>: elements have been added correctly in the
+	 * HCollection
 	 * <br>
 	 * <br>
-	 * <strong> Expected results </strong>: if the test is passed there are no
-	 * errors. Elements in s2 are present in s1.
+	 * <strong>Expected results</strong>: s2.contains(1) == true &&
+	 * s2.contains(4.50) == true
+	 * &&
+	 * s2.contains(2) == false;
 	 */
 	@Test
 	public void testContains() {
-		boolean content = s1.contains("Horse");
-		assertFalse(content);
-
-		content = s1.contains(null);
-		assertTrue(content);
-
-		content = s1.contains("Hello");
-		assertTrue(content);
-
 		s2 = new StackAdapter();
-		s2.add("Davide");
-		s2.add("Baggio");
-		s1.add(s2);
-		content = s1.contains(s2);
-		assertTrue(content);
+		s2.add(1);
+		s2.add(3);
+		s2.add(4.5);
+
+		assertTrue(s2.contains(1));
+		assertTrue(s2.contains(4.50));
+		assertFalse(s2.contains(2));
 	}
 
 	/**
-	 * <strong> Summary </strong>: Test of
+	 * <strong>Summary</strong>: Tests the
 	 * {@link myAdapter.StackAdapter#containsAll(HCollection)}
+	 * method.
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method is used several times on one
-	 * stack passing as a parameter another stack that is modified between the
-	 * various invocations of the method.
+	 * <strong>Test Case Design</strong>: elements are added to the collection on
+	 * which
+	 * the method will be
+	 * invoked. Subsequently a collection is created that will be passed as a
+	 * parameter to the tested method containing only some of the elements present
+	 * in the main collection and the tested method is invoked. A value not present
+	 * in the main collection is then inserted into the collection passed as a
+	 * parameter and the tested method is invoked again, verifying the correctness
+	 * of the returned value in both cases. The throwing of the exception in the
+	 * event of a null parameter is also tested
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the method is used several times on s1
-	 * stack passing as a parameter an s2 stack initially the same as Null, then
-	 * initialized with The Stackadapter method () But empty, with only objects
-	 * belonging to the s1 stack inserted on the s2 stack with the Add () method And
-	 * finally also with objects not belonging to the s1 stack. Is captured An
-	 * exception launched by Containinsall Method () to which the s2 stack is passed
-	 * as a parameter equal to Null And one is printed Notice string of the capture
-	 * of the exception. Through the use of methods asserttrue () E assertfalse ()
-	 * and the aid of a Boolean variable is controlled that the Boolean returned
-	 * from the method ContainsAll () is correct in the various uses.
+	 * <strong>Test Description</strong>: after the creation and addition of some
+	 * values
+	 * in the collection
+	 * that will be passed as a parameter, I add the same values in the main
+	 * collection and verify that a true is returned (returned even in the case of
+	 * an empty parameter collection). After adding a new element in the collection
+	 * passed as a parameter, I check that the returned value is false
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
-	 * A s1 stack and
-	 * An s2 stack must have been instantiated and placed equal to Null.
+	 * <strong>Pre-conditions</strong>: HCollection has to be initialize as Empty
+	 * and HList with
+	 * data has to have data stored inside.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s1 stack must have remained unchanged
-	 * and
-	 * The s2 stack must
-	 * have been initialized and contain elements on the s1 and a
-	 * element not present
-	 * In the s1 stack.
+	 * <strong>Post-conditions</strong>: Elements have been correctly added to the
+	 * HCollection and it
+	 * has to contain the given Collections.
 	 * <br>
 	 * <br>
-	 * <strong> Expected results </strong>: if the test is passed nothing is
-	 * printed. s1 contains all elements in s2 until element "House" is added.
+	 * <strong>Expected results</strong>: true if s2 contains the given HCollection.
 	 */
 	@Test
 	public void testContainsAll() {
-		boolean content = false;
+		s2 = new StackAdapter();
 		try {
-			content = s1.containsAll(s2);
+			s2.containsAll(null);
 			throw new Exception();
 		} catch (Exception e) {
 			assertEquals(NullPointerException.class, e.getClass());
 		}
 
-		s2 = new StackAdapter();
-		content = s1.containsAll(s2);
-		assertTrue(content);
+		s2.add(1);
+		s2.add(2);
+		s2.add(3);
+		s2.add(4);
 
-		s2.add("Hello");
-		s2.add("Dog");
-		content = s1.containsAll(s2);
-		assertTrue(content);
+		HCollection testColl = new StackAdapter();
 
-		s2.add("Hello");
-		s2.add("Hello");
-		content = s1.containsAll(s2);
-		assertTrue(content);
+		assertTrue(s2.containsAll(testColl));
 
-		s2.add("House");
-		content = s1.containsAll(s2);
-		assertFalse(content);
+		testColl.add(1);
+		testColl.add(2);
+		testColl.add(3);
+		assertTrue(s2.containsAll(testColl));
+
+		testColl.add(5);
+		assertFalse(s2.containsAll(testColl));
 	}
 
 	/**
@@ -206,13 +204,13 @@ public class TestTweaks {
 	 * {@link myAdapter.StackAdapter#equals(Object)}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method is used on a stack and the
+	 * <strong> Test Case Design </strong>: the method is used on a stack and the
 	 * is passed
 	 * as a parameter another stack that is modified in the test between the various
 	 * Invocations of the method.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the method is used on the s1 stack
+	 * <strong> Test Description </strong>: the method is used on the s1 stack
 	 * Equals () with the stack s2 passed as a parameter. The comparison with this
 	 * method is made with the s2 stack initially equal to Null, then initialized
 	 * with the Stackadapter () but empty, with the elements and finally with all
@@ -222,12 +220,13 @@ public class TestTweaks {
 	 * methods and a variable Boolean.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: the s1 stack must have been initialized e
+	 * <strong> Pre-conditions </strong>: the s1 stack must have been initialized e
 	 * filled and the
 	 * s2 stack must have been instantiated.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>:both the s1 stack that the s2 stack must be
+	 * <strong> Post-conditions </strong>:both the s1 stack that the s2 stack must
+	 * be
 	 * empty.
 	 * <br>
 	 * <br>
@@ -262,11 +261,11 @@ public class TestTweaks {
 	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#get(int)}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the functioning of the method by
+	 * <strong> Test Case Design </strong>: the functioning of the method by
 	 * applying it to the s1 stack by passing valid and not valid indices.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the functioning of the get Method
+	 * <strong> Test Description </strong>: the functioning of the get Method
 	 * Using it on the s1 stack and passing an index of 0 as parameters, a greater
 	 * one of the index of the position of the last element of the stack and a valid
 	 * index. They come captured the exceptions launched by the method, then
@@ -274,11 +273,11 @@ public class TestTweaks {
 	 * Assertequals ().
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
+	 * <strong> Pre-conditions </strong>: it must have been initialized and filled
 	 * with less than 7 Elements an s1 stack.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s1 stack must remain unchanged.
+	 * <strong> Post-conditions </strong>: the s1 stack must remain unchanged.
 	 * <br>
 	 * <br>
 	 * <strong> Expected results </strong>: the test is passed if no errors are
@@ -308,12 +307,12 @@ public class TestTweaks {
 	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#hashCode()}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method on two stacks is used and
+	 * <strong> Test Case Design </strong>: the method on two stacks is used and
 	 * then
 	 * Compare the returned hashcode.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: an s2 stack is initialized. Two int-type
+	 * <strong> Test Description </strong>: an s2 stack is initialized. Two int-type
 	 * variables equal to the hash returned by the hashcode
 	 * method () used on the two stacks. The two stacks are modified in the test,
 	 * the Int variables are updated with the new hashcode () and controls with the
@@ -321,12 +320,12 @@ public class TestTweaks {
 	 * two hashcode are the same only When the two stacks are the same.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: the s1 stack must have been initialized e
+	 * <strong> Pre-conditions </strong>: the s1 stack must have been initialized e
 	 * filled and the
 	 * s2 stack must have been instantiated.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s1 stack must have remained unchanged
+	 * <strong> Post-conditions </strong>: the s1 stack must have remained unchanged
 	 * and The s2 stack must
 	 * having been initialized and contain different elements than the s1 stack.
 	 * <br>
@@ -356,57 +355,61 @@ public class TestTweaks {
 	}
 
 	/**
-	 * <strong> Summary </strong>: Test of
-	 * {@link myAdapter.StackAdapter#indexOf(Object)}
+	 * <strong> Summary </strong>: Tests the
+	 * {@link myAdapter.StackAdapter#indexOf(Object)} method.
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method is tested using it on one
-	 * stack several times with different parameters.
+	 * <strong> Test Case Design </strong>: considering the element insert in the
+	 * list previously I perform
+	 * three searches for single element, duplicate element, non-existent element.
+	 * Search also with empty list. Exception are thrown.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the Indexof () method is used on stack
-	 * s1 several times passing as parameters first two objects on the stack, then
-	 * one not present and finally a Null element on the stack. It is controlled
-	 * with assertEquals () e with the help of
-	 * A variable int which the index returned by the method is the one waited.
+	 * <strong> Test Description </strong>: the first test is performed on an empty
+	 * list, thus not returning
+	 * the index containing the desired element. The following invocations are made
+	 * after the insertion of values, some even repeated, specifically: invocation
+	 * to find a non-repeated element, invocation to find a repeated element and
+	 * invocation to find an element not contained in the list. For simplicity, the
+	 * values entered are Integer
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
-	 * An s1 stack.
+	 * <strong> Pre-conditions </strong>: HList with data has to have data stored
+	 * inside and list with
+	 * no data initialized as Empty.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s1 stack must have remained unchanged.
+	 * <strong> Post-conditions </strong>: the index of the first matching element
+	 * found is returned,
+	 * otherwise -1
 	 * <br>
 	 * <br>
-	 * <strong> Expected results </strong>: if the test is passed no errors are
-	 * printed.
-	 * indexOf("Hello") = 2, indexOf("Dog") = 0, indexOf("Davide") = -1,
-	 * indexOf(null) = 5
+	 * <strong> expected results </strong>: -1 for empty list and element not found;
+	 * index of the
+	 * position of the single element, searched; index of the position of the first
+	 * element of the list found
 	 */
 	@Test
 	public void testIndexOf() {
-		int index = s1.indexOf("Hello");
-		assertEquals(2, index);
+		assertEquals(-1, s1.indexOf(5));
 
-		index = s1.indexOf("Dog");
-		assertEquals(0, index);
+		sData.add(2);
 
-		index = s1.indexOf("Davide");
-		assertEquals(-1, index);
-
-		index = s1.indexOf(null);
-		assertEquals(5, index);
+		assertEquals(-1, sData.indexOf(9));
+		assertEquals(1, sData.indexOf(2));
+		assertEquals(0, sData.indexOf(1));
+		assertEquals(-1, sData.indexOf(6));
 	}
 
 	/**
 	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#isEmpty()}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method on two stacks is used
+	 * <strong> Test Case Design </strong>: the method on two stacks is used
 	 * different to Check that it works correctly.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the isEmpty() method is used before On
+	 * <strong> Test Description </strong>: the isEmpty() method is used before On
 	 * the s1 stack that contains elements and then on an initialized s2 stack with
 	 * the method Stackadapter () but empty and Then it contains a single Null
 	 * element
@@ -415,11 +418,11 @@ public class TestTweaks {
 	 * assertfalse ().
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
+	 * <strong> Pre-conditions </strong>: it must have been initialized and filled
 	 * the s1 stack and instantiated an s2 stack.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s1 stack must remain unchanged while
+	 * <strong> Post-conditions </strong>: the s1 stack must remain unchanged while
 	 * the s2 stack must contain only one element equal to Null.
 	 * <br>
 	 * <br>
@@ -442,22 +445,23 @@ public class TestTweaks {
 	 * {@link myAdapter.StackAdapter#lastIndexOf(Object)}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method is tested using it on one
+	 * <strong> Test Case Design </strong>: the method is tested using it on one
 	 * stack several times with different parameters.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the Lastindexof method () is used on s1
+	 * <strong> Test Description </strong>: the Lastindexof method () is used on s1
 	 * stack multiple times passing as parameters first two objects on the stack,
 	 * then one not present and finally a null element on the stack. It is
 	 * controlled with assertEquals () and with the help of A variable int which
 	 * the index returned by the method is the one waited.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
+	 * <strong> Pre-conditions </strong>: it must have been initialized and filled
 	 * An s1 stack.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s1 stack must have remained unchanged.
+	 * <strong> Post-conditions </strong>: the s1 stack must have remained
+	 * unchanged.
 	 * <br>
 	 * <br>
 	 * <strong> Expected results </strong>: if the test is passed no errors are
@@ -484,22 +488,23 @@ public class TestTweaks {
 	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#peek()}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the functioning of the
+	 * <strong> Test Case Design </strong>: the functioning of the
 	 * Method in basic cases, just popping items from the stack. And throwing
 	 * exception when needed.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: in this test some elements are
+	 * <strong> Test Description </strong>: in this test some elements are
 	 * already into the stack. Then the stack is peeked at, to verify that the
 	 * correct elements are present on top.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: a s1 must have been initialized and must
+	 * <strong> Pre-conditions </strong>: a s1 must have been initialized and must
 	 * having been instantiated with elements inside. s2 has no elements instead
 	 * pop(), peek(), push(), Stackadapter () must work correctly.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: s1 has to contain 6 elements, s2 is empty.
+	 * <strong> Post-conditions </strong>: s1 has to contain 6 elements, s2 is
+	 * empty.
 	 * <br>
 	 * <br>
 	 * <strong> Expected results </strong>: The item peeked are "Dog" and
@@ -530,22 +535,23 @@ public class TestTweaks {
 	 * {@link myAdapter.StackAdapter#search(Object)}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the functioning of the
+	 * <strong> Test Case Design </strong>: the functioning of the
 	 * Method in basic cases, just searching items from the top of stack.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: in this test some elements that are
+	 * <strong> Test Description </strong>: in this test some elements that are
 	 * already
 	 * into the stack are pushed or popped from it verifing that the item we search
 	 * is in correct distance from the top of the stack. subList are also checked.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: a s1 must have been initialized and must
+	 * <strong> Pre-conditions </strong>: a s1 must have been initialized and must
 	 * having been instantiated with elements inside. s2 has no elements instead
 	 * empty(), pop(), push(), Stackadapter () must work correctly.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: s1 has to contain 7 elements, s2 is empty.
+	 * <strong> Post-conditions </strong>: s1 has to contain 7 elements, s2 is
+	 * empty.
 	 * <br>
 	 * <br>
 	 * <strong> Expected results </strong>: Distances from top of the stack: Null =
@@ -572,11 +578,11 @@ public class TestTweaks {
 	 * {@link myAdapter.StackAdapter#set(int, Object)}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method on a more stack is used
+	 * <strong> Test Case Design </strong>: the method on a more stack is used
 	 * times passing different parameters valid and not valid.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the set method is used more
+	 * <strong> Test Description </strong>: the set method is used more
 	 * times on the s1 stack with different parameters to change the elements.
 	 * The exceptions launched by the method when passing an index as a parameter
 	 * of non -valid position Because less than 0 or greater or equal to the number
@@ -586,11 +592,11 @@ public class TestTweaks {
 	 * element correct in the correct position.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
+	 * <strong> Pre-conditions </strong>: it must have been initialized and filled
 	 * An s1 stack.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the size of the s1 stack must remain
+	 * <strong> Post-conditions </strong>: the size of the s1 stack must remain
 	 * unchanged but
 	 * Some elements must have been replaced by others.
 	 * <br>
@@ -634,22 +640,23 @@ public class TestTweaks {
 	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#size()}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method is tested by applying it on
+	 * <strong> Test Case Design </strong>: the method is tested by applying it on
 	 * different stacks
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the Size () method is used first on
+	 * <strong> Test Description </strong>: the Size () method is used first on
 	 * stack s1 that contains multiple elements, then on the s2 stack initially
 	 * empty and then with a element inserted with the Add () method. It is checked
 	 * that the returns are those that are Wait with the method Assertequals ().
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
+	 * <strong> Pre-conditions </strong>: it must have been initialized and filled
 	 * An s1 stack
 	 * And an s2 stack must have been instantiated.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s1 stack must remain unchanged and the
+	 * <strong> Post-conditions </strong>: the s1 stack must remain unchanged and
+	 * the
 	 * s2 stack must
 	 * contain only one element.
 	 * <br>
@@ -672,12 +679,12 @@ public class TestTweaks {
 	 * <strong> Summary </strong>: Test of {@link myAdapter.StackAdapter#toArray()}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method on two stacks is used
+	 * <strong> Test Case Design </strong>: the method on two stacks is used
 	 * different for
 	 * check its operation.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: an empty s2 stack is initialized and The
+	 * <strong> Test Description </strong>: an empty s2 stack is initialized and The
 	 * method is used Toarray () On this to see its behavior on an empty stack. He
 	 * comes Then used the method On the s1 stack that has elements and controls
 	 * with the help of the Size method () that the Array created are of the same
@@ -685,11 +692,11 @@ public class TestTweaks {
 	 * GET () method that contain the same elements.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
+	 * <strong> Pre-conditions </strong>: it must have been initialized and filled
 	 * an s1 stack and instantiated an s2 stack.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s1 stack must have remained unchanged
+	 * <strong> Post-conditions </strong>: the s1 stack must have remained unchanged
 	 * and
 	 * The s2 stack
 	 * must have been initialized. An array that has the
@@ -720,12 +727,12 @@ public class TestTweaks {
 	 * {@link myAdapter.StackAdapter#toArray(Object[])}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: the method on different stacks is used
+	 * <strong> Test Case Design </strong>: the method on different stacks is used
 	 * passing different array parameters to test their behavior in the various
 	 * cases.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: two different array are created. third
+	 * <strong> Test Description </strong>: two different array are created. third
 	 * initialized array with the Toarray method to which it
 	 * comes passed as a parameter one of the first two arrays created. Are inserted
 	 * Elements in Array and check that they are overwritten when these arrays are
@@ -736,12 +743,12 @@ public class TestTweaks {
 	 * correspond to those of the stack or are the same as Null when they have to.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
+	 * <strong> Pre-conditions </strong>: it must have been initialized and filled
 	 * An s1 stack and
 	 * An s2 stack must have been instantiated.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: the s2 stack must have been initialized,
+	 * <strong> Post-conditions </strong>: the s2 stack must have been initialized,
 	 * The s1 stack
 	 * It must have remained unchanged and three array must have been created.
 	 * <br>
@@ -786,13 +793,13 @@ public class TestTweaks {
 	 * {@link myAdapter.StackAdapter#subList(int, int)}
 	 * <br>
 	 * <br>
-	 * <strong> test case design </strong>: a sublist is created and come
+	 * <strong> Test Case Design </strong>: a sublist is created and come
 	 * Test several
 	 * methods for testing the correct creation of the sublist and operation
 	 * of the methods on the sublist.
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: an empty s2 stack is initialized and
+	 * <strong> Test Description </strong>: an empty s2 stack is initialized and
 	 * the subList () method with unrealized indices to verify that launch
 	 * correctly the exception.
 	 * The exception is captured. One is then created
@@ -803,12 +810,12 @@ public class TestTweaks {
 	 * correctly.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: it must have been initialized and filled
+	 * <strong> Pre-conditions </strong>: it must have been initialized and filled
 	 * an s1 stack and
 	 * instantiated an s2 stack.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: there must be an s1 stack and an s2 stack
+	 * <strong> Post-conditions </strong>: there must be an s1 stack and an s2 stack
 	 * not empty
 	 * <br>
 	 * <br>
@@ -839,7 +846,6 @@ public class TestTweaks {
 		assertFalse(subStack.containsAll(s1));
 		assertEquals("Hello", subStack.get(0));
 
-		int dim = s1.size();
 		subStackdim = subStack.size();
 		assertFalse(subStack.remove("Cat"));
 
@@ -857,15 +863,6 @@ public class TestTweaks {
 		assertTrue(s1.contains("Hello"));
 		subStack.set(0, "Cat");
 		assertNotEquals(s1, subStack);
-
-		HListIterator iter = subStack.listIterator();
-		assertEquals("Cat", iter.next());
-
-		dim = s1.size();
-		subStackdim = subStack.size();
-		iter.add("House");
-		assertEquals(dim + 1, s1.size());
-		assertEquals(subStackdim + 1, subStack.size());
 	}
 
 }

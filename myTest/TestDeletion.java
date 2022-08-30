@@ -42,7 +42,7 @@ import java.util.EmptyStackException;
  * Stackadapter s1 and s2, the
  * first used in all tests and the second only where necessary, and a
  * Object Array used
- * To insert elements on the lists. In some tests other variables are then used
+ * To insert elements on the stacks. In some tests other variables are then used
  * when necessary.
  * 
  * @author Davide Baggio
@@ -50,7 +50,7 @@ import java.util.EmptyStackException;
 public class TestDeletion {
 
     private StackAdapter s1 = null, s2 = null;
-    Object[] arr = new Object[] { "Pippo", "Pluto", "Paperino", "Topolino", "Pippo" };
+    Object[] arr = new Object[] { "Dog", "Cat", "World", "Hello", "Dog" };
 
     /**
      * setup before each test.
@@ -85,7 +85,7 @@ public class TestDeletion {
      * <strong> test description </strong>: in this test some elements that are
      * already
      * into the stack are popped from it verifing that the size is correct. Pop() is
-     * checked also for sublists.
+     * checked also for substacks.
      * <br>
      * <br>
      * <strong> pre-condition </strong>: a s1 must have been initialized and must
@@ -110,7 +110,7 @@ public class TestDeletion {
             assertEquals(EmptyStackException.class, e.getClass());
         }
 
-        assertEquals("Pippo", s1.pop());
+        assertEquals("Dog", s1.pop());
 
         StackAdapter temp = (StackAdapter) s1.subList(1, 3);
         temp.pop();
@@ -121,6 +121,7 @@ public class TestDeletion {
             s1.pop();
         }
         assertTrue(s1.empty());
+        assertTrue(temp.isEmpty());
     }
 
     /**
@@ -129,45 +130,44 @@ public class TestDeletion {
      * <br>
      * <br>
      * <strong> test case design </strong>: different elements are removed from one
-     * List to check the correct
+     * stack to check the correct
      * operation of the removal.
      * <br>
      * <br>
      * <strong> test description </strong>: the test tries to remove from the s1
      * previously initialized e
-     * filled a null element not present in the list and then a present element
-     * In the list with the
-     * Remove () method. A NULL element is added to the list with the method
+     * filled a null element not present in the stack and then a present element
+     * In the stack with the
+     * Remove () method. A NULL element is added to the stack with the method
      * Add () to try the
      * Removal of a Null element with the Remove method. With the help of a
      * Boolean variable and one
-     * Int variable is controlled through the assertive methods (), assertfalse () e
+     * Int variable is controlled through the assertTrue methods (), assertfalse ()
+     * e
      * Assertequals ()
-     * that the various removals have been successful and the size of the list is
+     * that the various removals have been successful and the size of the stack is
      * changed correctly.
      * <br>
      * <br>
      * <strong> pre-condition </strong>: it must have been initialized and filled
-     * An s1 list.
+     * An s1 stack.
      * <br>
      * <br>
-     * <strong> post-condition </strong>: the s1 list must contain all
+     * <strong> post-condition </strong>: the s1 stack must contain all
      * initial elements except one that
      * has been removed and no new element. Its size must be
      * decreased by 1.
      * <br>
      * <br>
-     * <strong> Expected Results </strong>: if the test is successful it is not
-     * printed
-     * No string because all
-     * linked to the errors of assertive (), assertfalse () and assertquals ().
+     * <strong> Expected Results </strong>: if the test is successful no error is
+     * printed adn items are correctly removed from the stack.
      */
     @Test
     public void testRemoveObj() {
         boolean removed = s1.remove(null);
         int dim = s1.size();
         assertFalse(removed);
-        removed = s1.remove("Paperino");
+        removed = s1.remove("World");
         assertTrue(removed);
         s1.add(null);
         removed = s1.remove(null);
@@ -186,22 +186,18 @@ public class TestDeletion {
      * <br>
      * <br>
      * <strong> test description </strong>: the removal of elements is tested in
-     * positions of valid indices e
-     * not valid, for example minor indices of 0 and greater indices of the size
-     * of the s1. They come
-     * captured the exceptions launched by the Remove (Int Index) method with
-     * parameters
-     * not valid and come
-     * Printed of the trial notice messages. The elements are compared
+     * positions of valid and not valid indeces, for example minor indices of 0 and
+     * greater indices of the size
+     * of the s1. Exception are caught when thrown. The elements are compared
      * removed with the elements
      * which had to be removed through the use of assertionquals () e
      * the correct is checked
-     * change of the size of the list with the help of a variable int e
+     * change of the size of the stack with the help of a variable int e
      * of the Size method ().
      * <br>
      * <br>
      * <strong> pre-condition </strong>: it must have been initialized and filled
-     * An s1 list.
+     * An s1 stack.
      * <br>
      * <br>
      * <strong> post-condition </strong>: the size of the s1 must be decreased
@@ -209,10 +205,8 @@ public class TestDeletion {
      * contain new elements.
      * <br>
      * <br>
-     * <strong> Expected results </strong>: if the test is passed they must be
-     * two strings were printed at the
-     * capturing exceptions but no error message linked to
-     * Assertequals ().
+     * <strong> Expected results </strong>: if the test is passed no errors are
+     * printed.
      */
     @Test
     public void testRemoveAtIndex() {
@@ -231,9 +225,9 @@ public class TestDeletion {
             assertEquals(IndexOutOfBoundsException.class, e.getClass());
         }
         removed = s1.remove(3);
-        assertEquals("Topolino", removed);
+        assertEquals("Hello", removed);
         removed = s1.remove(0);
-        assertEquals("Pippo", removed);
+        assertEquals("Dog", removed);
         assertEquals(dim - 2, s1.size());
     }
 
@@ -243,42 +237,37 @@ public class TestDeletion {
      * <br>
      * <br>
      * <strong> test case design </strong>: the method is tested by applying it on
-     * a list passing as a parameter
-     * Another list.
+     * a stack passing as a parameter
+     * Another stack.
      * <br>
      * <br>
-     * <strong> test description </strong>: the s1 list method is used
-     * passing the s2 list as a parameter
+     * <strong> test description </strong>: the s1 stack method is used
+     * passing the s2 stack as a parameter
      * first equal to Null, then initialized with the Stackadapter () but empty
      * method
      * And finally after having
      * inserted some elements with Add (). The launch is checked
      * of the exception when it is passed
-     * The s2 list equal to Null. They are tested with assertive (), assertfalse ()
+     * The s2 stack equal to Null. They are tested with assertTrue (), assertfalse
+     * ()
      * e
      * Assertequals (), with
      * the help of a Boolean variable, an int and the size () method, the
      * successful insertions and the
-     * Correct modification of the size of the s1 list.
+     * Correct modification of the size of the s1 stack.
      * <br>
      * <br>
-     * <strong> pre-condition </strong>: it must have been initialized and filled
-     * An s1 list, instantiated and mail
-     * Equal to Null an s2 list is initialized an ARCY ACC with at least two
-     * Elements in the first two
-     * positions.
+     * <strong> pre-condition </strong>: s1 stack initialized with elements inside.
+     * s2 stack initialized as empty.
      * <br>
      * <br>
-     * <strong> post-condition </strong>: the s1 list must contain 3 elements in
+     * <strong> post-condition </strong>: the s1 stack must contain 3 elements in
      * less than the start of the test
-     * And it must not contain any new element or belonging to the s2 list.
+     * And it must not contain any new element or belonging to the s2 stack.
      * <br>
      * <br>
-     * <strong> Expected Results </strong>: the test is passed if it is printed
-     * A string with capture
-     * of the exception and no string linked to the errors of the methods
-     * Assertequals (), ASSERTRUE () e
-     * assertfalse ().
+     * <strong> Expected Results </strong>: the test is passed if no errors are
+     * printed and 3 elements are removed from stack s1.
      */
     @Test
     public void testRemoveAll() {
@@ -305,36 +294,34 @@ public class TestDeletion {
      * <br>
      * <br>
      * <strong> test case design </strong>: the method is tested by applying it more
-     * times to the same list.
+     * times to the same stack.
      * <br>
      * <br>
      * <strong> test description </strong>: the Clear () method to be test comes
      * Applied twice
-     * to the same s1 list, the first time while it contains elements and the second
+     * to the same s1 stack, the first time while it contains elements and the
+     * second
      * After eliminating them with
-     * The first use of the method. With the help of the ISEMPTY () method, yes
-     * Check that the s1 list is not
+     * The first use of the method. With the help of the ISEMPTY () method, we
+     * Check that the s1 stack is not
      * Initially empty and subsequently to the use of the Clear method ()
      * through methods
-     * assertfalse () and assertive ().
+     * assertfalse () and assertTrue ().
      * <br>
      * <br>
-     * <strong> pre-condition </strong>: the s1 list must have been initialized e
+     * <strong> pre-condition </strong>: the s1 stack must have been initialized e
      * filled.
      * <br>
      * <br>
-     * <strong> post-condition </strong>: the s1 list must be empty.
+     * <strong> post-condition </strong>: the s1 stack must be empty.
      * <br>
      * <br>
-     * <strong> Expected results </strong>: the test is passed if it does not come
-     * no string printed
-     * of error linked to assertive () and assertive () methods.
+     * <strong> Expected results </strong>: the test is passed if no error is
+     * printed and s1 stack is correctly empty.
      */
     @Test
     public void testClear() {
         assertFalse(s1.isEmpty());
-        s1.clear();
-        assertTrue(s1.isEmpty());
         s1.clear();
         assertTrue(s1.isEmpty());
     }
@@ -344,38 +331,35 @@ public class TestDeletion {
      * {@link myAdapter.StackAdapter#retainAll(HCollection)}
      * <br>
      * <br>
-     * <strong> test case design </strong>: an s2 list is changed several times
+     * <strong> test case design </strong>: an s2 stack is changed several times
      * which is passed
-     * as a parameter of the retainal method () applied to the s1 list.
+     * as a parameter of the retainal method () applied to the s1 stack.
      * <br>
      * <br>
      * <strong> test description </strong>: it is initialized and filled with
-     * Objects a list
-     * s2, which is passed as a parameter several times to the retainal method ()
-     * Applied to the s1 list. They come
-     * removed a little at the time of the elements from the s2 list and repeat
-     * itself
-     * The Retainall operation (). The
+     * Objects a stack
+     * s2, which is passed as a parameter several times to the retainall method ()
+     * Applied to the s1 stack. They are
+     * removed a little at the time of the elements from the s2 stack. The
      * correct functioning of the method is tested with assertionquals () and a
-     * ASSERTRUE () that
-     * with the help of some intra variables they control the correct
+     * assertTrue () that
+     * with the help of some extra variables they control the correct
      * Edit size
-     * of the lists after the removals.
+     * of the stacks after the removals.
      * <br>
      * <br>
      * <strong> pre-condition </strong>: it must have been initialized and filled
-     * An s1 list
-     * And an s2 list must have been instantiated and placed equal to Null.
+     * An s1 stack
+     * And an s2 stack must have been instantiated and placed equal to Null.
      * <br>
      * <br>
-     * <strong> post-condition </strong>: the s1 list and the s2 list must be
+     * <strong> post-condition </strong>: the s1 stack and the s2 stack must be
      * Both empty.
      * <br>
      * <br>
-     * <strong> Expected results </strong>: if the test is passed it does not come
-     * any printed
-     * string because linked to the percori of assertive () and assertive ()
-     * methods.
+     * <strong> Expected results </strong>: if the test is passed no errors are
+     * printed. s1 and s2 stacks have no elements inside, due to the retain all
+     * method used after the s2.clear() call.
      */
     @Test
     public void testRetainAll() {
@@ -388,13 +372,13 @@ public class TestDeletion {
         s1.retainAll(s2);
         assertEquals(s2, s1);
 
-        s2.remove("Pippo");
+        s2.remove("Dog");
         s1.retainAll(s2);
         int dim1 = s1.size();
         int dim2 = s2.size();
         assertEquals(dim2 + 1, dim1);
 
-        s2.remove("Pippo");
+        s2.remove("Dog");
         s1.retainAll(s2);
         dim1 = s1.size();
         dim2 = s2.size();

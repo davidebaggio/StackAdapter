@@ -15,13 +15,12 @@ import java.util.NoSuchElementException;
  * <strong>Test Suite Design</strong>: The design of this thest suite is all
  * about
  * testing each
- * method of the Vector class. The reason is to isolate every type of operation
+ * method of the StackIterator class. The reason is to isolate every type of
+ * operation
  * in order to validate each functionality.
  * <br>
  * <br>
- * <strong>Pre-condition</strong>: J2RE 1.4.2 and JUnit 4.13.1 installed and
- * added to the
- * path. A
+ * <strong>Pre-conditions</strong>:A
  * new empty object of type StackAdapter must always be instantiated before
  * each test. All execution variables are never in an uninitialized state (i.e.
  * stack = null) unless explicitly desired. Methods that take as parameters
@@ -32,7 +31,7 @@ import java.util.NoSuchElementException;
  * the verification after the invocation of the tested methods
  * <br>
  * <br>
- * <strong>Post-Condition</strong>: the methods implemented must always modify
+ * <strong>Post-Conditions</strong>: the methods implemented must always modify
  * the stacks
  * so that
  * the elements contained are exactly those expected starting from their manual
@@ -100,12 +99,12 @@ public class IteratorTest {
 	 * the method check if it has more elements in the stack.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: stack is initialize as Empty and has to
+	 * <strong>Pre-conditions</strong>: stack is initialize as Empty and has to
 	 * initialize its own
 	 * iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Iterator should find itself in the last
+	 * <strong>Post-Conditions</strong>: Iterator should find itself in the last
 	 * position of the
 	 * stack.
 	 * <br>
@@ -145,12 +144,12 @@ public class IteratorTest {
 	 * order to throw NoSuchElementException.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: stack is initialize as Empty and has to
+	 * <strong>Pre-conditions</strong>: stack is initialize as Empty and has to
 	 * initialize its own
 	 * iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Iterator should find itself in the last
+	 * <strong>Post-Conditions</strong>: Iterator should find itself in the last
 	 * position of the
 	 * stack.
 	 * <br>
@@ -196,12 +195,13 @@ public class IteratorTest {
 	 * method is called after 5 elements have been added to the stack;
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: stack is initialize as Empty and has to
+	 * <strong>Pre-conditions</strong>: stack is initialize as Empty and has to
 	 * initialize its own
 	 * iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Only three elements should be present in the
+	 * <strong>Post-Conditions</strong>: Only three elements should be present in
+	 * the
 	 * stack.
 	 * <br>
 	 * <br>
@@ -254,12 +254,12 @@ public class IteratorTest {
 	 * to be thrown then the add method is called;
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: stack is initialize as Empty and has to
+	 * <strong>Pre-conditions</strong>: stack is initialize as Empty and has to
 	 * initialize its own
 	 * iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Three elements should be present in the
+	 * <strong>Post-Conditions</strong>: Three elements should be present in the
 	 * stack.
 	 * <br>
 	 * <br>
@@ -291,12 +291,12 @@ public class IteratorTest {
 	 * the method check if it has more elements before him in the stack.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: stack is initialize as Empty and has to
+	 * <strong>Pre-conditions</strong>: stack is initialize as Empty and has to
 	 * initialize its own
 	 * iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Iterator should find itself in the first
+	 * <strong>Post-Conditions</strong>: Iterator should find itself in the first
 	 * position of the
 	 * stack.
 	 * <br>
@@ -335,12 +335,12 @@ public class IteratorTest {
 	 * method is called.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: stack is initialize as Empty and has to
+	 * <strong>Pre-conditions</strong>: stack is initialize as Empty and has to
 	 * initialize its own
 	 * iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Two elements are correctly added to the
+	 * <strong>Post-Conditions</strong>: Two elements are correctly added to the
 	 * stack and the
 	 * iterator
 	 * should return correct indexes.
@@ -377,12 +377,12 @@ public class IteratorTest {
 	 * order to throw NoSuchElementException.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: stack is initialize as Empty and has to
+	 * <strong>Pre-conditions</strong>: stack is initialize as Empty and has to
 	 * initialize its own
 	 * iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Iterator should find itself in the first
+	 * <strong>Post-Conditions</strong>: Iterator should find itself in the first
 	 * position of the
 	 * stack.
 	 * <br>
@@ -427,12 +427,12 @@ public class IteratorTest {
 	 * method is called.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: stack is initialize as Empty and has to
+	 * <strong>Pre-conditions</strong>: stack is initialize as Empty and has to
 	 * initialize its own
 	 * iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Two elements are correctly added to the
+	 * <strong>Post-Conditions</strong>: Two elements are correctly added to the
 	 * stack and the
 	 * iterator
 	 * should return correct indexes.
@@ -466,12 +466,12 @@ public class IteratorTest {
 	 * to be thrown then the set method is called;
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: stack is initialize as Empty and has to
+	 * <strong>Pre-conditions</strong>: stack is initialize as Empty and has to
 	 * initialize its own
 	 * iterator.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Three elements should be present in the
+	 * <strong>Post-Conditions</strong>: Three elements should be present in the
 	 * stack.
 	 * <br>
 	 * <br>

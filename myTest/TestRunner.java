@@ -27,6 +27,12 @@ public class TestRunner {
 		Result res;
 		System.out.println("**Test in execution..**\n");
 
+		// uncomment to add more testCalsses
+		/*
+		 * res = JUnitCore.runClasses();
+		 * esitoTest(res);
+		 */
+
 		System.out.println("\nTest of Vector..");
 		res = JUnitCore.runClasses(VectorTest.class);
 		esitoTest(res);

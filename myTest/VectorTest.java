@@ -10,8 +10,7 @@ import java.util.NoSuchElementException;
  * <strong>Summary</strong>: This test suite provides information about the
  * correct working of
  * the class {@link myAdapter.Vector}, which works as the adaptee of the
- * {@link myAdapter.StackAdapter} class.
- * <p>
+ * {@link myAdapter.StackAdapter} class
  * <br>
  * <br>
  * <strong>Test Suite Design</strong>: The design of this thest suite is all
@@ -21,7 +20,7 @@ import java.util.NoSuchElementException;
  * <br>
  * <br>
  * 
- * <strong>Pre-condition</strong>: J2RE 1.4.2 and JUnit 4.13.1 installed and
+ * <strong>Pre-conditions</strong>: J2RE 1.4.2 and JUnit 4.13.1 installed and
  * added to the path. A
  * new empty object of type ListAdapter must always be instantiated before
  * each test. All execution variables are never in an uninitialized state (i.e.
@@ -34,7 +33,7 @@ import java.util.NoSuchElementException;
  * <br>
  * <br>
  * 
- * <strong>Post-Condition</strong>: All the test have to provide a positive
+ * <strong>Post-Conditions</strong>: All the test have to provide a positive
  * outcome given true
  * logical expression
  * <br>
@@ -84,7 +83,6 @@ public class VectorTest {
 	/**
 	 * <strong>Summary</strong>: Tests the
 	 * {@link myAdapter.Vector#addElement(Object)} method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -101,10 +99,10 @@ public class VectorTest {
 	 * methods works correctly
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The vector has to be initialize as empty.
+	 * <strong>Pre-conditions</strong>: The vector has to be initialize as empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the Vector.
 	 * <br>
 	 * <br>
@@ -123,7 +121,6 @@ public class VectorTest {
 	/**
 	 * <strong>Summary</strong>: Tests the {@link myAdapter.Vector#capacity()}
 	 * method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -138,10 +135,10 @@ public class VectorTest {
 	 * then the Vector.size() and Vector.capacity() are called.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The Vector has to be initialized as Empty
+	 * <strong>Pre-conditions</strong>: The Vector has to be initialized as Empty
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the vector and more
 	 * elements can be stored.
 	 * <br>
@@ -159,7 +156,6 @@ public class VectorTest {
 	/**
 	 * <strong>Summary</strong>: Tests the {@link myAdapter.Vector#contains(Object)}
 	 * method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -174,10 +170,10 @@ public class VectorTest {
 	 * that the element that has been passed is present.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: The Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the Vector
 	 * <br>
 	 * <br>
@@ -196,7 +192,6 @@ public class VectorTest {
 	/**
 	 * <strong>Summary</strong>: Tests the
 	 * {@link myAdapter.Vector#copyInto(Object[])} method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -212,10 +207,10 @@ public class VectorTest {
 	 * print the results.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: The vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the vector and a
 	 * new array with all the element is created.
 	 * <br>
@@ -253,7 +248,6 @@ public class VectorTest {
 	/**
 	 * <strong>Summary</strong>: Tests the {@link myAdapter.Vector#elementAt(int)}
 	 * method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -270,10 +264,10 @@ public class VectorTest {
 	 * element.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: The vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the vector and an
 	 * element has to be returned as the result of the call to this function.
 	 * <br>
@@ -299,7 +293,6 @@ public class VectorTest {
 	/**
 	 * <strong>Summary</strong>: Tests the
 	 * {@link myAdapter.Vector#ensureCapacity(int)} method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -314,10 +307,10 @@ public class VectorTest {
 	 * need.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: The Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the Vector and the
 	 * min capacity is increased.
 	 * <br>
@@ -341,7 +334,6 @@ public class VectorTest {
 	/**
 	 * <strong>Summary</strong>: Tests the {@link myAdapter.Vector#firstElement()}
 	 * method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -357,10 +349,10 @@ public class VectorTest {
 	 * is called again.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the vector and the
 	 * first element is returned;
 	 * <br>
@@ -386,7 +378,6 @@ public class VectorTest {
 	/**
 	 * <strong>Summary</strong>: Tests the {@link myAdapter.Vector#indexOf(Object)},
 	 * {@link myAdapter.Vector#indexOf(Object, int)} methods
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -402,10 +393,10 @@ public class VectorTest {
 	 * explains.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: The Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the Vector and the
 	 * methods have to return indexes of the object passed as paramaters.
 	 * <br>
@@ -437,7 +428,6 @@ public class VectorTest {
 	 * <strong>Summary</strong>: Tests the
 	 * {@link myAdapter.Vector#insertElementAt(Object, int)}
 	 * method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -453,10 +443,10 @@ public class VectorTest {
 	 * Then another element is inserted at index = 5;
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: The Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Four elements should be present in the
+	 * <strong>Post-Conditions</strong>: Four elements should be present in the
 	 * Vector at the end of
 	 * the test.
 	 * <br>
@@ -484,7 +474,6 @@ public class VectorTest {
 
 	/**
 	 * <strong>Summary</strong>: Tests the {@link myAdapter.Vector#isEmpty()} method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -500,10 +489,10 @@ public class VectorTest {
 	 * it is not empty anymore.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the vector and the
 	 * Vector is not Empty;
 	 * <br>
@@ -526,7 +515,6 @@ public class VectorTest {
 	/**
 	 * <strong>Summary</strong>: Tests the {@link myAdapter.Vector#lastElement()}
 	 * method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -542,10 +530,10 @@ public class VectorTest {
 	 * is called again.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the vector and the
 	 * last element is returned;
 	 * <br>
@@ -572,7 +560,6 @@ public class VectorTest {
 	 * <strong>Summary</strong>: Tests the
 	 * {@link myAdapter.Vector#lastIndexOf(Object)},
 	 * {@link myAdapter.Vector#lastIndexOf(Object, int)} methods
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -589,10 +576,10 @@ public class VectorTest {
 	 * explains.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: The Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: The three elements are correctly added to
+	 * <strong>Post-Conditions</strong>: The three elements are correctly added to
 	 * the Vector and the
 	 * methods have to return the last indexes of the object passed as paramaters.
 	 * <br>
@@ -624,7 +611,6 @@ public class VectorTest {
 	 * <strong>Summary</strong>: Tests the
 	 * {@link myAdapter.Vector#removeElementAt(int)}
 	 * method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -640,10 +626,11 @@ public class VectorTest {
 	 * Then another element is removed at index = 5;
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: The Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Two elements should be present in the Vector
+	 * <strong>Post-Conditions</strong>: Two elements should be present in the
+	 * Vector
 	 * at the end of
 	 * the test.
 	 * <br>
@@ -673,7 +660,6 @@ public class VectorTest {
 	 * <strong>Summary</strong>: Tests the
 	 * {@link myAdapter.Vector#setElementAt(Object, int)}
 	 * method
-	 * <p>
 	 * <br>
 	 * <br>
 	 * <strong>Test Case Design</strong>: the design is very simple as it is related
@@ -689,10 +675,10 @@ public class VectorTest {
 	 * Then another element is set at index = 5;
 	 * <br>
 	 * <br>
-	 * <strong>Pre-condition</strong>: The Vector has to be initialize as Empty.
+	 * <strong>Pre-conditions</strong>: The Vector has to be initialize as Empty.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Three elements should be present in the
+	 * <strong>Post-Conditions</strong>: Three elements should be present in the
 	 * Vector at the end of
 	 * the test.
 	 * <br>

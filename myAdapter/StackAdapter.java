@@ -18,17 +18,17 @@ public class StackAdapter extends Vector implements HList {
 	private int from, to;
 	private Vector vector;
 	private StackAdapter father;
-	boolean isFather;
+	boolean root;
 
 	/**
 	 * Construct an empty stack.
 	 */
 	public StackAdapter() {
 		this.vector = new Vector();
-		from = 0;
-		to = 0;
-		isFather = true;
-		father = null;
+		this.from = 0;
+		this.to = 0;
+		this.root = true;
+		this.father = null;
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class StackAdapter extends Vector implements HList {
 	/**
 	 * Method that push an element on top of the stack.
 	 * 
-	 * @param obj
+	 * @param obj element to push.
 	 * @return the element given as parameter.
 	 */
 	public Object push(Object obj) {
@@ -77,13 +77,15 @@ public class StackAdapter extends Vector implements HList {
 
 	/**
 	 * Returns the 1-based position where an object is on this stack. If the object
-	 * o occurs as an item in this stack, this method returns the distance from the
+	 * o occurs as an item in this stack, this method returns the distance this.from
+	 * the
 	 * top of the stack of the occurrence nearest the top of the stack; the topmost
 	 * item on the stack is considered to be at distance 1. The equals method is
 	 * used to compare o to the items in this stack.
 	 * 
 	 * @param o - the desired object.
-	 * @return the 1-based position from the top of the stack where the object is
+	 * @return the 1-based position this.from the top of the stack where the object
+	 *         is
 	 *         located; the return value -1 indicates that the object is not on the
 	 *         stack.
 	 */
@@ -91,24 +93,28 @@ public class StackAdapter extends Vector implements HList {
 		int i = this.lastIndexOf(o);
 
 		if (i >= 0) {
-			return size() - i;
+			return this.size() - i;
 		}
 		return -1;
 	}
 
 	@Override
 	public int size() {
-		return (to - from) >= 0 ? (to - from) : Integer.MAX_VALUE;
+		int s = this.to - this.from;
+		if (s >= 0)
+			return s;
+		else
+			return Integer.MAX_VALUE;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return (size() == 0);
+		return (this.size() == 0);
 	}
 
 	@Override
 	public boolean contains(Object obj) {
-		for (int i = from; i < to; i++) {
+		for (int i = this.from; i < this.to; i++) {
 			if (this.vector.elementAt(i) == null) {
 				if (obj == null) {
 					return true;
@@ -128,48 +134,49 @@ public class StackAdapter extends Vector implements HList {
 
 	@Override
 	public Object[] toArray() {
-		Object newArr[] = new Object[size()];
-		for (int i = 0; i < size(); i++) {
-			newArr[i] = get(i);
+		Object arr[] = new Object[this.size()];
+		for (int i = 0; i < this.size(); i++) {
+			arr[i] = this.get(i);
 		}
-		return newArr;
+		return arr;
 	}
 
 	@Override
-	public Object[] toArray(Object arrayTarget[]) {
-		if (arrayTarget == null) {
+	public Object[] toArray(Object target[]) {
+		if (target == null)
 			throw new NullPointerException();
-		}
-		if (arrayTarget.length < size()) {
-			arrayTarget = new Object[size()];
+
+		if (target.length < this.size()) {
+			target = new Object[this.size()];
 		} else {
-			for (int i = 0; i < arrayTarget.length; i++) {
-				arrayTarget[i] = null;
+			for (int i = 0; i < target.length; i++) {
+				target[i] = null;
 			}
 		}
-		for (int i = 0; i < size(); i++) {
-			arrayTarget[i] = get(i);
+		for (int i = 0; i < this.size(); i++) {
+			target[i] = this.get(i);
 		}
-		return arrayTarget;
+		return target;
 	}
 
 	@Override
 	public boolean add(Object obj) {
-		add(size(), obj);
+		add(this.size(), obj);
 		return true;
 	}
 
 	@Override
 	public boolean remove(Object obj) {
-		if (this.vector.indexOf(obj) >= from && this.vector.indexOf(obj) < to) {
-			this.vector.removeElementAt(this.vector.indexOf(obj));
-			to--;
-			boolean isF = isFather;
-			StackAdapter padre = father;
+		int index = this.vector.indexOf(obj);
+		if (index >= this.from && index < this.to) {
+			this.vector.removeElementAt(index);
+			this.to--;
+			boolean isF = this.root;
+			StackAdapter f = this.father;
 			while (!isF) {
-				padre.to--;
-				isF = padre.isFather;
-				padre = padre.father;
+				f.to--;
+				isF = f.root;
+				f = f.father;
 			}
 			return true;
 		}
@@ -198,7 +205,7 @@ public class StackAdapter extends Vector implements HList {
 		HIterator iter = coll.iterator();
 		boolean mod = false;
 		while (iter.hasNext()) {
-			mod = add(iter.next());
+			mod = this.add(iter.next());
 		}
 		return mod;
 	}
@@ -213,8 +220,8 @@ public class StackAdapter extends Vector implements HList {
 		Object toRemove;
 		while (iter.hasNext()) {
 			toRemove = iter.next();
-			while (contains(toRemove)) {
-				mod = remove(toRemove);
+			while (this.contains(toRemove)) {
+				mod = this.remove(toRemove);
 			}
 		}
 		return mod;
@@ -238,20 +245,20 @@ public class StackAdapter extends Vector implements HList {
 
 	@Override
 	public void clear() {
-		if (isFather) {
+		if (root) {
 			this.vector.removeAllElements();
-			to = from;
+			to = this.from;
 		} else {
-			for (int i = size() - 1; i >= 0; i--) {
-				remove(i);
+			for (int i = this.size() - 1; i >= 0; i--) {
+				this.remove(i);
 			}
 		}
 	}
 
 	@Override
 	public Object get(int index) {
-		index = from + index;
-		if (index < from || index >= to) {
+		index = this.from + index;
+		if (index < this.from || index >= to) {
 			throw new IndexOutOfBoundsException();
 		}
 		return this.vector.elementAt(index);
@@ -259,71 +266,53 @@ public class StackAdapter extends Vector implements HList {
 
 	@Override
 	public Object set(int index, Object element) {
-		Object obj = get(index);
-		index = from + index;
+		Object obj = this.get(index);
+		index = this.from + index;
 		this.vector.setElementAt(element, index);
 		return obj;
 	}
 
 	@Override
 	public void add(int index, Object obj) {
-		index = from + index;
-		if (index < from || index > to) {
+		index = this.from + index;
+		if (index < this.from || index > this.to) {
 			throw new IndexOutOfBoundsException();
 		}
 		this.vector.insertElementAt(obj, index);
-		to++;
-		boolean isF = isFather;
-		StackAdapter padre = father;
+		this.to++;
+		boolean isF = this.root;
+		StackAdapter f = this.father;
 		while (!isF) {
-			padre.to++;
-			isF = padre.isFather;
-			padre = padre.father;
+			f.to++;
+			isF = f.root;
+			f = f.father;
 		}
 	}
 
 	@Override
 	public Object remove(int index) {
-		Object obj = get(index);
-		index = from + index;
+		Object obj = this.get(index);
+		index = this.from + index;
 		this.vector.removeElementAt(index);
-		to--;
-		boolean isF = isFather;
-		StackAdapter padre = father;
+		this.to--;
+		boolean isF = this.root;
+		StackAdapter f = this.father;
 		while (!isF) {
-			padre.to--;
-			isF = padre.isFather;
-			padre = padre.father;
+			f.to--;
+			isF = f.root;
+			f = f.father;
 		}
 		return obj;
 	}
 
 	@Override
 	public int indexOf(Object obj) {
-		for (int i = 0; i < size(); i++) {
-			if (get(i) == null) {
-				if (obj == null) {
-					return (i);
-				}
-			} else if ((get(i)).equals(obj)) {
-				return (i);
-			}
-		}
-		return -1;
+		return this.vector.indexOf(obj);
 	}
 
 	@Override
 	public int lastIndexOf(Object obj) {
-		for (int i = (size() - 1); i >= 0; i--) {
-			if (get(i) == null) {
-				if (obj == null) {
-					return (i);
-				}
-			} else if ((get(i)).equals(obj)) {
-				return (i);
-			}
-		}
-		return -1;
+		return this.vector.lastIndexOf(obj);
 	}
 
 	@Override
@@ -331,13 +320,13 @@ public class StackAdapter extends Vector implements HList {
 		if (coll == null) {
 			throw new NullPointerException();
 		}
-		if (index < from || index > to) {
+		if (index < this.from || index > to) {
 			throw new IndexOutOfBoundsException();
 		}
 		boolean mod = false;
 		HIterator iter = coll.iterator();
 		while (iter.hasNext()) {
-			add(index, iter.next());
+			this.add(index, iter.next());
 			index++;
 			mod = true;
 		}
@@ -351,8 +340,8 @@ public class StackAdapter extends Vector implements HList {
 
 	@Override
 	public HListIterator listIterator(int index) {
-		index = from + index;
-		if (index < from || index > to) {
+		index = this.from + index;
+		if (index < this.from || index > this.to) {
 			throw new IndexOutOfBoundsException();
 		}
 		StackIterator iter = new StackIterator();
@@ -364,18 +353,18 @@ public class StackAdapter extends Vector implements HList {
 
 	@Override
 	public HList subList(int fromIndex, int toIndex) {
-		fromIndex = from + fromIndex;
-		toIndex = from + toIndex;
-		if (fromIndex < from || toIndex > to || fromIndex > toIndex) {
+		fromIndex = this.from + fromIndex;
+		toIndex = this.from + toIndex;
+		if (fromIndex < this.from || toIndex > this.to || fromIndex > toIndex) {
 			throw new IndexOutOfBoundsException();
 		}
-		StackAdapter LA = new StackAdapter();
-		LA.vector = this.vector;
-		LA.from = fromIndex;
-		LA.to = toIndex;
-		LA.isFather = false;
-		LA.father = this;
-		return LA;
+		StackAdapter temp = new StackAdapter();
+		temp.vector = this.vector;
+		temp.from = fromIndex;
+		temp.to = toIndex;
+		temp.root = false;
+		temp.father = this;
+		return temp;
 	}
 
 	@Override
@@ -386,15 +375,15 @@ public class StackAdapter extends Vector implements HList {
 		if (this.getClass() != obj.getClass()) {
 			return false;
 		}
-		StackAdapter LAobj = (StackAdapter) obj;
-		if (size() != LAobj.size()) {
+		StackAdapter temp = (StackAdapter) obj;
+		if (size() != temp.size()) {
 			return false;
 		}
-		HIterator TH = this.iterator();
-		HIterator LI = LAobj.iterator();
-		while (LI.hasNext()) {
-			Object n1 = TH.next();
-			Object n2 = LI.next();
+		HIterator iter = this.iterator();
+		HIterator tempIter = temp.iterator();
+		while (tempIter.hasNext()) {
+			Object n1 = iter.next();
+			Object n2 = tempIter.next();
 			if (n1 != null && n2 != null) {
 				if (!n1.equals(n2))
 					return false;
@@ -419,23 +408,24 @@ public class StackAdapter extends Vector implements HList {
 	 * @see myAdapter.StackAdapter
 	 * @see myAdapter.HIterator
 	 * @see myAdapter.HListIterator
+	 * @see myAdapter.HIteratorState
 	 */
 	public class StackIterator implements HListIterator {
 
-		private int prec, succ, NOP; // precedente, successivo, NextOrPrevious
+		private int index;
+		private HIteratorState state;
 
 		/**
 		 * Contructor of the StackIterator. Initialize the state of this iterator.
 		 */
 		public StackIterator() {
-			prec = -1;
-			succ = 0;
-			NOP = 0;
+			this.index = 0;
+			this.state = HIteratorState.IDLE;
 		}
 
 		@Override
 		public boolean hasNext() {
-			return (succ < size());
+			return (this.index < StackAdapter.this.size());
 		}
 
 		@Override
@@ -443,16 +433,15 @@ public class StackAdapter extends Vector implements HList {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
-			Object obj = get(succ);
-			prec++;
-			succ++;
-			NOP = 1;
+			Object obj = get(this.index);
+			this.index++;
+			this.state = HIteratorState.HAS_GONE_NEXT;
 			return obj;
 		}
 
 		@Override
 		public boolean hasPrevious() {
-			return (prec >= 0);
+			return (this.index > 0);
 		}
 
 		@Override
@@ -460,51 +449,53 @@ public class StackAdapter extends Vector implements HList {
 			if (!hasPrevious()) {
 				throw new NoSuchElementException();
 			}
-			Object obj = get(prec);
-			prec--;
-			succ--;
-			NOP = -1;
+			Object obj = get(this.index - 1);
+			this.index--;
+			this.state = HIteratorState.HAS_GONE_PREV;
 			return obj;
 		}
 
 		@Override
 		public int nextIndex() {
-			return succ;
+			return this.index;
 		}
 
 		@Override
 		public int previousIndex() {
-			return prec;
+			if (this.index > 0)
+				return this.index - 1;
+			return -1;
 		}
 
 		@Override
 		public void add(Object obj) {
-			StackAdapter.this.add(succ, obj);
-			prec++;
-			succ++;
-			NOP = 0;
+			StackAdapter.this.add(this.index, obj);
+			this.index++;
+			this.state = HIteratorState.HAS_ADDED;
 		}
 
 		@Override
 		public void remove() {
-			if (NOP == 1) {
-				StackAdapter.this.remove(prec);
-				prec--;
-				succ--;
-			} else if (NOP == -1) {
-				StackAdapter.this.remove(succ);
+			if (this.state == HIteratorState.HAS_GONE_NEXT) {
+				this.previous();
+				StackAdapter.this.remove(this.index);
+				this.state = HIteratorState.HAS_REMOVED;
+			} else if (this.state == HIteratorState.HAS_GONE_PREV) {
+				StackAdapter.this.remove(this.index);
+				this.state = HIteratorState.HAS_REMOVED;
 			} else {
 				throw new IllegalStateException();
 			}
-			NOP = 0;
 		}
 
 		@Override
 		public void set(Object obj) {
-			if (NOP == 1) {
-				StackAdapter.this.set(prec, obj);
-			} else if (NOP == -1) {
-				StackAdapter.this.set(succ, obj);
+			if (this.state == HIteratorState.HAS_GONE_NEXT) {
+				StackAdapter.this.set(this.index - 1, obj);
+				this.state = HIteratorState.IDLE;
+			} else if (this.state == HIteratorState.HAS_GONE_PREV) {
+				StackAdapter.this.set(this.index, obj);
+				this.state = HIteratorState.IDLE;
 			} else {
 				throw new IllegalStateException();
 			}

@@ -10,25 +10,25 @@ import static org.junit.Assert.*;
  * Methods that insert objects on a Stack.
  * <br>
  * <br>
- * <strong>Test Suite Design</strong>: This class contains 5 tests cases who
+ * <strong>Test Suite Design</strong>: This class contains 4 tests cases who
  * tests 5 different
  * Methods of the Stackadapter class (), each of which inserts one or more
  * Elements in different positions.
  * <br>
  * <br>
- * <strong>Pre-Condition</strong>: Before each test it must be initialized
+ * <strong>Pre-Conditions</strong>: Before each test it must be initialized
  * at least one Stack,
  * even if empty.
  * <br>
  * <br>
- * <strong>Post-Condition</strong>: After each test it must have been done
+ * <strong>Post-Conditions</strong>: After each test it must have been done
  * At least an insertion
  * In at least one Stack.
  * <br>
  * <br>
- * <strong>Test Cases</strong>: There are 5 tests of this class and are:
+ * <strong>Test Cases</strong>: There are 4 tests of this class and are:
  * {@link #testPush()}, {@link #testAdd()}, {@link #testAddAll()},
- * {@link #testAddAllAtIndex()}, {@link #testAddAtIndex()}
+ * {@link #testAddAtIndex()}
  * Each of them serves test a different method of the Stackadapter class.
  * <br>
  * <br>
@@ -80,13 +80,13 @@ public class TestInsertion {
 	 * Push() is checked also for subStacks.
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: a s1 must have been initialized and must
+	 * <strong> pre-conditions </strong>: a s1 must have been initialized and must
 	 * having been instantiated
 	 * Get () and empty()
 	 * Stackadapter () must work correctly.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: s1 has to contain 3 elements.
+	 * <strong> post-conditions </strong>: s1 has to contain 3 elements.
 	 * <br>
 	 * <br>
 	 * <strong> Expected results </strong>: at index 0 = "Davide", at index 1 =
@@ -130,19 +130,18 @@ public class TestInsertion {
 	 * Stack 1 to see if all objects have been correctly inserted.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: A Stack 1 must have been instantiated. The
+	 * <strong>Pre-Conditions</strong>: A Stack 1 must have been instantiated. The
 	 * Add
 	 * (Object OBJ) method and the Size () method must be working to pass the test.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Stack 1 has 3 elements and the last of
+	 * <strong>Post-Conditions</strong>: Stack 1 has 3 elements and the last of
 	 * These are Stack 2 that contains
 	 * a null element.
 	 * <br>
 	 * <br>
-	 * <strong>Expected results</strong>: If the test is passed it does not come
-	 * launched no exceptional neither
-	 * Printed no message.
+	 * <strong>Expected results</strong>: If the test is passed no errors are
+	 * printed and some elements are added to both stack s1 and s2.
 	 */
 	@Test
 	public void testAdd() {
@@ -163,161 +162,101 @@ public class TestInsertion {
 	}
 
 	/**
-	 * <strong>Summary</strong>: Test of
-	 * {@link myAdapter.StackAdapter#addAll(HCollection)}
+	 * <strong>Summary</strong>: Tests the
+	 * {@link myAdapter.StackAdapter#addAll(HCollection)} and
+	 * {@link myAdapter.StackAdapter#addAll(int, HCollection)} methods
 	 * <br>
 	 * <br>
-	 * <strong>Test Case Design</strong>: The functioning of the
-	 * Method in basic cases, limit and in
-	 * launch of exceptions.
+	 * <strong>Test Case Design</strong>: initially all the exception are thrown for
+	 * both HCollection and
+	 * HList implementation. Then a non-null collection is
+	 * created in which elements are inserted. This collection is used as a
+	 * parameter of the tested method invoked on a collection that already contains
+	 * data to verify that the elements of the collection (parameter) are added but
+	 * not removed from the main collection. Checked if an exception was thrown
 	 * <br>
 	 * <br>
-	 * <strong> test description </strong>: the functioning of the
-	 * method addAll(HCollection coll) trying to use it on a s1 passing as a
-	 * parameter a s2 first equal to Null, then Initialized with the Stackadapter ()
-	 * but empty and finally with some Elements added with the method
-	 * Add () in a for cycle.The correct modification of the s1 before is
-	 * conditioned with methods
-	 * assertTrue () and isempty () When the empty s2 is passed as a parameter, then
-	 * With Assertequals ()
-	 * and Get () in a for cycle to compare the elements inserted in the s1 by s2
-	 * with those who should have been inserted.
+	 * <strong>Test Description</strong>: to verify that the tested method works
+	 * correctly, elements are
+	 * added both to the stack used as a parameter and to the stack in which the
+	 * method will be invoked (in which the elements will be inserted). These
+	 * operations are carried out to verify that after the invocation of the tested
+	 * method the only changes that occurred in the main collection were only the
+	 * addition of the values ​​contained in the parameter collection and that no
+	 * elements already present in the main collection were deleted (verified with
+	 * the of the final size of the main collection which must assume a size equal
+	 * to the previous one + size of the parameter collection)
 	 * <br>
 	 * <br>
-	 * <strong> pre-condition </strong>: a s1 must have been initialized and must
-	 * having been instantiated
-	 * and placed equal to Null a s2. I Methods Add (), Addall (), isEmpty (), size
-	 * (),
-	 * Get () e
-	 * Stackadapter () must work correctly.
+	 * <strong>Pre-Conditions</strong>: HCollection has to be initialize as Empty
+	 * and HList with
+	 * data has to have data stored inside.
 	 * <br>
 	 * <br>
-	 * <strong> post-condition </strong>: s2 must have been initialized e
-	 * contain elements.There
-	 * s1 must contain all the elements of the s2 plus another added element
-	 * separately.
+	 * <strong>Post-Conditions</strong>: all the elements contained in the
+	 * collection passed as a
+	 * parameter must also belong to the main collection, not considering the
+	 * elements already belonging to the main collection
 	 * <br>
 	 * <br>
-	 * <strong> Expected results </strong>: if the test is passed it is printed
-	 * one string to capture
-	 * of the exception launched by the Addall () method to which it was passed as
-	 * parameter a collection
-	 * Equal to Null.None of the strings related to the errors of assertive ()
-	 * must have been printed.
+	 * <strong>Expected results</strong>: s1.containsAll(testColl) == true && stack
+	 * has to contain
+	 * the added HCollection
 	 */
 	@Test
 	public void testAddAll() {
+		// for the HCollections
+		HCollection testColl = null;
+
 		try {
-			s1.addAll(s2);
+			s1.addAll(testColl);
 			throw new Exception();
 		} catch (Exception e) {
 			assertEquals(NullPointerException.class, e.getClass());
 		}
 
+		testColl = new StackAdapter();
+		testColl.add(1);
+		testColl.add(2);
+		testColl.add(3);
+
+		int collDim = s1.size();
+		s1.addAll(testColl);
+		assertTrue(s1.containsAll(testColl));
+		assertEquals(collDim + testColl.size(), s1.size());
+
+		// for the HLists
+		HCollection coll;
 		s2 = new StackAdapter();
-		s1.addAll(s2);
-		assertTrue(s1.isEmpty());
-
-		for (int i = 1; i < 4; i++) {
-			s2.add(i);
-		}
-		s1.add(0);
-		s1.addAll(s2);
-
-		for (int i = 0; i < s1.size(); i++) {
-			assertEquals(i, s1.get(i));
-		}
-	}
-
-	/**
-	 * <strong> Summary </strong>: Test of
-	 * {@link myAdapter.StackAdapter#addAll(int, HCollection)}
-	 * <br>
-	 * <br>
-	 * <strong> test case design </strong>: the functioning of the
-	 * Method in basic cases, limit and in
-	 * launch of exceptions.
-	 * <br>
-	 * <br>
-	 * <strong> test description </strong>: the functioning of the
-	 * Addall method (Int Index, Hcollection Coll)
-	 * trying to use it on a s1 passing as a parameter a s2 first equal to
-	 * Null, then
-	 * Initialized with the Stackadapter () but empty and finally with gods
-	 * Elements added with the method
-	 * Add () in a for cycle. The method is also tried by passing as a parameter
-	 * of index first one
-	 * not valid location because less than 0, then one not valid because
-	 * higher than size
-	 * of the Stack and finally a valid one. The correct modification of the
-	 * s1 first with the methods
-	 * ASSERTRUE () and ISEMPTY () When the empty s2 is passed as a parameter, then
-	 * With Assertequals ()
-	 * and Get () in a for cycle to compare the elements inserted in the s1 by
-	 * s2 with those who
-	 * should have been inserted.
-	 * <br>
-	 * <br>
-	 * <strong> pre-condition </strong>: a s1 must have been initialized and must
-	 * having been instantiated
-	 * and placed equal to Null a s2. I Methods Add (), Addall (), ISEMPTY (), SIZE
-	 * (),
-	 * Get () e
-	 * Stackadapter () must work correctly.
-	 * <br>
-	 * <br>
-	 * <strong> post-condition </strong>: s2 must have been initialized e
-	 * contain elements. There
-	 * s1 must contain all the elements of the s2 plus two added elements
-	 * separately.
-	 * <br>
-	 * <br>
-	 * <strong> Expected results </strong>: if the test is passed they are printed
-	 * Only the strings to capture
-	 * of the exceptions launched by the Addall () method to which they were passed
-	 * as
-	 * parameter a collection
-	 * Equal to Null or non-valid indexes. None of the strings related to
-	 * errors of
-	 * Assertequals () must have been printed.
-	 */
-	@Test
-	public void testAddAllAtIndex() {
 		try {
-			s1.addAll(0, s2);
+			s2.addAll(0, null);
 			throw new Exception();
 		} catch (Exception e) {
 			assertEquals(NullPointerException.class, e.getClass());
 		}
-
-		s2 = new StackAdapter();
-		s1.addAll(0, s2);
-		assertTrue(s1.isEmpty());
-
-		for (int i = 1; i < 4; i++) {
-			s2.add(i);
-		}
-		s1.add(0);
-		s1.add(4);
-
+		coll = new StackAdapter();
 		try {
-			s1.addAll(-1, s2);
+			s2.addAll(s2.size() + 1, coll);
 			throw new Exception();
 		} catch (Exception e) {
 			assertEquals(IndexOutOfBoundsException.class, e.getClass());
 		}
 
-		try {
-			s1.addAll(3, s2);
-			throw new Exception();
-		} catch (Exception e) {
-			assertEquals(IndexOutOfBoundsException.class, e.getClass());
-		}
+		coll.add(8);
+		coll.add(9);
 
-		s1.addAll(1, s2);
-		for (int i = 0; i < s1.size(); i++) {
-			assertEquals(i, s1.get(i));
-		}
+		s2.add(1);
+		s2.add(2);
+		s2.add(3);
+
+		s2.addAll(0, coll);
+		assertArrayEquals(new Object[] { 8, 9, 1, 2, 3 }, s2.toArray());
+
+		s2.addAll(3, coll);
+		assertArrayEquals(new Object[] { 8, 9, 1, 8, 9, 2, 3 }, s2.toArray());
+
+		s2.addAll(s2.size(), coll);
+		assertArrayEquals(new Object[] { 8, 9, 1, 8, 9, 2, 3, 8, 9 }, s2.toArray());
 	}
 
 	/**
@@ -336,12 +275,12 @@ public class TestInsertion {
 	 * a position not correct to verify that the exception is correctly launched.
 	 * <br>
 	 * <br>
-	 * <strong>Pre-Condition</strong>: A Stack 1 must have been instantiated. the
+	 * <strong>Pre-Conditions</strong>: A Stack 1 must have been instantiated. the
 	 * method Add (int Index, Object OBJ) and the Size () method must be functional
 	 * for the passing of the test.
 	 * <br>
 	 * <br>
-	 * <strong>Post-Condition</strong>: Stack 1 has 5 elements, 3 of which int, one
+	 * <strong>Post-Conditions</strong>: Stack 1 has 5 elements, 3 of which int, one
 	 * string and a null.
 	 * <br>
 	 * <br>
